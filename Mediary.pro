@@ -17,12 +17,15 @@ SOURCES += main.cpp\
     Media.cpp \
     MODEL/Media.cpp \
     MODEL/SerieTV.cpp \
-    MODEL/Film.cpp
+    MODEL/Film.cpp \
+    MODEL/User.cpp
 
 HEADERS  += MainWindow.h \
     Media.h \
     MODEL/Media.h \
     MODEL/SerieTV.h \
-    MODEL/Film.h
+    MODEL/Film.h \
+    MODEL/Container.h \
+    MODEL/User.h
 
 FORMS    += MainWindow.ui

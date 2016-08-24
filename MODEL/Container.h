@@ -1,6 +1,11 @@
 #ifndef CONTAINER_H
 #define CONTAINER_H
 
+//------------------------CONTENITORE TEMPLETIZZATO CON SMARTPOINTER-------------------------
+//------------------------ED ITERATORI PER MANIPOLARE I DATI ASSOCIATI-----------------------
+//------------------------E' CONTENUTO IN UN UNICO FILE HEADER-------------------------------
+
+
 template<class T>
 class Container{
     friend class Iterator;
