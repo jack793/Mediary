@@ -15,10 +15,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         MainWindow.cpp \
     Media.cpp \
-    MODEL/Media.cpp
+    MODEL/Media.cpp \
+    MODEL/SerieTV.cpp
 
 HEADERS  += MainWindow.h \
     Media.h \
-    MODEL/Media.h
+    MODEL/Media.h \
+    MODEL/SerieTV.h
 
 FORMS    += MainWindow.ui

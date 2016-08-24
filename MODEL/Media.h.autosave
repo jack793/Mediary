@@ -18,7 +18,7 @@ private:
     QDateTime changeDate;   //data ultima modifca
     
 public:
-    Media(Qstring ="Unkwnown");  //creationDate e changeDate vengono settate correttamente tramite un funzione apposita
+    Media(Qstring ="Unkwnown", int ,Qstring ="Unkwnown");  //creationDate e changeDate vengono settate correttamente tramite un funzione apposita
     
     virtual ~Media();   //GERARCHIA POLIMORFA
     
