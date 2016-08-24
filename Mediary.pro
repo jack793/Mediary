@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     MODEL/Media.cpp \
     MODEL/SerieTV.cpp \
     MODEL/Film.cpp \
-    MODEL/User.cpp
+    MODEL/User.cpp \
+    MODEL/Database.cpp
 
 HEADERS  += MainWindow.h \
     Media.h \
@@ -26,6 +27,7 @@ HEADERS  += MainWindow.h \
     MODEL/SerieTV.h \
     MODEL/Film.h \
     MODEL/Container.h \
-    MODEL/User.h
+    MODEL/User.h \
+    MODEL/Database.h
 
 FORMS    += MainWindow.ui
