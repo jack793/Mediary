@@ -25,6 +25,8 @@ void Film::saveMedia(QXmlStreamWriter& xmlWriter) const
         xmlWriter.writeTextElement("titolo",getTitle());
         xmlWriter.writeTextElement("anno",getYear().toString());
         xmlWriter.writeTextElement("genere",getGenre());
+        xmlWriter.writeTextElement("data creazione",getCreate());
+        xmlWriter.writeTextElement("ultima modifica",getChange()); 
         xmlWriter.writeTextElement("trama",getPlot());
         xmlWriter.writeTextElement("distribuito da",getDistribution());
         xmlWriter.writeTextElement("durata",getDuration().toString());

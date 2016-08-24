@@ -26,7 +26,9 @@ void SerieTV::saveMedia(QXmlStreamWriter& xmlWriter) const{
         xmlWriter.writeTextElement("titolo",getTitle());
         xmlWriter.writeTextElement("anno",getYear().toString());
         xmlWriter.writeTextElement("genere",getGenre());
-        xmlWriter.writeTextElement("Stagione",QString::number(getSeason()));
+        xmlWriter.writeTextElement("data creazione",getCreate());
+        xmlWriter.writeTextElement("ultima modifica",getChange());        
+        xmlWriter.writeTextElement("stagione",QString::number(getSeason()));
         xmlWriter.writeTextElement("no.episodio",QString::number(getNumberEp()));
         xmlWriter.writeTextElement("descrizione",getDescr());
         xmlWriter.writeTextElement("lunghezza",QString::number(getLengthEp()));

@@ -1,1 +1,220 @@
 #include "User.h"
+
+//-------------------------COSTRUTTORI------------------------
+
+User::User(const QString& usn, const QString& psw, const QString& nm, const QString& sur, bool sx):
+        username(u), password(psw), name(nm), surname(sur), sex(sx) {}
+
+//-------------------------GET------------------------
+
+const QString& User::getUsername() const {return username;}
+const QString& User::getPsw() const {return password;}
+const QString& User::getName() const {return name;}
+const QString& User::getSurname() const {return surname;}
+bool User::getSex() const {return sex;}
+const Container<const Media*>& User::getMedia() const {return mediaDatabase;}
+
+const Container<const Media*>& User::getSerieTV() const{
+    Container<const Media*> ris;
+    for(Container<const Media*>::Iterator it=mediaDatabase.begin(); it!=mediaDatabase.end(); ++it){
+        const SerieTV* s=dynamic_cast<const SerieTV*>(mediaDatabase[it]);
+        if(s)
+            ris.push_front(s);
+    }
+    return ris;
+}
+
+const Container<const Media*>& User::getFilms() const{
+    Container<const Media*> ris;
+    for(Container<const Media*>::Iterator it=mediaDatabase.begin(); it!=mediaDatabase.end(); ++it){
+        const Film* f=dynamic_cast<const Film*>(mediaDatabase[it]);
+        if(f)
+            ris.push_front(f);
+    }
+    return ris;
+}
+
+//-------------------------SET------------------------
+
+void User::setUsername(const QString& usn) {username=usn;}
+void User::setPsw(const QString& psw) {password=psw;}
+void User::setName(const QString& n) {name=n;}
+void User::setSurname(const QString& sn) {surname=sn;}
+
+//-------------------------ALTRI METODI------------------------
+
+void User::writeUser(QXmlStreamWriter& xmlWriter) const{
+    xmlWriter.writeStartElement("utente");
+        xmlWriter.writeTextElement("username",getUsername());
+        xmlWriter.writeTextElement("password",getPsw());
+        xmlWriter.writeTextElement("nome",getName());
+        xmlWriter.writeTextElement("cognome",getSurname());
+    xmlWriter.writeEndElement();
+}
+
+bool User::verifyUser(const QString& usn) const{
+    return (username==usn);
+}
+
+void User::addMedia(const Media* m){
+    if(!findMedia(m->getId()))  //se non esiste già
+        mediaDatabase.push_front(m);
+}
+
+void User::verifyMedia(const QString& t, const QDateTime& cd) const{
+    if(!mediaDatabase.isEmpty()){
+        for(Container<const Media*>::Iterator it=mediaDatabase.begin(); it!=mediaDatabase.end(); ++it)
+            if(mediaDatabase[it]->getTitle()==t && mediaDatabase[it]->getCreate()==cd)
+                return true;
+    }
+    return false;
+}
+
+void User::modifySerieTV(const QString& t, const QDate& y, const QString& g, const QString& d, unsigned int s, unsigned int nep, unsigned int l, int){
+    SerieTV* s=const_cast<SerieTV*>(dynamic_cast<const SerieTV*>(findMedia(id)));
+    if(s){
+        s->setTitle(t);
+        s->setYear(y);
+        s->setGenre(g);
+        s->setDescription(d);
+        s->setSeasons(s);
+        s->setNumberEp(nep);
+        s->setLeghtEp(l);
+    }
+    //non trovata
+}
+
+void User::modifyFilm(const QString& t, const QDate& y, const QString& g, const QString& p, const QString& distr, const QTime& time, int){
+    Film* f=const_cast<Film*>(dynamic_cast<const Film*>(findMedia(id)));
+    if(f){
+        f->setTitle(t);
+        f->setYear(y);
+        f->setGenre(g);
+        f->setPlot(p);
+        f->setDistruitedBy(ditr);
+        f->setDuration(time);
+    }
+}
+
+void User::deleteMedia(int i){
+    if(!mediaDatabase.isEmpty())
+        mediaDatabase.pop_element(findMedia(i));
+}
+
+const Media* User::findMedia(int i) const{
+    if(!mediaDatabase.isEmpty()){
+        for(Container<const Media*>::Iterator it=mediaDatabase.begin(); it!=mediaDatabase.end(); ++it)
+            if(mediaDatabase[it]->getId()==i)
+                return dynamic_cast<const Media*>(mediaDatabase[it]);
+    }
+    return 0;
+}
+
+void User::loadMedia()
+{   
+    //var. temporanee
+    
+    //---media----
+    QString title;
+    QDate year;
+    QString genre;
+    QDateTime creationDate;
+    QDateTime changeDate;
+    
+    //---serietv-----
+    QString descriptionEp;
+    unsigned int season;
+    unsigned int numberEp;
+    unsigned int lenghtEp;
+    
+    //----film-----
+    QString plot;
+    QString distribution;
+    QTime duration;
+    
+    QFile mediaFile("../Mediary/Database/"+getUsername()+"mediaDatabase.xml");
+    if(!mediaFile.open(QFile::ReadOnly | QFile::Text))
+        std::cout<<"Medias not found!"<<std::endl;
+    
+    QXmlStreamReader xmlReader(&mediaFile); //Creates a new stream reader that reads from device.
+    xmlReader.readNext();
+    
+    while(!xmlReader.atEnd()){
+        if(xmlReader.isStartElement()){ //lettura dei tag aperti <namespaceURI>
+            if(xmlReader.name()=="media" || xmlReader.name()=="serieTV" || xmlReader.name()=="film")
+                xmlReader.readNext();
+            else if(xmlReader.name()=="titolo")
+                title=xmlReader.readElementText();
+            else if(xmlReader.name()=="anno")
+                year=xmlReader.readElementText();
+            else if(xmlReader.name()="genere")
+                genre=xmlReader.readElementText();
+            else if(xmlReader.name()="data creazione")
+                creationDate=xmlReader.readElementText();
+            else if(xmlReader.name()="ultima modifica")
+                changeDate=xmlReader.readElementText();
+            
+            else if(xmlReader.name()="stagione")
+                season=xmlReader.readElementText();
+            else if(xmlReader.name()="no.episodio")
+                numberEp=xmlReader.readElementText();
+            else if(xmlReader.name()="descrizione")
+                descriptionEp=xmlReader.readElementText();
+            else if(xmlReader.name()="lunghezza")
+                lenghtEp=xmlReader.readElementText();
+            
+            else if(xmlReader.name()="trama")
+                plot=xmlReader.readElementText();
+            else if(xmlReader.name()="distribuito da")
+                distribution=xmlReader.readElementText();
+            else if(xmlReader.name()="durata")
+                duration=xmlReader.readElementText();
+        }
+        else if(xmlReader.isEndElement() && xmlReader.name()=="serieTV"){
+            SerieTV* serieTV=new SerieTV(title,year,genre,descriptionEp,season,numberEp,lenghtEp);
+            
+            serieTV->setCreationDate(creationDate);
+            serieTV->setChangeDate(changeDate);
+            
+            mediaDatabase.push_front(serieTV);
+            xmlReader.readNext();
+        }
+        else if(xmlReader.isEndElement() && xmlReader.name()=="film"){
+            Film* film=new Film(title,year,genre,plot,distribution,duration);
+            
+            film->setCreationDate(creationDate);
+            film->setChangeDate(changeDate);
+            
+            mediaDatabase.push_front(film);
+            xmlReader.readNext();
+        }
+        else
+            xmlReader.readNext();
+    }
+    
+    mediaFile.close();
+}
+
+void User::writeMedia() const{
+    QFile mediaFile("../Mediary/Database"+getUsername()+"mediaDatabase.xml");
+    if(!mediaFile.open(QIODevice::WriteOnly))
+        std::cout<<"file media not found, saving failed!"<<std::endl;
+    
+    QXmlStreamWriter xmlWriter(&mediaFile);
+    xmlWriter.setAutoFormatting(true);
+    
+    xmlWriter.writeStartDocument();
+    xmlWriter.writeStartElement("media");
+    if(!mediaDatabase.isEmpty())
+        for(Container<const Media*>::Iterator it=mediaDatabase.begin(); it!=mediaDatabase.end(); ++it)
+            mediaDatabase[it]->saveMedia(xmlWriter);    //CHIAMATA POLIMORFA
+    
+    xmlWriter.writeEndDocument();
+    
+    mediaFile.close();
+}
+
+void User::emptyMediaDatabase(){
+    while(!mediaDatabase.isEmpty())
+        mediaDatabase.pop_front();
+}

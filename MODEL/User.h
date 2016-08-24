@@ -43,9 +43,21 @@ public:
     //-----------altri metodi----------
     
     void writeUser(QXmlStreamWriter& xmlWriter) const;
-    bool verifyUser(const User&);
+    bool verifyUser(const QString&) const;
     
-    void
+    void addMedia(const Media*);
+    void verifyMedia(const QString& ,const QDateTime& ) const;
+    
+    void modifySerieTV(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s, unsigned int nep, unsigned int l,int );
+    void modifyFilm(const QString& t,const QDate& y,const QString& g, const QString& p,const QString& distr,const QTime& time,int );
+    
+    void deleteMedia(int );
+    const Media* findMedia(int ) const; //ritorna il puntatore al media polimorfo che corrisponde con l'id passato
+    
+    void loadMedia();
+    void writeMedia() const;
+    void emptyMediaDatabase();
+       
 };
 
 #endif // USER_H

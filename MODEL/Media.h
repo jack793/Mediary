@@ -12,6 +12,7 @@ class Media
 private:
     static int codMedia;    //un codice diverso per ogni media presente nel db
     int id; //id univoco del media autoincrementante tramite il codMedia quando viene costruito
+    
     QString title;
     QDate year;
     QString genre;
@@ -19,7 +20,7 @@ private:
     QDateTime changeDate;   //data ultima modifca
     
 public:
-    Media(Qstring ="Unkwnown", int ,Qstring ="Unkwnown");  //creationDate e changeDate vengono settate correttamente tramite un funzione apposita
+    Media(Qstring ="Unkwnown", QDate , Qstring ="Unkwnown");  //creationDate e changeDate vengono settate correttamente tramite un funzione apposita
     
     virtual ~Media();   //GERARCHIA POLIMORFA
     
