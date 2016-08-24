@@ -4,21 +4,22 @@
 #include "Media.h"
 
 #include <QString>
+#include <QXmlStreamWriter>
 
 class SerieTV: public Media
 {
 private:
     QString descriptionEp;  //descrizione episodio
-    unsigned int seasons;   //no. di stagioni attuali
+    unsigned int season;   //stagione attuale
     unsigned int numberEp;  //numero episodio
     unsigned int lenghtEp; //durata ep in minuti
     
 public:
-    SerieTV(QString ="Unknown",int ,QString ="Unknown",QString ="Unkwnown",int ,int ,int);
-            // titolo, anno, genere,  descrizione, stagioni, numeroEp, durataEp
+    SerieTV(QString ="Unknown",QDate d=QDate(1970,1,1) ,QString ="Unknown",QString ="Unkwnown",unsigned int ,unsigned int ,unsigned int);
+            // titolo, anno (yyyy,mm,dd), genere,   descrizione, stagioni, numeroEp, durataEp
     
     const QString& getDescr() const;
-    unsigned int getSeasons() const;
+    unsigned int getSeason() const;
     unsigned int getNumberEp() const;
     unsigned int getLengthEp() const;
     
