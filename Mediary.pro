@@ -13,7 +13,6 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        MainWindow.cpp \
     Media.cpp \
     MODEL/Media.cpp \
     MODEL/SerieTV.cpp \
@@ -21,7 +20,7 @@ SOURCES += main.cpp\
     MODEL/User.cpp \
     MODEL/Database.cpp
 
-HEADERS  += MainWindow.h \
+HEADERS  += \
     Media.h \
     MODEL/Media.h \
     MODEL/SerieTV.h \
@@ -30,4 +29,4 @@ HEADERS  += MainWindow.h \
     MODEL/User.h \
     MODEL/Database.h
 
-FORMS    += MainWindow.ui
+FORMS    +=
