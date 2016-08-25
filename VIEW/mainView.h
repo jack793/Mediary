@@ -1,17 +1,18 @@
-#ifndef SUPERWIDGET_H
-#define SUPERWIDGET_H
+#ifndef MAINVIEW_H
+#define MAINVIEW_H
 
 #include <QWidget>
 #include <QDesktopWidget>
 
-class SuperWidget : public QWidget {
+class MainView : public QWidget {
     Q_OBJECT
 private:
     void centraWidget();
+   
 public:
-    explicit SuperWidget(QWidget *parent = 0);
-    virtual ~SuperWidget();
+    explicit MainView(QWidget *parent = 0);
+    virtual ~MainView();
     virtual void caricaGrafica() =0;
 };
 
-#endif // SUPERWIDGET_H
+#endif // MAINVIEW_H

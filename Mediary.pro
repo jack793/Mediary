@@ -27,6 +27,7 @@ HEADERS  += \
     MODEL/Film.h \
     MODEL/Container.h \
     MODEL/User.h \
-    MODEL/Database.h
+    MODEL/Database.h \
+    VIEW/mainView.h
 
 FORMS    +=
