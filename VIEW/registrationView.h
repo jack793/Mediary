@@ -12,6 +12,7 @@
 
 #include "mainView.h"
 #include "dialogMessage.h"
+
 #include "MODEL/Database.h"
 
 class registrationView: public MainView
@@ -42,7 +43,7 @@ public:
     
     void closeEvent(QCloseEvent* );
     
-    //implements pv method
+    //implement pv method
     virtual void loadGraphic();
     
 public slots:

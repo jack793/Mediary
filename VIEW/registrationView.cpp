@@ -16,7 +16,7 @@ void registrationView::closeEvent(QCloseEvent* ){
     emit signalClose();
 }
 
-//-------------------------PV METODH------------------------
+//-------------------------PV METHOD------------------------
 
 void registrationView::loadGraphic(){
     setWindowTitle("Registrazione - Mediary");
@@ -59,6 +59,9 @@ void registrationView::loadGraphic(){
     boxLayout->addWidget(surnameEdit);
     boxLayout->addWidget(sexButtonG);
     
+    boxLayout->addWidget(regButton);
+    boxLayout->addWidget(undoRegButton);
+    
     connect(regButton,SIGNAL(clicked()),this,SLOT(checkRegistration()));
     connect(undoRegButton,SIGNAL(clicked()),this,SLOT(cancelRegistration()));
     
@@ -84,9 +87,9 @@ void registrationView::checkRegistration(){
     if(username.size()==0){
         dialMessage=new DialogMessage("Controllo dati","Non hai compilato il campo USERNAME","Indietro");
         dialMessage->show();
-    }
+    }    
     else if(ptdb->matchUser(username)){
-        dialMessage=new DialogMessage("Controllo dati","Username già utilizzato, inseriscine uno diverso","Indietro");
+        dialMessage=new DialogMessage("Controllo dati","USERNAME già utilizzato, inseriscine uno diverso","Indietro");
         dialMessage->show();
     }
     else if(password.size()==0){

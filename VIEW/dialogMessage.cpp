@@ -1,5 +1,7 @@
 #include "dialogmessage.h"
 
+//-------------------------COSTRUTTORI------------------------
+
 DialogMessage::DialogMessage(std::string t,std::string m,std::string b){
     this->setWindowTitle(QString::fromStdString(t));
     this->setModal(true);
@@ -16,6 +18,8 @@ DialogMessage::DialogMessage(std::string t,std::string m,std::string b){
 }
 
 DialogMessage::~DialogMessage(){}
+
+//-------------------------METODI------------------------
 
 void DialogMessage::chiudi(){
     emit signalChiudi();
