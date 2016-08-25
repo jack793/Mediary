@@ -134,7 +134,7 @@ void User::loadMedia()
     
     QFile mediaFile("../Mediary/Database/"+getUsername()+"mediaDatabase.xml");
     if(!mediaFile.open(QFile::ReadOnly | QFile::Text))
-        std::cout<<"Medias not found!"<<std::endl;
+        std::cout<<"Media database not found!"<<std::endl;
     
     QXmlStreamReader xmlReader(&mediaFile); //Creates a new stream reader that reads from device.
     xmlReader.readNext();

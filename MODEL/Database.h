@@ -14,8 +14,22 @@
 
 class Database
 {
+private:
+    Container<const User*> userDatabase;
+    
 public:
     Database();
+    ~Database();
+    
+    bool matchUser(const QString& ) const;  //true sse matcha un username nel db utenti
+    bool verifyUser(const QString& usn,const QString& psw) const; //true sse username e password presenti associati nel db 
+    void addUser(const User*);
+    const User* getUser(const QString& usn, const QString& psw) const; //ritorna pnt all'utente verificato
+    
+    void loadUserDb();
+    void saveUserDb();
+    
+    void printLoginData() const;
 };
 
 #endif // DATABASE_H
