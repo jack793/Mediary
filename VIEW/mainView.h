@@ -7,12 +7,12 @@
 class MainView : public QWidget {
     Q_OBJECT
 private:
-    void centraWidget();
+    void centerWidget();
    
 public:
-    explicit MainView(QWidget *parent = 0);
+    explicit MainView(QWidget* parent=0);
     virtual ~MainView();
-    virtual void caricaGrafica() =0;
+    virtual void loadGraphic() =0;
 };
 
 #endif // MAINVIEW_H

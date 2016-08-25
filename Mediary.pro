@@ -18,7 +18,11 @@ SOURCES += main.cpp\
     MODEL/SerieTV.cpp \
     MODEL/Film.cpp \
     MODEL/User.cpp \
-    MODEL/Database.cpp
+    MODEL/Database.cpp \
+    VIEW/mainView.cpp \
+    VIEW/registrationView.cpp \
+    VIEW/dialogMessage.cpp \
+    VIEW/loginView.cpp
 
 HEADERS  += \
     Media.h \
@@ -28,6 +32,9 @@ HEADERS  += \
     MODEL/Container.h \
     MODEL/User.h \
     MODEL/Database.h \
-    VIEW/mainView.h
+    VIEW/mainView.h \
+    VIEW/registrationView.h \
+    VIEW/dialogMessage.h \
+    VIEW/loginView.h
 
 FORMS    +=
