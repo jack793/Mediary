@@ -16,6 +16,7 @@ private:
     QString title;
     QDate year;
     QString genre;
+    
     QDateTime creationDate; //data creazione
     QDateTime changeDate;   //data ultima modifca
     

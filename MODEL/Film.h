@@ -20,7 +20,7 @@ public:
     
     const QString& getPlot() const;
     const QString& getDistribution() const;
-    QTime getDuration() const;
+    const QTime& getDuration() const;
     
     void setPlot(const QString& );
     void setDistruitedBy(const QString& );

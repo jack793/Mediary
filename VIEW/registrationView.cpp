@@ -76,15 +76,13 @@ void registrationView::loadGraphic(){
 
 void registrationView::checkRegistration(){
     
-    std::string username=usernameEdit->text().toStdString();
     std::string password=passwordEdit->text().toStdString();
-    std::string name=nameEdit->text().toStdString();
-    std::string surname=surnameEdit->text().toStdString();
+    
     bool sex=false;
     if(sexM->isChecked())
         sex=true;
     
-    if(username.size()==0){
+    if(usernameEdit->text()==""){
         dialMessage=new DialogMessage("Controllo dati","Non hai compilato il campo USERNAME","Indietro");
         dialMessage->show();
     }    
@@ -92,7 +90,7 @@ void registrationView::checkRegistration(){
         dialMessage=new DialogMessage("Controllo dati","USERNAME già utilizzato, inseriscine uno diverso","Indietro");
         dialMessage->show();
     }
-    else if(password.size()==0){
+    else if(passwordEdit->text()==""){
         dialMessage=new DialogMessage("Controllo dati","Non hai compilato il campo PASSWORD","Indietro");
         dialMessage->show();
     }
@@ -100,17 +98,17 @@ void registrationView::checkRegistration(){
         dialMessage=new DialogMessage("Controllo dati","La password deve avere almeno 4 caratteri","Indietro");
         dialMessage->show();
     }
-    else if(name.size()==0){
+    else if(nameEdit->text()==""){
         dialMessage=new DialogMessage("Controllo dati","Non hai compilato il campo NOME","Indietro");
         dialMessage->show();
     }
-    else if(surname.size()==0){
+    else if(surnameEdit->text()==""){
         dialMessage=new DialogMessage("Controllo dati","Non hai compilato il campo COGNOME","Indietro");
         dialMessage->show();
     }
     
     else //input dati corretto
-        emit signalRegister(username,password,name,surname,sex);
+        emit signalRegister(usernameEdit->text(),passwordEdit->text(),nameEdit->text(),surnameEdit->text(),sex);
 }
 
 void registrationView::cancelRegistration(){

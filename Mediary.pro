@@ -23,7 +23,9 @@ SOURCES += main.cpp\
     VIEW/registrationView.cpp \
     VIEW/dialogMessage.cpp \
     VIEW/loginView.cpp \
-    VIEW/userDataView.cpp
+    VIEW/userDataView.cpp \
+    VIEW/filmView.cpp \
+    VIEW/serietvView.cpp
 
 HEADERS  += \
     Media.h \
@@ -37,6 +39,8 @@ HEADERS  += \
     VIEW/registrationView.h \
     VIEW/dialogMessage.h \
     VIEW/loginView.h \
-    VIEW/userDataView.h
+    VIEW/userDataView.h \
+    VIEW/filmView.h \
+    VIEW/serietvView.h
 
 FORMS    +=

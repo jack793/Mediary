@@ -9,7 +9,7 @@ Film::Film(QString t, QDate d, QString g, QString p, QString dis, QTime time):
 
 const QString& Film::getPlot() const {return plot;}
 const QString& Film::getDistribution() const {return distribution;}
-QTime Film::getDuration() const {return duration;}
+const QTime& Film::getDuration() const {return duration;}
 
 //-------------------------SET------------------------
 

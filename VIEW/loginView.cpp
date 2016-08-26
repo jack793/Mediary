@@ -48,14 +48,12 @@ loginView::loadGraphic(){
 //-------------------------PUBLIC SLOTS------------------------
 
 void loginView::tryLogin(){
-    std::string username=usernameEdit->text().toStdString();
-    std::string password=passwordEdit->text().toStdString();
     
-    if(username.size()==0){
+    if(usernameEdit->text()==""){
         dialMessage= new DialogMessage("Controllo login","E' necessario inserire uno USERNAME per loggarsi","Ok");
         dialMessage->show();
     }
-    else if(password.size()==0){
+    else if(passwordEdit->text()==""){
         dialMessage= new DialogMessage("Controllo login","E' necessario inserire una PASSWORD per loggarsi","OK");
         dialMessage->show();
     }
@@ -74,7 +72,7 @@ void loginView::tryLogin(){
         }
     
         else //login corretta
-            emit signalLogin(username,password);
+            emit signalLogin(usernameEdit->text(),passwordEdit->text());
     }
 }
 

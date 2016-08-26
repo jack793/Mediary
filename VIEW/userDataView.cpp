@@ -75,27 +75,24 @@ void userDataView::loadGraphic(){
 //-------------------------PUBLIC SLOTS--------------------------
 
 void userDataView::confirmChanges(){
-    std::string username=usernameEdit->text().toStdString();
-    std::string name=nameEdit->text().toStdString();
-    std::string surname=surnameEdit->text().toStdString();
     bool sex=false;
     if(sexM->isChecked())
         sex=true;
     
-    if(username.size()==0){
+    if(usernameEdit->text()==""){
         dialMessage= new DialogMessage("Controllo modifiche","Riempire il campo USERNAME","Ok");
         dialMessage->show();
     }
-    else if(name.size()==0){
+    else if(nameEdit->text()==""){
         dialMessage= new DialogMessage("Controllo modifiche","Riempire il campo NOME","Ok");
         dialMessage->show();
     }
-    else if(surname.size()==0){
+    else if(surnameEdit->text()==""){
         dialMessage= new dialMessage("Controllo modifiche","Riempire il campo COGNOME","Ok");
         dialMessage->show();
     }
     else
-        emit signalConfirm(username,name,surname,sex);
+        emit signalConfirm(usernameEdit->text(),nameEdit->text(),surnameEdit->text(),sex);
     
 }
 
