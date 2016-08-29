@@ -41,8 +41,10 @@ public:
     ~userDataView();
     
     void closeEvent(QCloseEvent* );
+    //Questo gestore di eventi viene chiamato con l'evento dato quando Qt riceve una richiesta
+    //di chiusura della finestra per un widget di alto livello dal sistema a finestre .
     
-    //implement pv method
+    //Implement pv method
     virtual void loadGraphic();
     
 public slots:

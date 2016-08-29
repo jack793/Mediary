@@ -16,8 +16,8 @@ Media::~Media() {}
 const QString& Media::getTitle() const {return title;}
 const QDate& Media::getYear() const {return year;}
 const QString& Media::getGenre() const {return genre;}
-const QDateTime& Media::getCreate() const {return creationDate;}
-QDateTime Media::getChange() const {return changeDate;}
+const QDateTime& Media::getCreateDate() const {return creationDate;}
+QDateTime Media::getLastChange() const {return changeDate;}
 int Media::getId() const {return id;}
 
 //-------------------------SET------------------------

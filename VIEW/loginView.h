@@ -36,7 +36,7 @@ public:
     loginView(MainView* =0);
     ~loginView();
     
-    //implement pv method
+    //Implement pv method
     virtual void loadGraphic();
     
 public slots:

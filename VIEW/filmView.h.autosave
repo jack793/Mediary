@@ -41,6 +41,8 @@ public:
     FilmView(const Film* f=0,MainView* parent=0);
     ~FilmView();
     
+    
+    
     void closeEvent(QCloseEvent* );
     
     //Implement pv method

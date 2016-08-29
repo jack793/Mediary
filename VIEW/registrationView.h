@@ -43,7 +43,7 @@ public:
     
     void closeEvent(QCloseEvent* );
     
-    //implement pv method
+    //Implement pv method
     virtual void loadGraphic();
     
 public slots:

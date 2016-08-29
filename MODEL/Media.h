@@ -18,7 +18,7 @@ private:
     QString genre;
     
     QDateTime creationDate; //data creazione
-    QDateTime changeDate;   //data ultima modifca
+    QDateTime changeDate;   //data ultima modifica
     
 public:
     Media(Qstring ="Unkwnown", QDate , Qstring ="Unkwnown");  //creationDate e changeDate vengono settate correttamente tramite un funzione apposita
@@ -28,8 +28,8 @@ public:
     const QString& getTitle() const;
     const QDate& getYear() const;
     const QString& getGenre() const;
-    const QDateTime& getCreate() const;
-    QDateTime getChange() const;
+    const QDateTime& getCreateDate() const;
+    QDateTime getLastChange() const;
     int getId() const;
     
     virtual QString getType() const=0; // PURE VIRTUAL // ritorna il tipo polimorfo di media
