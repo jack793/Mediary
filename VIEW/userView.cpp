@@ -186,8 +186,7 @@ void userView::closeMediaBox(){
 void userView::closeSerieTvView(){
     QMessageBox::StandardButton warning;
     warning=QMessageBox::question(this, "Attenzione, Salvataggio non effettuato!!" , "Le modifiche non salvate andranno perse! Sei sicuro di uscire?", QMessageBox::Yes|QMessageBox::No);
-    warning.setIcon(QIcon(":/Icons/warning_dark.png"));
-    warning.show();
+    warning.setIcon(QIcon(":/Icons/warning_light2.png"));
     
     if (warning==QMessageBox::Yes){
         delete serieTvView;
@@ -198,8 +197,7 @@ void userView::closeSerieTvView(){
 void userView::closeFilmView(){
     QMessageBox::StandardButton warning;
     warning=QMessageBox::question(this, "Attenzione, Salvataggio non effettuato!!" , "Le modifiche non salvate andranno perse! Sei sicuro di uscire?", QMessageBox::Yes|QMessageBox::No);
-    warning.setIcon(QIcon(":/Icons/warning_dark.png"));
-    warning.show();
+    warning.setIcon(QIcon(":/Icons/warning_light2.png"));
     
     if (warning==QMessageBox::Yes){
         delete filmView;
@@ -210,9 +208,8 @@ void userView::closeFilmView(){
 void userView::closeUserDataView(){
     QMessageBox::StandardButton warning;
     warning=QMessageBox::question(this, "Attenzione, Salvataggio non effettuato!!" , "Le modifiche non salvate andranno perse! Sei sicuro di uscire?", QMessageBox::Yes|QMessageBox::No);
-    warning.setIcon(QIcon(":/Icons/warning_dark.png"));
-    warning.show();
-    
+    warning.setIcon(QIcon(":/Icons/warning_light2.png"));
+        
     if (warning==QMessageBox::Yes){
         delete userInfoView;
         userInfoView=0;
@@ -273,7 +270,8 @@ void userView::optionMediaTable(int row, int choice){
     int id= mediaTable->item(row,0)->text().toInt();
     
     if(!choice){
-        QMessageBox::standardButton warning;
+        QMessageBox::StandardButton warning;
+        warning.setIcon(QIcon(":/Icons/warning_dark2.png"));
         warning=QMessageBox::question(this,"Elimizazione media","Confermi di voler eliminare questo media dal tuo diario?",QMessageBox::Yes|QMessageBox::No);
         if(warning==QMessageBox::Yes){
             mediaTable->removeRow(row);
