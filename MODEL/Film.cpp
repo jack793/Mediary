@@ -2,7 +2,7 @@
 
 //-------------------------COSTRUTTORI------------------------
 
-Film::Film(QString t, QDate d, QString g, QString p, QString dis, QTime time):
+Film::Film(const QString &t, const QDate &d, const QString &g, const QString &p, const QString &dis, const QTime &time):
         Media(t,y,g), plot(p), distribution(dis), duration(time) {}
 
 //-------------------------GET------------------------

@@ -99,7 +99,7 @@ public:
     //CONTAINER:
     
     //Costruttore
-    Container() :  items(0) first(0) {}
+    Container() :  items(0),first(0) {}
 
     //Costruttore di copia
     Container(const Container& c) :  items(c. items), first(c.first) {}
@@ -140,7 +140,7 @@ public:
     }
 
     void pop_element(T element){
-            Smartp p=first, 
+            Smartp p=first;
             Smartp prec, q;
             Smartp aux=first;
             first=0;

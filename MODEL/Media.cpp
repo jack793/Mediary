@@ -2,9 +2,10 @@
 
 int Media::codMedia=0;  //inizializzazione membro statico
 
-//-------------------------COSTRUTTORI------------------------
 
-Media::Media(QString t, QDate y, QString g): title(t), year(y), genre(g), creationDate(QDateTime::currentDateTime()), changeDate(QDateTime::currentDateTime())
+
+
+Media::Media(const QString& t,const QDate& y,const QString& g): title(t), year(y), genre(g), creationDate(QDateTime::currentDateTime()), changeDate(QDateTime::currentDateTime())
 {
     id=codMedia++;
 }

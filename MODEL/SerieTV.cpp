@@ -2,7 +2,7 @@
 
 //-------------------------COSTRUTTORI------------------------
 
-SerieTV::SerieTV(QString t, QDate y, QString g, QString d, unsigned int s, unsigned int ep, unsigned int l): 
+SerieTV::SerieTV(const QString &t, const QDate &y, const QString &g, const QString &d, unsigned int s, unsigned int ep, unsigned int l): 
         Media(t,y,g), descriptionEp(d), season(s), numberEp(ep), lenghtEp(l) {}
 
 //-------------------------GET------------------------

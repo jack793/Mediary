@@ -15,7 +15,7 @@ private:
     unsigned int lenghtEp; //durata ep in minuti
     
 public:
-    SerieTV(QString ="Unknown",QDate d=QDate(1970,1,1) ,QString ="Unknown",QString ="Unkwnown",unsigned int ,unsigned int ,unsigned int);
+    SerieTV(const QString& ="Unknown",const QDate& d=QDate(1970,1,1) ,const QString& ="Unknown",const QString& ="Unkwnown",unsigned int =0 ,unsigned int =0,unsigned int =0);
             // titolo, anno (yyyy,mm,dd), genere,   descrizione, stagioni, numeroEp, durataEp
     
     const QString& getDescr() const;
