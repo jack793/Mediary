@@ -2,7 +2,7 @@
 
 //-------------------------COSTRUTTORI------------------------
 
-Film::Film(const QString &t, const QDate &d, const QString &g, const QString &p, const QString &dis, const QTime &time):
+Film::Film(const QString &t, const QDate &y, const QString &g, const QString &p, const QString &dis, const QTime &time):
         Media(t,y,g), plot(p), distribution(dis), duration(time) {}
 
 //-------------------------GET------------------------
@@ -25,8 +25,8 @@ void Film::saveMedia(QXmlStreamWriter& xmlWriter) const
         xmlWriter.writeTextElement("titolo",getTitle());
         xmlWriter.writeTextElement("anno",getYear().toString());
         xmlWriter.writeTextElement("genere",getGenre());
-        xmlWriter.writeTextElement("data creazione",getCreate());
-        xmlWriter.writeTextElement("ultima modifica",getChange()); 
+        xmlWriter.writeTextElement("data creazione",getCreateDate().toString());
+        xmlWriter.writeTextElement("ultima modifica",getLastChange().toString()); 
         xmlWriter.writeTextElement("trama",getPlot());
         xmlWriter.writeTextElement("distribuito da",getDistribution());
         xmlWriter.writeTextElement("durata",getDuration().toString());

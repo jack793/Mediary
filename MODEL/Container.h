@@ -99,7 +99,7 @@ public:
     //CONTAINER:
     
     //Costruttore
-    Container() :  items(0),first(0) {}
+    Container() :  items(0), first(0) {}
 
     //Costruttore di copia
     Container(const Container& c) :  items(c. items), first(c.first) {}
@@ -117,12 +117,12 @@ public:
     
     bool isEmpty() const { return first==0; }
 
-    void push_front(T& t){
+    void push_front(const T& t){
         first=new Nodo(t,first);
          items++;
     }
 
-    void push_back(T& t){
+    void push_back(const T& t){
         if(first==0) first=new Nodo(t,0);   //non c'era alcun elemento nel contenitore
         else{
             Smartp aux=first;

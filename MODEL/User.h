@@ -11,6 +11,7 @@
 #include "SerieTV.h"
 #include "Film.h"
 
+
 #include "Container.h"
 
 class User
@@ -31,8 +32,8 @@ public:
     const QString& getSurname() const;
     bool getSex() const;
     const Container<const Media*>& getMedia() const;
-    const Container<const Media*>& getSerieTV() const;
-    const Container<const Media*>& getFilms() const;
+    Container<const Media*> getSerieTV() const;
+    Container<const Media*> getFilms() const;
     
     void setUsername(const QString& );
     void setPsw(const QString& );
@@ -46,10 +47,10 @@ public:
     bool verifyUser(const QString&) const;
     
     void addMedia(const Media*);
-    void verifyMedia(const QString& ,const QDateTime& ) const;
+    bool verifyMedia(const QString& ,const QDateTime& ) const;
     
-    void modifySerieTV(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s, unsigned int nep, unsigned int l,int );
-    void modifyFilm(const QString& t,const QDate& y,const QString& g, const QString& p,const QString& distr,const QTime& time,int );
+    void modifySerieTV(const QString& t, const QDate& y, const QString& g, const QString& d, unsigned int s, unsigned int nep, unsigned int l, int id);
+    void modifyFilm(const QString& t, const QDate& y, const QString& g, const QString& p, const QString& distr, const QTime& time, int id);
     
     void deleteMedia(int );
     const Media* findMedia(int ) const; //ritorna il puntatore al media polimorfo che corrisponde con l'id passato

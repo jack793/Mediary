@@ -13,7 +13,6 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    Media.cpp \
     MODEL/Media.cpp \
     MODEL/SerieTV.cpp \
     MODEL/Film.cpp \

@@ -15,7 +15,7 @@ unsigned int SerieTV::getLengthEp() const {return lenghtEp;}
 //-------------------------SET------------------------
 
 void SerieTV::setDescription(const QString& d) {descriptionEp=d; this->updateChangeDate();}
-void SerieTV::setSeason(unsigned int s) {season=s; this->updateChangeDate();}
+void SerieTV::setSeasons(unsigned int s) {season=s; this->updateChangeDate();}
 void SerieTV::setNumberEp(unsigned int n) {numberEp=n; this->updateChangeDate();}
 void SerieTV::setLeghtEp(unsigned int l) {lenghtEp=l; this->updateChangeDate();}
 
@@ -26,8 +26,8 @@ void SerieTV::saveMedia(QXmlStreamWriter& xmlWriter) const{
         xmlWriter.writeTextElement("titolo",getTitle());
         xmlWriter.writeTextElement("anno",getYear().toString());
         xmlWriter.writeTextElement("genere",getGenre());
-        xmlWriter.writeTextElement("data creazione",getCreate());
-        xmlWriter.writeTextElement("ultima modifica",getChange());        
+        xmlWriter.writeTextElement("data creazione",getCreateDate().toString());
+        xmlWriter.writeTextElement("ultima modifica",getLastChange().toString());        
         xmlWriter.writeTextElement("stagione",QString::number(getSeason()));
         xmlWriter.writeTextElement("no.episodio",QString::number(getNumberEp()));
         xmlWriter.writeTextElement("descrizione",getDescr());

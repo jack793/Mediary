@@ -29,7 +29,7 @@ bool Database::verifyUser(const QString& usn, const QString& psw) const{
 
 void Database::addUser(const User* u) {
     if(!getUser(u->getUsername(),u->getPsw()))
-        userDatabase.push_front();
+        userDatabase.push_front(u);
 }
 
 const User* Database::getUser(const QString& usn, const QString& psw) const{
@@ -67,15 +67,15 @@ void Database::loadUserDb(){
                 password=xmlReader.readElementText();
             else if(xmlReader.name()=="nome")
                 name=xmlReader.readElementText();
-            else if(xmlReader.name()="cognome")
+            else if(xmlReader.name()=="cognome")
                 surname=xmlReader.readElementText();
-            else if(xmlReader.name()="sesso")
+            else if(xmlReader.name()=="sesso")
                 sex=xmlReader.readElementText();
         }
         else if(xmlReader.isEndElement() && xmlReader.name()=="utente"){    // legge </utente>
             User* u=new User(username,password,name,surname,sex);
             userDatabase.push_back(u);
-            xmlReader.readNext()
+            xmlReader.readNext();
         }
         else
             xmlReader.readNext();
@@ -87,7 +87,7 @@ void Database::saveUserDb(){
     QFile userFile("../Mediary/Database/userDatabase.xml");
     
     if(!userFile.open(QIODevice::WriteOnly))
-        std::cout<<"file users not found, saving failed!"<<std:::endl;
+        std::cout<<"file users not found, saving failed!"<<std::endl;
     
     QXmlStreamWriter xmlWriter(&userFile);
     xmlWriter.setAutoFormatting(true);

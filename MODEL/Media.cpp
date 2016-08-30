@@ -2,8 +2,7 @@
 
 int Media::codMedia=0;  //inizializzazione membro statico
 
-
-
+//-------------------------COSTRUTTORI------------------------
 
 Media::Media(const QString& t,const QDate& y,const QString& g): title(t), year(y), genre(g), creationDate(QDateTime::currentDateTime()), changeDate(QDateTime::currentDateTime())
 {
@@ -23,7 +22,7 @@ int Media::getId() const {return id;}
 
 //-------------------------SET------------------------
 
-void Media::setTitle(const QString& t) {titolo=t; this->updateChangeDate();}
+void Media::setTitle(const QString& t) {title=t; this->updateChangeDate();}
 void Media::setYear(const QDate& y) {year=y; this->updateChangeDate();}
 void Media::setGenre(const QString& g) {genre=g; this->updateChangeDate();}
 void Media::setCreationDate(const QDateTime& d) {creationDate=d;}
