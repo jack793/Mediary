@@ -27,7 +27,7 @@ private:
     //QLineEdit* passwordEdit;
     QLineEdit* nameEdit;
     QLineEdit* surnameEdit;
-    QButtonGroup* sexButtonG;
+    QVBoxLayout* sexButtonsLay;
     QRadioButton* sexM;
     QRadioButton* sexF;
     

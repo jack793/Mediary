@@ -32,7 +32,7 @@ public slots:
     void openRegistrationView();
     
     //Registration
-    void userRegistration(const QString& u,const QString& p,const QString& n,const QString& s);
+    void userRegistration(const QString& u, const QString& p, const QString& n, const QString& s, bool);
     void closeRegistrationView();
     
     //Verify

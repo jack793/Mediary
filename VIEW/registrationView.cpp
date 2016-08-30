@@ -38,13 +38,13 @@ void registrationView::loadGraphic(){
     surnameEdit= new QLineEdit;
     QLabel* surnameLabel= new QLabel("Inserisci cognome:");
     
-    sexButtonG=new QButtonGroup;
+    sexButtonsLay=new QVBoxLayout;
     QLabel* sexLabel=new QLabel("Seleziona sesso:");
     sexM=new QRadioButton("Maschio");
     sexM->setChecked(true);
     sexF=new QRadioButton("Femmina");
-    sexButtonG->addButton(sexM);
-    sexButtonG->addButton(sexF);
+    sexButtonsLay->addWidget(sexM);
+    sexButtonsLay->addWidget(sexF);
     
     QPushButton* regButton= new QPushButton("Registrati");
     QPushButton* undoRegButton= new QPushButton("Indietro");
@@ -57,7 +57,8 @@ void registrationView::loadGraphic(){
     boxLayout->addWidget(nameEdit);
     boxLayout->addWidget(surnameLabel);
     boxLayout->addWidget(surnameEdit);
-    boxLayout->addWidget(sexButtonG);
+    boxLayout->addWidget(sexLabel);
+    boxLayout->addLayout(sexButtonsLay);
     
     boxLayout->addWidget(regButton);
     boxLayout->addWidget(undoRegButton);
@@ -86,7 +87,7 @@ void registrationView::checkRegistration(){
         dialMessage=new DialogMessage("Controllo dati","Non hai compilato il campo USERNAME","Indietro");
         dialMessage->show();
     }    
-    else if(ptdb->matchUser(username)){
+    else if(ptdb->matchUser(usernameEdit->text())){
         dialMessage=new DialogMessage("Controllo dati","USERNAME già utilizzato, inseriscine uno diverso","Indietro");
         dialMessage->show();
     }

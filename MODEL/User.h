@@ -14,8 +14,7 @@
 
 #include "Container.h"
 
-class User
-{
+class User{
 private:
     QString username;
     QString password;
@@ -24,7 +23,7 @@ private:
     bool sex;
     Container<const Media*> mediaDatabase;
 public:
-    User(const QString& ,const QString& ,const QString& ,const QString& ,bool );
+    explicit User(const QString& ,const QString& ,const QString& ,const QString& ,bool s);
     
     const QString& getUsername() const;
     const QString& getPsw() const;

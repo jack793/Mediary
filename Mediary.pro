@@ -30,7 +30,6 @@ SOURCES += main.cpp\
     CONTROLLER/userController.cpp
 
 HEADERS  += \
-    Media.h \
     MODEL/Media.h \
     MODEL/SerieTV.h \
     MODEL/Film.h \

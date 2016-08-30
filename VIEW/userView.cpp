@@ -2,7 +2,7 @@
 
 //-------------------------COSTRUTTORI------------------------
 
-userView::userView(User *u, MainView *parent): user(u), MainView(parent)
+userView::userView(User* u, MainView* parent): MainView(parent), user(u)
 {
     loadGraphic();
 }
@@ -11,11 +11,11 @@ userView::~userView() {}
 
 //-------------------------METODI------------------------
 
-userView::closeEvent(QCloseEvent* ){
+void userView::closeEvent(QCloseEvent* ){
     emit signalLogout();
 }
 
-userView::loadMediaTable(const Container<const Media *>& userMedia){
+void userView::loadMediaTable(const Container<const Media *>& userMedia){
     if(!userMedia.isEmpty()){
         int row=0;
         for(Container<const Media*>::Iterator it=userMedia.begin(); it!=userMedia.end(); ++it){
@@ -152,7 +152,7 @@ void userView::openNewSerieTv(){
 void userView::openNewFilm(){
     if(!filmView){
         filmView= new FilmView;
-        filmView.show();
+        filmView->show();
         
         connect(filmView,SIGNAL(signalSave(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& )),this,SLOT(saveFilm(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& )));
         connect(filmView,SIGNAL(signalCancel()),this,SLOT(closeFilmView()));
@@ -162,7 +162,7 @@ void userView::openNewFilm(){
 void userView::openUserData(){
     if(!userInfoView){
         userInfoView= new userDataView;
-        userInfoView->show;
+        userInfoView->show();
         
         connect(userInfoView,SIGNAL(signalConfirm(QString,QString,QString,bool)),this,SLOT(modifyUserData(const QString& ,const QString& ,const QString& ,bool )));
         connect(userInfoView,SIGNAL(signalCancel()),this,SLOT(closeUserDataView()));
@@ -186,7 +186,7 @@ void userView::closeMediaBox(){
 void userView::closeSerieTvView(){
     QMessageBox::StandardButton warning;
     warning=QMessageBox::question(this, "Attenzione, Salvataggio non effettuato!!" , "Le modifiche non salvate andranno perse! Sei sicuro di uscire?", QMessageBox::Yes|QMessageBox::No);
-    warning.setIcon(QIcon(":/Icons/warning_light2.png"));
+    //warning.setIcon(QIcon(":/Icons/warning_light2.png"));
     
     if (warning==QMessageBox::Yes){
         delete serieTvView;
@@ -197,7 +197,7 @@ void userView::closeSerieTvView(){
 void userView::closeFilmView(){
     QMessageBox::StandardButton warning;
     warning=QMessageBox::question(this, "Attenzione, Salvataggio non effettuato!!" , "Le modifiche non salvate andranno perse! Sei sicuro di uscire?", QMessageBox::Yes|QMessageBox::No);
-    warning.setIcon(QIcon(":/Icons/warning_light2.png"));
+    //warning.setIcon(QIcon(":/Icons/warning_light2.png"));
     
     if (warning==QMessageBox::Yes){
         delete filmView;
@@ -208,7 +208,7 @@ void userView::closeFilmView(){
 void userView::closeUserDataView(){
     QMessageBox::StandardButton warning;
     warning=QMessageBox::question(this, "Attenzione, Salvataggio non effettuato!!" , "Le modifiche non salvate andranno perse! Sei sicuro di uscire?", QMessageBox::Yes|QMessageBox::No);
-    warning.setIcon(QIcon(":/Icons/warning_light2.png"));
+    //warning.setIcon(QIcon(":/Icons/warning_light2.png"));
         
     if (warning==QMessageBox::Yes){
         delete userInfoView;
@@ -271,7 +271,7 @@ void userView::optionMediaTable(int row, int choice){
     
     if(!choice){
         QMessageBox::StandardButton warning;
-        warning.setIcon(QIcon(":/Icons/warning_dark2.png"));
+        //warning.setIcon(QIcon(":/Icons/warning_dark2.png"));
         warning=QMessageBox::question(this,"Elimizazione media","Confermi di voler eliminare questo media dal tuo diario?",QMessageBox::Yes|QMessageBox::No);
         if(warning==QMessageBox::Yes){
             mediaTable->removeRow(row);
@@ -281,7 +281,7 @@ void userView::optionMediaTable(int row, int choice){
             loadMediaTable(user->getMedia()); //update vista 
         }
     }
-    else if(c && mediaTable->item(row,2)->text()=="SerieTV"){   //open existing serieTV
+    else if(choice && mediaTable->item(row,2)->text()=="SerieTV"){   //open existing serieTV
         const Media* ptm=user->findMedia(id);
         
         if(ptm){
@@ -292,7 +292,7 @@ void userView::optionMediaTable(int row, int choice){
             connect(serieTvView,SIGNAL(signalCancel()),this,SLOT(closeSerieTvView()));
         }
     }
-    else if(c && mediaTable->item(row,2)->text()=="Film"){
+    else if(choice && mediaTable->item(row,2)->text()=="Film"){
         const Media* ptm=user->findMedia(id);
         
         if(ptm){

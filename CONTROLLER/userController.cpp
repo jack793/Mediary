@@ -2,7 +2,7 @@
 
 //-------------------------COSTRUTTORI------------------------
 
-userController::userController(User* u, QObject* parent): user(u), QObject(parent)
+userController::userController(User* u, QObject* parent): QObject(parent), user(u)
 {
     userUI= new userView(u);    //Creo la user view passandogli un pt user che contiente tutti i suoi dati nel model
     user->loadMedia();  //Riempie il container dell'user con la load da db
@@ -57,6 +57,10 @@ void userController::modifyUserData(const QString& username, const QString& name
     
     dialMessage= new DialogMessage("Info","Modifiche effettuate con successo","Ok");
     dialMessage->show();
+}
+
+void userController::deleteMedia(int id){
+    user->deleteMedia(id);
 }
 
 //--------CLOSE

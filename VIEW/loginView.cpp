@@ -10,7 +10,7 @@ loginView::~loginView() {}
 
 //-------------------------PV METHOD-----------------------
 
-loginView::loadGraphic(){
+void loginView::loadGraphic(){
     setWindowTitle("Login - Mediary");
     
     mainLayout = new QVBoxLayout;
@@ -58,14 +58,14 @@ void loginView::tryLogin(){
         dialMessage->show();
     }
     
-    else if(!ptdb->matchUser(username))
+    else if(!ptdb->matchUser(usernameEdit->text()))
     {
         dialMessage=new DialogMessage("Controllo login","Username o password inseriti NON CORRETTI","Riprova");
         dialMessage->show();
     }
-    else if //esiste username
+    else //esiste username
     {
-        User* u=ptdb->getUser(username,password);
+        const User* u=ptdb->getUser(usernameEdit->text(),passwordEdit->text());
         if(!u){ //non esiste un utente con quella pwd
             dialMessage=new DialogMessage("Controllo login","Username o password inseriti NON CORRETTI","Riprova");
             dialMessage->show();

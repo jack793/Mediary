@@ -69,8 +69,14 @@ void Database::loadUserDb(){
                 name=xmlReader.readElementText();
             else if(xmlReader.name()=="cognome")
                 surname=xmlReader.readElementText();
-            else if(xmlReader.name()=="sesso")
-                sex=xmlReader.readElementText();
+            else if(xmlReader.name()=="sesso"){
+                QString s=xmlReader.readElementText();
+                if(s=="0")
+                    sex=false;
+                sex=false;
+            }
+            
+            
         }
         else if(xmlReader.isEndElement() && xmlReader.name()=="utente"){    // legge </utente>
             User* u=new User(username,password,name,surname,sex);
@@ -96,7 +102,7 @@ void Database::saveUserDb(){
     xmlWriter.writeStartElement("database");
     
     if(!userDatabase.isEmpty())
-        for(Container<const Media*>::Iterator it=userDatabase.begin(); it!=userDatabase.end(); ++it)
+        for(Container<const User*>::Iterator it=userDatabase.begin(); it!=userDatabase.end(); ++it)
             userDatabase[it]->writeUser(xmlWriter); //PRONTO PER ESTENSIBILITA'
     xmlWriter.writeEndDocument();
     
@@ -105,6 +111,6 @@ void Database::saveUserDb(){
 
 void Database::printLoginData() const{
     for(Container<const User*>::Iterator it=userDatabase.begin(); it!=userDatabase.end(); ++it)
-        std::count<<"Username: "<<userDatabase[it]->getUsername()<<"Nome: "<<userDatabase[it]->getName()<<"Cognome: "<<userDatabase[it]->getSurname();<<std::endl;
+        std::cout<<"Username: "<<userDatabase[it]->getUsername().toUtf8().constData()<<"Nome: "<<userDatabase[it]->getName().toUtf8().constData()<<"Cognome: "<<userDatabase[it]->getSurname().toUtf8().constData()<<std::endl;
 }
 

@@ -32,7 +32,7 @@ void FilmView::loadGraphic(){
     }
     else{
         titleEdit= new QLineEdit();
-        yearEdit= new QDate(); //lascio data vuota?
+        yearEdit= new QDateEdit(); //lascio data vuota?
         genreEdit= new QLineEdit();
     }
     //Film

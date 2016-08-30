@@ -3,7 +3,7 @@
 //-------------------------COSTRUTTORI------------------------
 
 mediaryController::mediaryController(Database* db, loginView* l, userController* c, QObject* parent):
-           usersDB(db), startUI(l), uController(c), QObject(parent)
+           QObject(parent), usersDB(db), startUI(l), uController(c)
 {
     l->show();
     
@@ -24,7 +24,7 @@ void mediaryController::openLoginView(){
 void mediaryController::openRegistrationView(){
     registrationUI= new registrationView;
     
-    startUI->hide; //nascondo login
+    startUI->hide(); //nascondo login
     registrationUI->show(); //apro reg
     
     connect(registrationUI,SIGNAL(signalRegister(const QString& ,const QString& ,const QString& ,const QString& ,bool )),this,SLOT(userRegistration(const QString& u,const QString& p,const QString& n,const QString& s)));
@@ -33,20 +33,20 @@ void mediaryController::openRegistrationView(){
 
 //--------REGISTRATION
 
-void mediaryController::userRegistration(const QString& username, const QString& psw, const QString& name, const QString& surname){
+void mediaryController::userRegistration(const QString& username, const QString& psw, const QString& name, const QString& surname, bool sex){
     if(!usersDB->matchUser(username)){
-        User* newUser= new User(username,psw,name,surname);
+        User* newUser= new User(username,psw,name,surname,sex);
         usersDB->addUser(newUser);
         usersDB->saveUserDb();
         
         dialMessage= new DialogMessage("Info","Registrazione nuovo utente avvenuta con successo!","Ok");
-        dialMessage->setWindowIcon(QIcon(:"/Icons/info_light.png"));
+        dialMessage->setWindowIcon(QIcon(":/Icons/info_light.png"));
         dialMessage->show();
         
         closeRegistrationView();
     }
     else{
-        dialMessage= new dialMessage("Attenzione","USERNAME già utilizzato","Modifica");
+        dialMessage= new DialogMessage("Attenzione","USERNAME già utilizzato","Modifica");
         dialMessage->setWindowIcon(QIcon(":/Icons/warning_dark.png"));
         dialMessage->show();
     }
@@ -64,7 +64,7 @@ void mediaryController::verifyLogin(const QString& usn, const QString& psw){
     {
         uController= new userController(const_cast<User*>(usersDB->getUser(usn,psw)));
         if(uController){
-            connect(uController,SIGNAL(signalHome()),this,slot(openLoginView()));
+            connect(uController,SIGNAL(signalHome()),this,SLOT(openLoginView()));
             startUI->hide(); //chiude la schermata iniziale di login
             uController->openUserView(); //ed apre quella dedicata a quello user
         }

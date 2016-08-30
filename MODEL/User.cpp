@@ -40,6 +40,7 @@ void User::setUsername(const QString& usn) {username=usn;}
 void User::setPsw(const QString& psw) {password=psw;}
 void User::setName(const QString& n) {name=n;}
 void User::setSurname(const QString& sn) {surname=sn;}
+void User::setSex(bool s) {sex=s;}
 
 //-------------------------ALTRI METODI------------------------
 
