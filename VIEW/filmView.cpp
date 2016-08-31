@@ -2,7 +2,7 @@
 
 //-------------------------COSTRUTTORI------------------------
 
-FilmView::FilmView(const Film* f, MainView* parent): film(f), MainView(parent)
+FilmView::FilmView(const Film* f, MainView* parent): MainView(parent), film(f)
 {
     loadGraphic();
 }

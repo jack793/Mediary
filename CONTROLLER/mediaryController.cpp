@@ -27,7 +27,7 @@ void mediaryController::openRegistrationView(){
     startUI->hide(); //nascondo login
     registrationUI->show(); //apro reg
     
-    connect(registrationUI,SIGNAL(signalRegister(const QString& ,const QString& ,const QString& ,const QString& ,bool )),this,SLOT(userRegistration(const QString& u,const QString& p,const QString& n,const QString& s)));
+    connect(registrationUI,SIGNAL(signalRegister(const QString& ,const QString& ,const QString& ,const QString& ,bool )),this,SLOT(userRegistration(const QString& ,const QString& ,const QString& ,const QString& ,bool)));
     connect(registrationUI,SIGNAL(signalClose()),this,SLOT(closeRegistrationView()));
 }
 

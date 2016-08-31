@@ -2,7 +2,7 @@
 
 //-------------------------COSTRUTTORI------------------------
 
-SerietvView::SerietvView(const SerieTV* s, MainView* parent): serieTv(s), MainView(parent) 
+SerietvView::SerietvView(const SerieTV* s, MainView* parent): MainView(parent), serieTv(s)
 {
     loadGraphic();    
 }

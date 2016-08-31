@@ -50,6 +50,7 @@ void User::writeUser(QXmlStreamWriter& xmlWriter) const{
         xmlWriter.writeTextElement("password",getPsw());
         xmlWriter.writeTextElement("nome",getName());
         xmlWriter.writeTextElement("cognome",getSurname());
+        xmlWriter.writeTextElement("sesso",QString::number(getSex()));
     xmlWriter.writeEndElement();
 }
 
@@ -133,7 +134,7 @@ void User::loadMedia()
     QString distribution;
     QTime duration;
     
-    QFile mediaFile("../Mediary/Database/"+getUsername()+"mediaDatabase.xml");
+    QFile mediaFile("mediaDatabase.xml");
     if(!mediaFile.open(QFile::ReadOnly | QFile::Text))
         std::cout<<"Media database not found!"<<std::endl;
     
@@ -150,9 +151,9 @@ void User::loadMedia()
                 year=QDate::fromString(xmlReader.readElementText());
             else if(xmlReader.name()=="genere")
                 genre=xmlReader.readElementText();
-            else if(xmlReader.name()=="data creazione")
+            else if(xmlReader.name()=="dataCreazione")
                 creationDate=QDateTime::fromString(xmlReader.readElementText());
-            else if(xmlReader.name()=="ultima modifica")
+            else if(xmlReader.name()=="ultimaModifica")
                 changeDate=QDateTime::fromString(xmlReader.readElementText());
             
             else if(xmlReader.name()=="stagione")
@@ -166,7 +167,7 @@ void User::loadMedia()
             
             else if(xmlReader.name()=="trama")
                 plot=xmlReader.readElementText();
-            else if(xmlReader.name()=="distribuito da")
+            else if(xmlReader.name()=="distribuzione")
                 distribution=xmlReader.readElementText();
             else if(xmlReader.name()=="durata")
                 duration=QTime::fromString(xmlReader.readElementText());
@@ -197,7 +198,7 @@ void User::loadMedia()
 }
 
 void User::writeMedia() const{
-    QFile mediaFile("../Mediary/Database"+getUsername()+"mediaDatabase.xml");
+    QFile mediaFile("mediaDatabase.xml");
     if(!mediaFile.open(QIODevice::WriteOnly))
         std::cout<<"file media not found, saving failed!"<<std::endl;
     
@@ -211,6 +212,7 @@ void User::writeMedia() const{
             mediaDatabase[it]->saveMedia(xmlWriter);    //CHIAMATA POLIMORFA
     
     xmlWriter.writeEndDocument();
+    std::cout<<"Media database saved!"<<std::endl;
     
     mediaFile.close();
 }

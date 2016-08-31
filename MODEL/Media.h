@@ -21,7 +21,7 @@ private:
     QDateTime changeDate;   //data ultima modifica
     
 public:
-    Media(const QString& ="Unkwnown", const QDate& =QDate(1970,1,1) , const QString& ="Unkwnown");
+    explicit Media(const QString& ="Unkwnown", const QDate& =QDate(1970,1,1) , const QString& ="Unkwnown");
     //creationDate e changeDate vengono settate correttamente tramite un funzione apposita
     
     virtual ~Media();   //GERARCHIA POLIMORFA

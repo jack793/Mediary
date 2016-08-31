@@ -38,7 +38,7 @@ private:
     DialogMessage* dialMessage;
     
 public:
-    registrationView(MainView* parent=0);
+    explicit registrationView(MainView* parent=0);
     ~registrationView();
     
     void closeEvent(QCloseEvent* );

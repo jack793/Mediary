@@ -50,9 +50,9 @@ void Database::loadUserDb(){
     QString surname;
     bool sex;
     
-    QFile userFile("../Mediary/Database/userDatabase.xml");
+    QFile userFile("userDatabase.xml");
     if(!userFile.open(QFile::ReadOnly | QFile::Text))
-        std::cout<<"User database not found!"<<std::endl;
+        std::cout<<"User database not found, load failed!"<<std::endl;
     
     QXmlStreamReader xmlReader(&userFile);   
     xmlReader.readNext();
@@ -90,10 +90,10 @@ void Database::loadUserDb(){
 }
 
 void Database::saveUserDb(){
-    QFile userFile("../Mediary/Database/userDatabase.xml");
+    QFile userFile("userDatabase.xml");
     
     if(!userFile.open(QIODevice::WriteOnly))
-        std::cout<<"file users not found, saving failed!"<<std::endl;
+        std::cout<<"User database not found, saving failed!"<<std::endl;
     
     QXmlStreamWriter xmlWriter(&userFile);
     xmlWriter.setAutoFormatting(true);

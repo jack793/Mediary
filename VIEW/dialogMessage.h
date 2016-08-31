@@ -18,7 +18,7 @@ private:
     QPushButton* btnConferma;
     QVBoxLayout* vLay;
 public:
-    DialogMessage(std::string,std::string,std::string);
+    explicit DialogMessage(std::string,std::string,std::string);
     ~DialogMessage();
 private slots:
     void chiudi();

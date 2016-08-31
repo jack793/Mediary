@@ -9,10 +9,10 @@ userController::userController(User* u, QObject* parent): QObject(parent), user(
     
     //All view connections
     connect(userUI,SIGNAL(signalSaveSerieTv(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int )),this,SLOT(saveSerieTv(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int )));
-    connect(userUI,SIGNAL(signalSaveFilm(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& drt)),this,SLOT(saveFilm(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& drt)));
-    connect(userUI,SIGNAL(signalChangeSerieTv(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id)),this,SLOT(modifySerieTv(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id)));
-    connect(userUI,SIGNAL(signalChangeFilm(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& drt,int id)),this,SLOT(modifyFilm(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& drt,int id)));
-    connect(userUI,SIGNAL(signalChangeUserData(const QString& u,const QString& n,const QString& s,bool sx)),this,SLOT(modifyUserData(const QString& u,const QString& n,const QString& s,bool sx)));
+    connect(userUI,SIGNAL(signalSaveFilm(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& )),this,SLOT(saveFilm(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& )));
+    connect(userUI,SIGNAL(signalChangeSerieTv(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int ,int )),this,SLOT(modifySerieTv(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int ,int )));
+    connect(userUI,SIGNAL(signalChangeFilm(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& ,int )),this,SLOT(modifyFilm(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& ,int )));
+    connect(userUI,SIGNAL(signalChangeUserData(const QString& ,const QString& ,const QString& ,bool )),this,SLOT(modifyUserData(const QString& ,const QString& ,const QString& ,bool )));
     connect(userUI,SIGNAL(signalDeleteMedia(int )),this,SLOT(deleteMedia(int )));
     connect(userUI,SIGNAL(signalLogout()),this,SLOT(closeUserView()));
 }
@@ -56,6 +56,7 @@ void userController::modifyUserData(const QString& username, const QString& name
     user->setSex(sex);
     
     dialMessage= new DialogMessage("Info","Modifiche effettuate con successo","Ok");
+    dialMessage->setWindowIcon(QIcon(":/Icons/info_light.png"));
     dialMessage->show();
 }
 
@@ -68,6 +69,5 @@ void userController::deleteMedia(int id){
 void userController::closeUserView(){
     user->writeMedia(); //scrive tutti i dati attuali dello user nel database 
     user->emptyMediaDatabase(); //prima di svuotare
-    
     emit signalHome();
 }

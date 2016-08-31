@@ -25,10 +25,10 @@ void Film::saveMedia(QXmlStreamWriter& xmlWriter) const
         xmlWriter.writeTextElement("titolo",getTitle());
         xmlWriter.writeTextElement("anno",getYear().toString());
         xmlWriter.writeTextElement("genere",getGenre());
-        xmlWriter.writeTextElement("data creazione",getCreateDate().toString());
-        xmlWriter.writeTextElement("ultima modifica",getLastChange().toString()); 
+        xmlWriter.writeTextElement("dataCreazione",getCreateDate().toString());
+        xmlWriter.writeTextElement("ultimaModifica",getLastChange().toString()); 
         xmlWriter.writeTextElement("trama",getPlot());
-        xmlWriter.writeTextElement("distribuito da",getDistribution());
+        xmlWriter.writeTextElement("distribuzione",getDistribution());
         xmlWriter.writeTextElement("durata",getDuration().toString());
     xmlWriter.writeEndElement();
 }

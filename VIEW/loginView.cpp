@@ -32,6 +32,7 @@ void loginView::loadGraphic(){
     boxLayout->addWidget(usernameEdit);
     boxLayout->addWidget(passwordLabel);
     boxLayout->addWidget(passwordEdit);
+    boxLayout->addSpacing(20);
     
     boxLayout->addWidget(loginButton);
     boxLayout->addWidget(goToRegistrationButton);
@@ -49,7 +50,7 @@ void loginView::loadGraphic(){
 
 void loginView::tryLogin(){
     
-    if(usernameEdit->text()==""){
+    /*if(usernameEdit->text()==""){
         dialMessage= new DialogMessage("Controllo login","E' necessario inserire uno USERNAME per loggarsi","Ok");
         dialMessage->show();
     }
@@ -71,9 +72,10 @@ void loginView::tryLogin(){
             dialMessage->show();
         }
     
-        else //login corretta
+        //else //login corretta
             emit signalLogin(usernameEdit->text(),passwordEdit->text());
-    }
+    }*/
+    emit signalLogin(usernameEdit->text(),passwordEdit->text());
 }
 
 void loginView::openRegistration(){

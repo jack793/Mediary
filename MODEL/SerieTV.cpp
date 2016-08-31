@@ -22,12 +22,12 @@ void SerieTV::setLeghtEp(unsigned int l) {lenghtEp=l; this->updateChangeDate();}
 //-------------------------PV METHODS------------------------
 
 void SerieTV::saveMedia(QXmlStreamWriter& xmlWriter) const{
-    xmlWriter.writeStartElement("SerieTV"); //<SerieTV>
+    xmlWriter.writeStartElement("serieTV"); //<SerieTV>
         xmlWriter.writeTextElement("titolo",getTitle());
         xmlWriter.writeTextElement("anno",getYear().toString());
         xmlWriter.writeTextElement("genere",getGenre());
-        xmlWriter.writeTextElement("data creazione",getCreateDate().toString());
-        xmlWriter.writeTextElement("ultima modifica",getLastChange().toString());        
+        xmlWriter.writeTextElement("dataCreazione",getCreateDate().toString());
+        xmlWriter.writeTextElement("ultimaModifica",getLastChange().toString());        
         xmlWriter.writeTextElement("stagione",QString::number(getSeason()));
         xmlWriter.writeTextElement("no.episodio",QString::number(getNumberEp()));
         xmlWriter.writeTextElement("descrizione",getDescr());

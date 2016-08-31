@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <utente>
+        <username></username>
+        <password></password>
+        <nome></nome>
+        <cognome></cognome>
+        <sesso></sesso>
+    </utente>
+    <utente>
+        <username></username>
+        <password></password>
+        <nome></nome>
+        <cognome></cognome>
+        <sesso></sesso>
+    </utente>
+</database>
