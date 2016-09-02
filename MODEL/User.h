@@ -30,7 +30,7 @@ public:
     const QString& getName() const;
     const QString& getSurname() const;
     bool getSex() const;
-    const Container<const Media*>& getMedia() const;
+    Container<const Media*> getMedia() const;
     Container<const Media*> getSerieTV() const;
     Container<const Media*> getFilms() const;
     

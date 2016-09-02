@@ -43,6 +43,9 @@ void loginView::loadGraphic(){
     setLayout(mainLayout);
     
     connect(loginButton,SIGNAL(clicked()),this,SLOT(tryLogin()));
+    connect(usernameEdit,SIGNAL(returnPressed()),this,SLOT(tryLogin()));
+    connect(passwordEdit,SIGNAL(returnPressed()),this,SLOT(tryLogin()));
+    
     connect(goToRegistrationButton,SIGNAL(clicked()),this,SLOT(openRegistration()));
 }
 

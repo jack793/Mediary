@@ -4,7 +4,7 @@
 
 SerietvView::SerietvView(const SerieTV* s, MainView* parent): MainView(parent), serieTv(s)
 {
-    qDebug("entrata costruttore serietv");
+
     loadGraphic();
 }
 
@@ -22,7 +22,10 @@ void SerietvView::closeEvent(QCloseEvent* ){
 void SerietvView::loadGraphic(){
     setWindowTitle("Gestione info SerieTV - Mediary");
     
+    mainLayout= new QVBoxLayout;
+    
     //Common
+    
     QLabel* titleLabel= new QLabel("Titolo:");
     QLabel* yearLabel= new QLabel("Anno:");
     QLabel* genreLabel= new QLabel("Genere:");
@@ -112,7 +115,7 @@ void SerietvView::loadGraphic(){
 
 void SerietvView::newSerieTV(){
     //stagione,episodi e lunghezza sono delle spinBox e quindi avranno per forza dei valori
-    /*
+    
     if(titleEdit->text()==""){
         dialMessage= new DialogMessage("Controllo dati SerieTV","Il campo TITOLO non può rimanere vuoto","Ok");
         dialMessage->show();
@@ -131,13 +134,13 @@ void SerietvView::newSerieTV(){
     }
     else if(descriptionEdit->toPlainText()=="")
         descriptionEdit->insertPlainText("*Nessuna descrizione dell'episodio*");
-    else*/
+    else
         emit signalSave(titleEdit->text(),yearEdit->date(),genreEdit->text(),descriptionEdit->toPlainText(),seasonEdit->value(),episodeEdit->value(),lenghtEdit->value());
 }
 
 void SerietvView::modifySerieTV(){
     //Controlli modifica identici alla creazione
-    /*
+    
     if(titleEdit->text()==""){
         dialMessage= new DialogMessage("Controllo modifica SerieTV","Il campo TITOLO non può rimanere vuoto","Ok");
         dialMessage->show();
@@ -152,7 +155,7 @@ void SerietvView::modifySerieTV(){
     }
     else if(descriptionEdit->toPlainText()=="")
         descriptionEdit->insertPlainText("*Nessuna descrizione dell'episodio*");
-    else*/
+    else
         emit signalChange(titleEdit->text(),yearEdit->date(),genreEdit->text(),descriptionEdit->toPlainText(),seasonEdit->value(),episodeEdit->value(),lenghtEdit->value(),serieTv->getId());
 }
 

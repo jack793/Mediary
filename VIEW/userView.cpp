@@ -29,7 +29,7 @@ void userView::loadMediaTable(const Container<const Media*>& userMedia){
             QTableWidgetItem* erase= new QTableWidgetItem;
             
             id->setFlags(Qt::NoItemFlags);
-            title->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+            title->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);    //unico selezionabile per modifiche!
             type->setFlags(Qt::NoItemFlags);
             creationDate->setFlags(Qt::NoItemFlags);
             lastChange->setFlags(Qt::NoItemFlags);
@@ -41,7 +41,7 @@ void userView::loadMediaTable(const Container<const Media*>& userMedia){
             mediaTable->setItem(row,3,creationDate);
             mediaTable->setItem(row,4,lastChange);
             mediaTable->setItem(row,5,erase);
-            erase->setIcon(QIcon(":/Icons/remove_dark2.png"));
+            erase->setIcon(QIcon("remove_dark2.png"));
             
             row++;
             
@@ -91,7 +91,7 @@ void userView::loadGraphic(){
     mediaTable->setMinimumWidth(650);
     mediaTable->setMinimumHeight(300);
     mediaTable->setColumnWidth(0,10);   //Id
-    mediaTable->setColumnWidth(1,150);  //Title
+    mediaTable->setColumnWidth(1,180);  //Title
     mediaTable->setColumnWidth(2,100);  //Type
     mediaTable->setColumnWidth(3,160);  //Creation date
     mediaTable->setColumnWidth(4,160);  //Last change
@@ -129,7 +129,6 @@ void userView::loadGraphic(){
 //--------OPEN
 
 void userView::openMediaBox(){
-         qDebug("before new connect");
     newMediaButton->setChecked(true);
     newSerieTvButton->show();
     newFilmButton->show();
@@ -138,9 +137,7 @@ void userView::openMediaBox(){
     connect(newMediaButton,SIGNAL(clicked()),this,SLOT(closeMediaBox()));   // se lo riclicco si chiude
     
     connect(newSerieTvButton,SIGNAL(clicked()),this,SLOT(openNewSerieTv()));
-        qDebug("connect serie");
     connect(newFilmButton,SIGNAL(clicked()),this,SLOT(openNewFilm()));
-        qDebug("connect film");                   
         
     //.....ready for extensibility......
 }
@@ -156,7 +153,6 @@ void userView::openNewSerieTv(){
 }
 
 void userView::openNewFilm(){
-    std::cout<<"entrata slot";
     if(filmView==0){
         filmView= new FilmView;
         filmView->show();
@@ -276,7 +272,7 @@ void userView::optionMediaTable(int row, int c){
     //prelevo id
     int id= mediaTable->item(row,0)->text().toInt();
     
-    if(c==0){   //cancella media
+    if(c==5){   //cancella media
         QMessageBox::StandardButton warning;
         //warning.setIcon(QIcon(":/Icons/warning_dark2.png"));
         warning=QMessageBox::question(this,"Elimizazione media","Confermi di voler eliminare questo media dal tuo diario?",QMessageBox::Yes|QMessageBox::No);
@@ -294,7 +290,7 @@ void userView::optionMediaTable(int row, int c){
         serieTvView= new SerietvView(dynamic_cast<const SerieTV*>(ptm));
         serieTvView->show();
         
-        connect(serieTvView,SIGNAL(signalChange(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id)),this,SLOT(modifySerieTv(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id)));
+        connect(serieTvView,SIGNAL(signalChange(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int ,int )),this,SLOT(modifySerieTv(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int ,int )));
         connect(serieTvView,SIGNAL(signalCancel()),this,SLOT(closeSerieTvView()));
         
     }
@@ -304,7 +300,7 @@ void userView::optionMediaTable(int row, int c){
         filmView= new FilmView(dynamic_cast<const Film*>(ptm));
         filmView->show();
         
-        connect(filmView,SIGNAL(signalChange(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& dur,int id)),this,SLOT(modifyFilm(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& dur,int id)));
+        connect(filmView,SIGNAL(signalChange(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& ,int )),this,SLOT(modifyFilm(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& ,int )));
         connect(filmView,SIGNAL(signalCancel()),this,SLOT(closeFilmView()));
         
     }

@@ -12,7 +12,7 @@ const QString& User::getPsw() const {return password;}
 const QString& User::getName() const {return name;}
 const QString& User::getSurname() const {return surname;}
 bool User::getSex() const {return sex;}
-const Container<const Media*>& User::getMedia() const {return mediaDatabase;}
+Container<const Media*> User::getMedia() const {return mediaDatabase;}
 
 Container<const Media*> User::getSerieTV() const{
     Container<const Media*> ris;
@@ -134,7 +134,7 @@ void User::loadMedia()
     QString distribution;
     QTime duration;
     
-    QFile mediaFile(" "+getUsername()+"mediaDatabase.xml");
+    QFile mediaFile(""+getUsername()+"mediaDatabase.xml");
     mediaFile.open(QFile::ReadWrite);
     mediaFile.close();
     if(!mediaFile.open(QFile::ReadOnly | QFile::Text))
@@ -201,7 +201,7 @@ void User::loadMedia()
 }
 
 void User::writeMedia() const{
-    QFile mediaFile(" "+getUsername()+"mediaDatabase.xml");
+    QFile mediaFile(""+getUsername()+"mediaDatabase.xml");
     if(!mediaFile.open(QIODevice::WriteOnly))
         std::cout<<"Media database not found, saving failed!"<<std::endl;
     
