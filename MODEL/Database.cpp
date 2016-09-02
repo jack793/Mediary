@@ -51,10 +51,12 @@ void Database::loadUserDb(){
     bool sex;
     
     QFile userFile("userDatabase.xml");
+    userFile.open(QFile::ReadWrite);
+    userFile.close();
     if(!userFile.open(QFile::ReadOnly | QFile::Text))
-        std::cout<<"User database not found, load failed!"<<std::endl;
+        std::cout<<"Users database not found, load failed!"<<std::endl;
     
-    QXmlStreamReader xmlReader(&userFile);   
+    QXmlStreamReader xmlReader(&userFile);
     xmlReader.readNext();
     
     while(!xmlReader.atEnd()){
@@ -73,7 +75,7 @@ void Database::loadUserDb(){
                 QString s=xmlReader.readElementText();
                 if(s=="0")
                     sex=false;
-                sex=false;
+                sex=true;
             }
             
             
@@ -86,6 +88,8 @@ void Database::loadUserDb(){
         else
             xmlReader.readNext();
     }
+    std::cout<<"Users database loaded!"<<std::endl;
+    
     userFile.close();
 }
 
@@ -93,7 +97,7 @@ void Database::saveUserDb(){
     QFile userFile("userDatabase.xml");
     
     if(!userFile.open(QIODevice::WriteOnly))
-        std::cout<<"User database not found, saving failed!"<<std::endl;
+        std::cout<<"Users database not found, saving failed!"<<std::endl;
     
     QXmlStreamWriter xmlWriter(&userFile);
     xmlWriter.setAutoFormatting(true);
@@ -106,6 +110,7 @@ void Database::saveUserDb(){
             userDatabase[it]->writeUser(xmlWriter); //PRONTO PER ESTENSIBILITA'
     xmlWriter.writeEndDocument();
     
+    std::cout<<"Users database saved!"<<std::endl;
     userFile.close();
 }
 

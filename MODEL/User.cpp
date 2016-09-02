@@ -134,9 +134,11 @@ void User::loadMedia()
     QString distribution;
     QTime duration;
     
-    QFile mediaFile("mediaDatabase.xml");
+    QFile mediaFile(" "+getUsername()+"mediaDatabase.xml");
+    mediaFile.open(QFile::ReadWrite);
+    mediaFile.close();
     if(!mediaFile.open(QFile::ReadOnly | QFile::Text))
-        std::cout<<"Media database not found!"<<std::endl;
+        std::cout<<"Media database not found, load failed!"<<std::endl;
     
     QXmlStreamReader xmlReader(&mediaFile); //Creates a new stream reader that reads from device.
     xmlReader.readNext();
@@ -193,14 +195,15 @@ void User::loadMedia()
         else
             xmlReader.readNext();
     }
+    std::cout<<"Media database loaded!"<<std::endl;
     
     mediaFile.close();
 }
 
 void User::writeMedia() const{
-    QFile mediaFile("mediaDatabase.xml");
+    QFile mediaFile(" "+getUsername()+"mediaDatabase.xml");
     if(!mediaFile.open(QIODevice::WriteOnly))
-        std::cout<<"file media not found, saving failed!"<<std::endl;
+        std::cout<<"Media database not found, saving failed!"<<std::endl;
     
     QXmlStreamWriter xmlWriter(&mediaFile);
     xmlWriter.setAutoFormatting(true);

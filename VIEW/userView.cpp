@@ -2,7 +2,7 @@
 
 //-------------------------COSTRUTTORI------------------------
 
-userView::userView(User* u, MainView* parent): MainView(parent), user(u)
+userView::userView(User* u, MainView* parent): MainView(parent), user(u), serieTvView(0), filmView(0), userInfoView(0)
 {
     loadGraphic();
 }
@@ -15,7 +15,7 @@ void userView::closeEvent(QCloseEvent* ){
     emit signalLogout();
 }
 
-void userView::loadMediaTable(const Container<const Media *>& userMedia){
+void userView::loadMediaTable(const Container<const Media*>& userMedia){
     if(!userMedia.isEmpty()){
         int row=0;
         for(Container<const Media*>::Iterator it=userMedia.begin(); it!=userMedia.end(); ++it){
@@ -65,6 +65,8 @@ void userView::loadGraphic(){
     newSerieTvButton = new QPushButton("Crea SerieTV");
     newFilmButton = new QPushButton("Crea Film");
     
+    QVBoxLayout* boxLayout = new QVBoxLayout;
+    
     QLabel* displayLabel= new QLabel("Visualizza:");
     
     mediaCBox->addItem("Tutti");
@@ -73,11 +75,16 @@ void userView::loadGraphic(){
     
     connect(mediaCBox,SIGNAL(currentIndexChanged(int)),SLOT(optionMediaLoad(int)));
     
+    //Gestione e logout
+    QPushButton* manageUserDataButton= new QPushButton("Gestisci Dati utente");
+    QPushButton* logoutButton= new QPushButton("Logout");
+    
     //Set info mediaTable
     QStringList info;
-    info<<"Id"<<"Titolo"<<"Tipo"<<"Data di creazione"<<"Data ultima modifica";
+    info<<""<<"Titolo"<<"Tipo"<<"Data di creazione"<<"Data ultima modifica";
     
     mediaTable->setColumnCount(6);  //numero colonne 0-5
+    mediaTable->setColumnHidden(0,true);
     mediaTable->setHorizontalHeaderLabels(info); //setta i label sopra ogni colonna in ordine
     mediaTable->setAutoScroll(false);
     //Set dimensioni mediaTable
@@ -86,23 +93,15 @@ void userView::loadGraphic(){
     mediaTable->setColumnWidth(0,10);   //Id
     mediaTable->setColumnWidth(1,150);  //Title
     mediaTable->setColumnWidth(2,100);  //Type
-    mediaTable->setColumnWidth(3,150);  //Creation date
-    mediaTable->setColumnWidth(4,150);  //Last change
+    mediaTable->setColumnWidth(3,160);  //Creation date
+    mediaTable->setColumnWidth(4,160);  //Last change
     mediaTable->setColumnWidth(5,30);   //eraseButton
     
     //Carica la lista dei media e connetti le celle
     loadMediaTable(user->getMedia());
-    connect(mediaTable,SIGNAL(cellClicked(int,int)),this,SLOT(optionMediaTable(int,int)));
-    
-    //Gestione e logout
-    QPushButton* manageUserDataButton= new QPushButton("Gestisci Dati utente");
-    QPushButton* logoutButton= new QPushButton("Logout");
-    
-    connect(manageUserDataButton,SIGNAL(clicked()),this,SLOT(openUserData()));
-    connect(logoutButton,SIGNAL(clicked()),this,SLOT(Logout()));
+    connect(mediaTable,SIGNAL(cellClicked(int,int)),this,SLOT(optionMediaTable(int,int)));    
     
     //---------SETTA LAYOUT-----------
-    QVBoxLayout* boxLayout = new QVBoxLayout;
     
     boxLayout->addWidget(newMediaButton);
     boxLayout->addWidget(newSerieTvButton);
@@ -119,6 +118,9 @@ void userView::loadGraphic(){
     mainLayout->addWidget(mainGBox);
     setLayout(mainLayout);   
     
+    //Connessioni
+    connect(manageUserDataButton,SIGNAL(clicked()),this,SLOT(openUserData()));
+    connect(logoutButton,SIGNAL(clicked()),this,SLOT(Logout()));
     connect(newMediaButton,SIGNAL(clicked()),this,SLOT(openMediaBox()));
 }
 
@@ -127,20 +129,24 @@ void userView::loadGraphic(){
 //--------OPEN
 
 void userView::openMediaBox(){
+         qDebug("before new connect");
     newMediaButton->setChecked(true);
-    disconnect(newMediaButton,SIGNAL(clicked()),this,SLOT(openMediaBox()));
-    
     newSerieTvButton->show();
-    connect(newSerieTvButton,SIGNAL(clicked()),this,SLOT(openNewSerieTv()));
-    
     newFilmButton->show();
-    connect(newFilmButton,SIGNAL(clicked()),this,SLOT(openNewFilm()));
     
+    disconnect(newMediaButton,SIGNAL(clicked()),this,SLOT(openMediaBox())); // è già aperta. bisogna disconnettere!    
+    connect(newMediaButton,SIGNAL(clicked()),this,SLOT(closeMediaBox()));   // se lo riclicco si chiude
+    
+    connect(newSerieTvButton,SIGNAL(clicked()),this,SLOT(openNewSerieTv()));
+        qDebug("connect serie");
+    connect(newFilmButton,SIGNAL(clicked()),this,SLOT(openNewFilm()));
+        qDebug("connect film");                   
+        
     //.....ready for extensibility......
 }
 
 void userView::openNewSerieTv(){
-    if(!serieTvView){
+    if(serieTvView==0){
         serieTvView= new SerietvView;
         serieTvView->show();
         
@@ -150,7 +156,8 @@ void userView::openNewSerieTv(){
 }
 
 void userView::openNewFilm(){
-    if(!filmView){
+    std::cout<<"entrata slot";
+    if(filmView==0){
         filmView= new FilmView;
         filmView->show();
         
@@ -160,8 +167,8 @@ void userView::openNewFilm(){
 }
 
 void userView::openUserData(){
-    if(!userInfoView){
-        userInfoView= new userDataView;
+    if(userInfoView==0){
+        userInfoView= new userDataView(user);
         userInfoView->show();
         
         connect(userInfoView,SIGNAL(signalConfirm(QString,QString,QString,bool)),this,SLOT(modifyUserData(const QString& ,const QString& ,const QString& ,bool )));
@@ -173,14 +180,14 @@ void userView::openUserData(){
 
 void userView::closeMediaBox(){
     newMediaButton->setChecked(false);
-    newSerieTvButton->hide();
-    newFilmButton->hide();
     
     disconnect(newMediaButton,SIGNAL(clicked()),this,SLOT(closeMediaBox()));
     disconnect(newSerieTvButton,SIGNAL(clicked()),this,SLOT(openNewSerieTv()));
     disconnect(newFilmButton,SIGNAL(clicked()),this,SLOT(openNewFilm()));
     
     connect(newMediaButton,SIGNAL(clicked()),this,SLOT(openMediaBox()));
+    newSerieTvButton->hide();
+    newFilmButton->hide();
 }
 
 void userView::closeSerieTvView(){
@@ -265,11 +272,11 @@ void userView::modifyUserData(const QString& username, const QString& name, cons
 
 //--------FEATURES
 
-void userView::optionMediaTable(int row, int choice){
+void userView::optionMediaTable(int row, int c){
     //prelevo id
     int id= mediaTable->item(row,0)->text().toInt();
     
-    if(!choice){
+    if(c==0){   //cancella media
         QMessageBox::StandardButton warning;
         //warning.setIcon(QIcon(":/Icons/warning_dark2.png"));
         warning=QMessageBox::question(this,"Elimizazione media","Confermi di voler eliminare questo media dal tuo diario?",QMessageBox::Yes|QMessageBox::No);
@@ -281,27 +288,25 @@ void userView::optionMediaTable(int row, int choice){
             loadMediaTable(user->getMedia()); //update vista 
         }
     }
-    else if(choice && mediaTable->item(row,2)->text()=="SerieTV"){   //open existing serieTV
+    else if(c==1 && mediaTable->item(row,2)->text()=="SerieTV"){   //open existing serieTV
         const Media* ptm=user->findMedia(id);
         
-        if(ptm){
-            serieTvView= new SerietvView(dynamic_cast<const SerieTV*>(ptm));
-            serieTvView->show();
-            
-            connect(serieTvView,SIGNAL(signalChange(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id)),this,SLOT(modifySerieTv(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id)));
-            connect(serieTvView,SIGNAL(signalCancel()),this,SLOT(closeSerieTvView()));
-        }
+        serieTvView= new SerietvView(dynamic_cast<const SerieTV*>(ptm));
+        serieTvView->show();
+        
+        connect(serieTvView,SIGNAL(signalChange(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id)),this,SLOT(modifySerieTv(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id)));
+        connect(serieTvView,SIGNAL(signalCancel()),this,SLOT(closeSerieTvView()));
+        
     }
-    else if(choice && mediaTable->item(row,2)->text()=="Film"){
+    else if(c==1 && mediaTable->item(row,2)->text()=="Film"){
         const Media* ptm=user->findMedia(id);
+       
+        filmView= new FilmView(dynamic_cast<const Film*>(ptm));
+        filmView->show();
         
-        if(ptm){
-            filmView= new FilmView(dynamic_cast<const Film*>(ptm));
-            filmView->show();
-            
-            connect(filmView,SIGNAL(signalChange(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& dur,int id)),this,SLOT(modifyFilm(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& dur,int id)));
-            connect(filmView,SIGNAL(signalCancel()),this,SLOT(closeFilmView()));
-        }
+        connect(filmView,SIGNAL(signalChange(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& dur,int id)),this,SLOT(modifyFilm(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& dur,int id)));
+        connect(filmView,SIGNAL(signalCancel()),this,SLOT(closeFilmView()));
+        
     }
 }
 

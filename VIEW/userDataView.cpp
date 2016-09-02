@@ -77,9 +77,9 @@ void userDataView::loadGraphic(){
 //-------------------------PUBLIC SLOTS--------------------------
 
 void userDataView::confirmChanges(){
-    bool sex=false;
+    bool sex=true;
     if(sexM->isChecked())
-        sex=true;
+        sex=false;
     
     if(usernameEdit->text()==""){
         dialMessage= new DialogMessage("Controllo modifiche","Riempire il campo USERNAME","Ok");

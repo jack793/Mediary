@@ -11,7 +11,7 @@ FilmView::~FilmView() {}
 
 //-------------------------METODI------------------------
 
-void FilmView::closeEvent(QCloseEvent *){
+void FilmView::closeEvent(QCloseEvent*){
     emit signalCancel();
 }
 
@@ -86,7 +86,7 @@ void FilmView::loadGraphic(){
 //-------------------------PUBLIC SLOTS------------------------
 
 void FilmView::newFilm(){
-    if(titleEdit->text()==""){
+    /*if(titleEdit->text()==""){
         dialMessage= new DialogMessage("Controllo dati Film","Il campo TITOLO non può rimanere vuoto","Ok");
         dialMessage->show();
     }
@@ -106,13 +106,13 @@ void FilmView::newFilm(){
         dialMessage= new DialogMessage("Controllo dati Film","Il campo DURATA è vuoto o non valido","Ok");
         dialMessage->show();
     }
-    else
+    else*/
         emit signalSave(titleEdit->text(),yearEdit->date(),genreEdit->text(),plotEdit->toPlainText(),distributionEdit->text(),durationEdit->time());
 }
 
 void FilmView::modifyFilm(){
     //controlli uguali come per nuovo film
-    
+    /*
     if(titleEdit->text()==""){
         dialMessage= new DialogMessage("Controllo dati Film","Il campo TITOLO non può rimanere vuoto","Ok");
         dialMessage->show();
@@ -133,7 +133,7 @@ void FilmView::modifyFilm(){
         dialMessage= new DialogMessage("Controllo dati Film","Il campo DURATA è vuoto o non valido","Ok");
         dialMessage->show();
     }
-    else
+    else*/
         emit signalChange(titleEdit->text(),yearEdit->date(),genreEdit->text(),plotEdit->toPlainText(),distributionEdit->text(),durationEdit->time(),film->getId());
     
 }

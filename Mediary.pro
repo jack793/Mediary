@@ -48,3 +48,7 @@ HEADERS  += \
     CONTROLLER/userController.h
 
 FORMS    +=
+
+OTHER_FILES += \
+    Database/mediaDatabase.xml \
+    Database/userDatabase.xml

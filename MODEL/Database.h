@@ -12,8 +12,7 @@
 
 #include "Container.h"
 
-class Database
-{
+class Database{
 private:
     Container<const User*> userDatabase;
     
@@ -23,8 +22,8 @@ public:
     
     bool matchUser(const QString& ) const;  //true sse matcha un username nel db utenti
     bool verifyUser(const QString& usn,const QString& psw) const; //true sse username e password presenti associati nel db 
-    void addUser(const User*);
-    const User* getUser(const QString& usn, const QString& psw) const; //ritorna pnt all'utente verificato
+    void addUser(const User* );
+    const User* getUser(const QString& , const QString& ) const; //ritorna pnt all'utente verificato
     
     void loadUserDb();
     void saveUserDb();

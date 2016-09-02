@@ -4,9 +4,9 @@
 
 userController::userController(User* u, QObject* parent): QObject(parent), user(u)
 {
-    userUI= new userView(u);    //Creo la user view passandogli un pt user che contiente tutti i suoi dati nel model
     user->loadMedia();  //Riempie il container dell'user con la load da db
-    
+    userUI= new userView(u);    //Creo la user view passandogli un pt user che contiente tutti i suoi dati nel model
+        
     //All view connections
     connect(userUI,SIGNAL(signalSaveSerieTv(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int )),this,SLOT(saveSerieTv(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int )));
     connect(userUI,SIGNAL(signalSaveFilm(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& )),this,SLOT(saveFilm(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& )));
