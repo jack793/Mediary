@@ -23,7 +23,7 @@ private:
     DialogMessage* dialMessage;
     
 public:
-    explicit mediaryController(Database* , loginView* =0, userController* =0, QObject* =0);
+    mediaryController(Database* , loginView* =0, userController* =0, QObject* =0);
         //la view registrazione si inizializza quando si apre
     
 public slots:

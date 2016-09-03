@@ -45,7 +45,7 @@ private:
     QPushButton* newFilmButton; 
 
 public:
-    explicit userView(User* u,MainView* parent=0);
+    userView(User* u,MainView* parent=0);
     ~userView();
     
     //metodi

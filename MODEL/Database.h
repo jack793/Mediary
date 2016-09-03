@@ -17,7 +17,7 @@ private:
     Container<const User*> userDatabase;
     
 public:
-    explicit Database();
+    Database();
     ~Database();
     
     bool matchUser(const QString& ) const;  //true sse matcha un username nel db utenti

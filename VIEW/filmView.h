@@ -38,7 +38,7 @@ private:
     DialogMessage* dialMessage;
     
 public:
-    explicit FilmView(const Film* f=0,MainView* parent=0);
+    FilmView(const Film* f=0,MainView* parent=0);
     ~FilmView();
     
     

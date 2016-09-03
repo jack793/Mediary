@@ -10,7 +10,7 @@
 #include <QString>
 #include <string>
 
-class DialogMessage:public QDialog
+class DialogMessage: public QDialog
 {
     Q_OBJECT
 private:
@@ -18,7 +18,7 @@ private:
     QPushButton* btnConferma;
     QVBoxLayout* vLay;
 public:
-    explicit DialogMessage(std::string,std::string,std::string);
+    DialogMessage(std::string,std::string,std::string);
     ~DialogMessage();
 private slots:
     void chiudi();

@@ -1,4 +1,4 @@
-#include "dialogmessage.h"
+#include "dialogMessage.h"
 
 //-------------------------COSTRUTTORI------------------------
 

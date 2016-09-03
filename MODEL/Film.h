@@ -15,7 +15,7 @@ private:
     QTime duration; //A QTime object contains a clock time, i.e. the number of hours, minutes, seconds, and milliseconds since midnight
         
 public:
-    explicit Film(const QString& ="Unknown",const QDate& d=QDate(1970,1,1) ,const QString& ="Unknown", const QString& ="Unknown", const QString& ="Unknown",const QTime& t=QTime(0,0,0));
+    Film(const QString& ="Unknown",const QDate& d=QDate(1970,1,1) ,const QString& ="Unknown", const QString& ="Unknown", const QString& ="Unknown",const QTime& t=QTime(0,0,0));
             // titolo, anno (yyy.mm.dd), genere,  trama, distribuito da, durata(h,m,s)
     
     const QString& getPlot() const;

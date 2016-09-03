@@ -70,7 +70,7 @@ void mediaryController::verifyLogin(const QString& usn, const QString& psw){
         }
     }
     else{ //se login non valida
-        dialMessage= new DialogMessage("Controllo login","USERNAME o PASSWORD inseriti non corretti","Ok");
+        dialMessage= new DialogMessage("Controllo login","USERNAME o PASSWORD inseriti vuoti o non corretti!","Ok");
         dialMessage->setWindowIcon(QIcon(":/Icons/warning_dark2.png"));
         dialMessage->show();
     }

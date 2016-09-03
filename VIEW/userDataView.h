@@ -37,7 +37,7 @@ private:
     const User* user;
     
 public:
-    explicit userDataView(const User* u=0, MainView* parent=0);
+    userDataView(const User* u=0, MainView* parent=0);
     ~userDataView();
     
     void closeEvent(QCloseEvent* );

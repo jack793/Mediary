@@ -16,7 +16,7 @@ private:
     
     DialogMessage* dialMessage;
 public:
-    explicit userController(User* ,QObject* parent=0);
+    userController(User* ,QObject* parent=0);
     ~userController();
     
     void openUserView() const;

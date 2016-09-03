@@ -33,7 +33,7 @@ private:
     DialogMessage* dialMessage;
     
 public:
-    explicit loginView(MainView* =0);
+    loginView(MainView* =0);
     ~loginView();
     
     //Implement pv method

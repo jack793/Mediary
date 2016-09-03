@@ -10,7 +10,7 @@ private:
     void centerWidget();
    
 public:
-    explicit MainView(QWidget* parent=0);
+    MainView(QWidget* parent=0);
     virtual ~MainView();
     virtual void loadGraphic() =0;
 };

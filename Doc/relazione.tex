@@ -1,0 +1,189 @@
+\documentclass[10pt,a4paper,openany]{article}
+
+\usepackage[english,italian]{babel} %lingue utilizzabili
+
+
+%PER GRAFICA
+\usepackage{graphicx}
+\usepackage{fancyhdr} %per intestaz e piè di pagina
+\usepackage{subfig}
+\usepackage{float}
+
+
+\usepackage[utf8]{inputenc} %codifica e input
+
+\usepackage{hyperref} %indice linkato ai paragrafi di riferimento
+\hypersetup{
+  colorlinks,
+  citecolor=gray,
+  filecolor=brown,
+  linkcolor=black,
+  urlcolor=cyan
+}
+
+\usepackage{lastpage} %per sapere il numero di pagine totali
+
+\usepackage{parcolumns} %testo affiancato in colonna
+
+\usepackage{verbatim}%commenti a blocchi
+\usepackage{listings} %Per inserire codice
+\usepackage[usenames]{color} %Per permettere la colorazione dei caratteri 
+
+\usepackage[a4paper,top=3cm,bottom=2cm,left=2cm,right=2cm] {geometry} %imposta pagina formato A4 e setta margini a piacimento
+\usepackage[pdftex]{lscape} %per settare pagine in landscape
+
+\renewcommand{\familydefault}{\sfdefault}   %mette tutto il carattere con uno stile ''grazioso''
+
+\definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{editorOrange}{rgb}{1, 0.5, 0} % #FF7F00 -> rgb(239, 169, 0)
+\definecolor{editorGreen}{rgb}{0, 0.6, 0} % #007C00 -> rgb(0, 124, 0)
+
+
+
+
+%personalizzazione classe per il codice XML
+\lstnewenvironment{xml}[1][] 
+{\lstset{basicstyle=\scriptstyle \ttfamily, columns=fullflexible, keywordstyle=\color{blue}\bfseries, ndkeywordstyle=\color{blue}\bfseries , ndkeywords={references}, numberstyle=\color{red}, commentstyle=\color{editorGreen}, showstringspaces=false, stringstyle=\color{editorOrange},
+language=XML, basicstyle=\small,
+numbers=left, numberstyle=\tiny,
+tabsize=2, stepnumber=10, numbersep=5pt, breaklines=true, frame=single, rulecolor=\color{black}, #1}}
+{\lstset {language=XML,morekeywords={xml}}}{}
+
+
+%personalizzazione classe per il codice HTML
+\lstnewenvironment{html}[1][] 
+{\lstset{basicstyle=\scriptstyle \ttfamily, columns=fullflexible,
+keywordstyle=\color{blue}\bfseries, ndkeywords={content,=,charset=, id=, width=, height=},	 ndkeywordstyle=\color{editorGreen}\bfseries , numberstyle=\color{red} commentstyle=\color{red}, showstringspaces=false, stringstyle=\color{editorOrange},
+language=HTML, basicstyle=\small,
+numbers=left, numberstyle=\tiny,
+tabsize=2, stepnumber=10, numbersep=5pt, breaklines=true, frame=single, rulecolor=\color{black}, #1}}{}
+
+%personalizzazione classe per il codice C++
+\lstnewenvironment{CPP}[1][] 
+{\lstset{basicstyle=\scriptstyle \ttfamily, columns=fullflexible,
+keywordstyle=\color{blue}\bfseries, ndkeywords={content,=,charset=, id=, width=, height=},	 ndkeywordstyle=\color{editorGreen}\bfseries , numberstyle=\color{red} commentstyle=\color{red}, showstringspaces=false, stringstyle=\color{editorGreen},
+language=C++, basicstyle=\small,
+numbers=left, numberstyle=\tiny,
+tabsize=2, stepnumber=10, numbersep=5pt, breaklines=true, frame=single, rulecolor=\color{black}, #1}}{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{figure}
+\centering
+\includegraphics[angle=0,scale=.30]{LOGO.png}%%%%%%%%%%%%%%%%%%%%%%
+\end{figure} 
+
+
+\title{ \textbf{\huge PROGRAMMAZIONE AD OGGETTI}\vspace{0.7cm} \\ {\Huge Relazione del progetto} \vspace{0.3cm} \\ {\Large Anno accademico 2015/2016} }
+%\date{}
+ 
+\author{\textbf{Zecchin Giacomo (1070122)}}
+
+\maketitle
+\thispagestyle{empty}
+
+
+%da qui stile intestazione e piè di pagina cosi definiti
+\pagestyle{fancy}
+\lhead{}
+\rfoot{\vspace {1pt} Relazione del progetto}
+\cfoot{\vspace{1pt} Pagina: \thepage\ di \pageref{LastPage}}
+\fancyfoot[L]
+	{\vspace{1pt}
+   		\hyperref[sec:index] {\includegraphics[scale=0.06]{leftfoot.png}} %%%%%%%%%% icona linkata all'index
+	 }
+\renewcommand{\footrulewidth}{0.5pt}
+
+
+\tableofcontents \label{sec:index} %CREA INDICE LINKABILE
+
+
+\newpage
+
+
+\section{Scopo del progetto}
+
+Mediary è il risultato di questo progetto per il corso di programmazione ad oggetti che aveva come scopo quello di creare un applicativo sviluppato in C++/Qt.\\\\
+L'applicazione intende rappresentare uno spazio personale nel quale annotare tutte le serieTv o i film già visti, preferiti oppure col desiderio di vedere in futuro.\\
+Mediary consente quindi di accedere singolarmente come utente per aggiungere nuovi \textit{media} al proprio diario (\textit{diary}).\\
+L'unione di queste due parole, \textbf{Media} e \textbf{Diary}, va difatti a creare il nome dell'applicazione.\\\\
+Il progetto è semplice ma allo stesso tempo funzionale, diretto e comprensibile per l'utente; vediamo nel seguito tutte le funzionalità.
+
+
+\section{Funzionalità offerte}
+
+Avviata, l'applicazione presenta subito una finestra centrale per l'inserimento diretto dei dati necessari ad effettuare il \textbf{login} ed accedere  immediatamente all'area personale.\\
+In alternativa, se non si possiedono già delle credenziali, è presente un bottone per la \textbf{registrazione} poco più in basso, che farà entrare nella finestra dedicata alla creazione di un nuovo utente.
+In entrambi questi due casi sono presenti dei controlli di consistenza dei dati descritti più approfonditamente nella sezione *sez.* .\\
+E' comunque data la possibilità di \textbf{modificare i propri dati} in un secondo momento.\\\\
+Le funzionalità offerte per i media sono invece quelle di \textbf{creazione, modifica, visualizzazione per tipo ed eliminazione}. (in dettaglio qui *sez*).
+
+\newpage
+
+\section{Model}
+
+Di seguito verrà descritta
+
+
+
+
+\newpage
+
+\section{View}
+
+Il progetto è stato costruito rispettando il \textbf{pattern MVC}, separando quindi il \textit{Model} dalla \textit{View} con l'ausilio delle due classi che formano il \textit{Controller}.
+
+
+\begin{comment}
+In alto a destra è invece presente il bottone \textit{esci} per chiudere il programma.\\\\
+Nel caso si eseguisse la procedura di l'autenticazione si verrebbe mandati alla finestra personale con la possibilità di aggiungere, modificare oppure eliminare media.
+
+Nel mezzo è presente una tabella che permette di visualizzare, in ordine di inserimento dal più al meno recente, i media divisi per serieTv, film oppure tutti i tipi (l'opzione è selezionalibile tramite una comboBox).
+
+E' possibile modificare un elemento cliccando al di sopra \textbf{titolo} del media che si intende manipolare, mentre per cancellarlo è necessario cliccare sopra l'icona del cestino nell'ultima colonna della tabella corrispondente alla riga del media (si aprirà un avviso per la conferma).
+
+La stessa finestra offre inoltre la possibilità di modificare i propri dati personali cliccando nel bottone 
+\end{comment}
+
+
+
+
+
+%\selectlanguage{italian}	%inserirlo causerebbe errore in compilazione per lettere accentate-->non risolto
+
+
+	
+%per inserire un'immagine:
+
+%\begin{landscape}
+%\begin{figure}
+%\subsection{Schema E-R iniziale del database}
+%\centering
+%\includegraphics[angle=0,scale=.40]{image.jpg}
+%\hspace{1in}
+%\label{schema}
+%\caption{schema E-R}
+%\end{figure}
+%\end{landscape}
+
+
+
+%inserire codice c++:
+
+%\begin{CPP}
+%#include <iostream>
+%\end{CPP}
+
+
+
+
+
+
+
+\end{document}

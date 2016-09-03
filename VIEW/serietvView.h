@@ -41,7 +41,7 @@ private:
     DialogMessage* dialMessage;
     
 public:
-    explicit SerietvView(const SerieTV* =0, MainView* parent=0);
+    SerietvView(const SerieTV* =0, MainView* parent=0);
     ~SerietvView();
     
     void closeEvent(QCloseEvent* );

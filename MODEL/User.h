@@ -23,7 +23,7 @@ private:
     bool sex;
     Container<const Media*> mediaDatabase;
 public:
-    explicit User(const QString& ,const QString& ,const QString& ,const QString& ,bool s);
+    User(const QString& ,const QString& ,const QString& ,const QString& ,bool s);
     
     const QString& getUsername() const;
     const QString& getPsw() const;
