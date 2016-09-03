@@ -24,7 +24,6 @@ private:
     
     //Info e modifiche
     QLineEdit* usernameEdit;
-    //QLineEdit* passwordEdit;
     QLineEdit* nameEdit;
     QLineEdit* surnameEdit;
     QVBoxLayout* sexButtonsLay;
@@ -42,7 +41,7 @@ public:
     
     void closeEvent(QCloseEvent* );
     //Questo gestore di eventi viene chiamato con l'evento dato quando Qt riceve una richiesta
-    //di chiusura della finestra per un widget di alto livello dal sistema a finestre .
+    //di chiusura della finestra per un widget di alto livello da sistema a finestre .
     
     //Implement pv method
     virtual void loadGraphic();

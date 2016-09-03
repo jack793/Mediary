@@ -77,19 +77,13 @@ void registrationView::loadGraphic(){
 
 void registrationView::checkRegistration(){
     
-    //QString password=passwordEdit->text();
+    QString password=passwordEdit->text();
+    ptdb= new Database();
     
     bool sex=false;
     if(sexM->isChecked())
         sex=true;
-    
-    if(usernameEdit->text()=="" || passwordEdit->text()=="" || nameEdit->text()=="" || surnameEdit->text()==""){
-        dialMessage=new DialogMessage("Controllo dati","Riempire tutti i campi","Ok");
-        dialMessage->setWindowIcon(QIcon(":/Icons/warning_dark2.png"));
-        dialMessage->show();
-    }
         
-    /*
     if(usernameEdit->text()==""){
         dialMessage=new DialogMessage("Controllo dati","Non hai compilato il campo USERNAME","Indietro");
         dialMessage->show();
@@ -113,7 +107,7 @@ void registrationView::checkRegistration(){
     else if(surnameEdit->text()==""){
         dialMessage=new DialogMessage("Controllo dati","Non hai compilato il campo COGNOME","Indietro");
         dialMessage->show();
-    }*/
+    }
     
     else //input dati corretto
         emit signalRegister(usernameEdit->text(),passwordEdit->text(),nameEdit->text(),surnameEdit->text(),sex);

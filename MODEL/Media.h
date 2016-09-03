@@ -10,7 +10,7 @@
 class Media
 {
 private:
-    static int codMedia;    //un codice diverso per ogni media presente nel db
+    static int codMedia; //un codice diverso per ogni media presente nel db
     int id; //id univoco del media autoincrementante tramite il codMedia quando viene costruito
     
     QString title;

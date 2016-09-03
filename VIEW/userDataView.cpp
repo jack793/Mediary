@@ -27,9 +27,6 @@ void userDataView::loadGraphic(){
     QLabel* usernameLabel= new QLabel("Username:");
     usernameLabel->setFont(usn);
     
-    /*passwordEdit= new QLineEdit(user->getPsw());
-    QLabel* passwordLabel= new QLabel("Password:");*/
-    
     nameEdit = new QLineEdit(user->getName());
     QLabel* nameLabel= new QLabel("Nome:");
     

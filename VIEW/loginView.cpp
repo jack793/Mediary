@@ -13,29 +13,49 @@ loginView::~loginView() {}
 void loginView::loadGraphic(){
     setWindowTitle("Login - Mediary");
     
+    setFixedSize(800,600);
+    
     mainLayout = new QVBoxLayout;
     mainGBox= new QGroupBox;
     
     QVBoxLayout* boxLayout= new QVBoxLayout;
     
-    usernameEdit= new QLineEdit;
-    QLabel* usernameLabel= new QLabel("Username");
+    QLabel* WelcomeMessage= new QLabel("Benvenuto in Mediary");
+    WelcomeMessage->setStyleSheet("color: #318bfc");
+    WelcomeMessage->setFont(QFont("Aaargh",45,QFont::Bold));
     
+    usernameEdit= new QLineEdit;
+    usernameEdit->setPlaceholderText("Inserisci qui il tuo username");
+    usernameEdit->setFixedWidth(200);
+    usernameEdit->setAlignment(Qt::AlignCenter);   
+    QLabel* usernameLabel= new QLabel("Username");
+    usernameLabel->setAlignment(Qt::AlignCenter);
+
     passwordEdit = new QLineEdit;
+    passwordEdit->setPlaceholderText("Inserisci qui la tua password");
+    passwordEdit->setFixedWidth(200);
+    passwordEdit->setAlignment(Qt::AlignCenter);
     QLabel* passwordLabel= new QLabel("Password");
     passwordEdit->setEchoMode(QLineEdit::Password); //Display platform-dependent password mask characters instead of the characters actually entered.
+    passwordLabel->setAlignment(Qt::AlignCenter);
     
     QPushButton* loginButton= new QPushButton("Effettua login");
     QPushButton* goToRegistrationButton= new QPushButton("Registra utente");
     
+    boxLayout->addSpacing(200);
+    boxLayout->addWidget(WelcomeMessage,0,Qt::AlignCenter);
+    boxLayout->addSpacing(150);
     boxLayout->addWidget(usernameLabel);
-    boxLayout->addWidget(usernameEdit);
+    boxLayout->addWidget(usernameEdit,0,Qt::AlignCenter);
     boxLayout->addWidget(passwordLabel);
-    boxLayout->addWidget(passwordEdit);
-    boxLayout->addSpacing(20);
-    
-    boxLayout->addWidget(loginButton);
-    boxLayout->addWidget(goToRegistrationButton);
+    boxLayout->addWidget(passwordEdit,0,Qt::AlignCenter);
+    boxLayout->addSpacing(50);
+        
+    boxLayout->addWidget(loginButton,0,Qt::AlignCenter);
+        QLabel* op=new QLabel("Oppure");
+                op->setFont(QFont("Verdana",9));
+        boxLayout->addWidget(op,0,Qt::AlignCenter);    
+    boxLayout->addWidget(goToRegistrationButton,0,Qt::AlignCenter);
     
     mainGBox->setLayout(boxLayout);
     mainLayout->addWidget(mainGBox);
@@ -52,32 +72,6 @@ void loginView::loadGraphic(){
 //-------------------------PUBLIC SLOTS------------------------
 
 void loginView::tryLogin(){
-    
-    /*if(usernameEdit->text()==""){
-        dialMessage= new DialogMessage("Controllo login","E' necessario inserire uno USERNAME per loggarsi","Ok");
-        dialMessage->show();
-    }
-    else if(passwordEdit->text()==""){
-        dialMessage= new DialogMessage("Controllo login","E' necessario inserire una PASSWORD per loggarsi","OK");
-        dialMessage->show();
-    }
-    
-    else if(!ptdb->matchUser(usernameEdit->text()))
-    {
-        dialMessage=new DialogMessage("Controllo login","Username o password inseriti NON CORRETTI","Riprova");
-        dialMessage->show();
-    }
-    else //esiste username
-    {
-        const User* u=ptdb->getUser(usernameEdit->text(),passwordEdit->text());
-        if(!u){ //non esiste un utente con quella pwd
-            dialMessage=new DialogMessage("Controllo login","Username o password inseriti NON CORRETTI","Riprova");
-            dialMessage->show();
-        }
-    
-        //else //login corretta
-            emit signalLogin(usernameEdit->text(),passwordEdit->text());
-    }*/
     emit signalLogin(usernameEdit->text(),passwordEdit->text());
 }
 
