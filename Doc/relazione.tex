@@ -8,6 +8,7 @@
 \usepackage{fancyhdr} %per intestaz e piè di pagina
 \usepackage{subfig}
 \usepackage{float}
+\usepackage{caption}
 
 
 \usepackage[utf8]{inputenc} %codifica e input
@@ -76,7 +77,7 @@ tabsize=2, stepnumber=10, numbersep=5pt, breaklines=true, frame=single, rulecolo
 
 \begin{figure}
 \centering
-\includegraphics[angle=0,scale=.30]{LOGO.png}%%%%%%%%%%%%%%%%%%%%%%
+\includegraphics[angle=0,scale=.30]{LOGO.png}
 \end{figure} 
 
 
@@ -96,7 +97,7 @@ tabsize=2, stepnumber=10, numbersep=5pt, breaklines=true, frame=single, rulecolo
 \cfoot{\vspace{1pt} Pagina: \thepage\ di \pageref{LastPage}}
 \fancyfoot[L]
 	{\vspace{1pt}
-   		\hyperref[sec:index] {\includegraphics[scale=0.06]{leftfoot.png}} %%%%%%%%%% icona linkata all'index
+   		\hyperref[sec:index] {\includegraphics[scale=0.06]{leftfoot.png}} % icona linkata all'index
 	 }
 \renewcommand{\footrulewidth}{0.5pt}
 
@@ -113,22 +114,60 @@ Mediary è il risultato di questo progetto per il corso di programmazione ad ogg
 L'applicazione intende rappresentare uno spazio personale nel quale annotare tutte le serieTv o i film già visti, preferiti oppure col desiderio di vedere in futuro.\\
 Mediary consente quindi di accedere singolarmente come utente per aggiungere nuovi \textit{media} al proprio diario (\textit{diary}).\\
 L'unione di queste due parole, \textbf{Media} e \textbf{Diary}, va difatti a creare il nome dell'applicazione.\\\\
-Il progetto è semplice ma allo stesso tempo funzionale, diretto e comprensibile per l'utente; vediamo nel seguito tutte le funzionalità.
+Il progetto è semplice ma allo stesso tempo funzionale, diretto e comprensibile per l'utente; vediamo nel seguito tutte le funzionalità.\vspace{20pt}
+
 
 
 \section{Funzionalità offerte}
+	\subsection{Utenti}
 
-Avviata, l'applicazione presenta subito una finestra centrale per l'inserimento diretto dei dati necessari ad effettuare il \textbf{login} ed accedere  immediatamente all'area personale.\\
-In alternativa, se non si possiedono già delle credenziali, è presente un bottone per la \textbf{registrazione} poco più in basso, che farà entrare nella finestra dedicata alla creazione di un nuovo utente.
-In entrambi questi due casi sono presenti dei controlli di consistenza dei dati descritti più approfonditamente nella sezione *sez.* .\\
-E' comunque data la possibilità di \textbf{modificare i propri dati} in un secondo momento.\\\\
-Le funzionalità offerte per i media sono invece quelle di \textbf{creazione, modifica, visualizzazione per tipo ed eliminazione}. (in dettaglio qui *sez*).
+	Avviata, l'applicazione presenta subito una finestra centrale per l'inserimento diretto dei dati necessari ad effettuare il 				\textbf{login} ed accedere  immediatamente all'area personale.\\
+	In alternativa, se non si possiedono già delle credenziali, è presente un bottone per la \textbf{registrazione} poco più in basso, che 		farà entrare nella finestra dedicata alla creazione di un nuovo utente.
+	In entrambi questi due casi sono presenti dei controlli di consistenza dei dati descritti più approfonditamente nella sezione *sez.* .\\
+	E' comunque data la possibilità di \textbf{modificare i propri dati} in un secondo momento.
+		
+	\subsection{Media}
+	
+	Le funzionalità offerte per i media sono invece quelle di \textbf{creazione, modifica, visualizzazione per tipo ed eliminazione}. (In 
+	dettaglio qui *sez*)\vspace{20pt}
+	
+
+\section{Schema Logico}	
+
+Il \textit{Design Pattern} utilizzato per la progettazione è il classico pattern \textbf{MVC} separando quindi il \textit{Model} dalla \textit{View} con l'ausilio due classi che formano il \textit{Controller}.
+
+Vediamo nelle sottosezioni seguenti le tre componenti e le classi che li compongono.\\\\\\
+
+%%%%%% Per mettere a sinistra la caption sennò rimane al centro%%%
+%\captionsetup{
+ % justification=raggedright,
+  %singlelinecheck=false
+%}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[angle=0,scale=.45]{MVC.png}\\
+\caption{Interazione nel pattern MVC}
+\label{fig:MVC}
+%\hspace{1in}
+\end{figure}
+
 
 \newpage
 
-\section{Model}
+	\subsection{Model}
+	
+	La \textbf{gerarchia G} che forma il modello dati del progetto è così rappresentata:\\\\\\
+	
+	\begin{figure}[!h]
+	\centering
+	\includegraphics[angle=0,scale=.45]{G.png}\\
+	\caption{Gerarchia}
+	\label{fig:G}
+	%\hspace{1in}
+	\end{figure}
 
-Di seguito verrà descritta
+	
 
 
 
@@ -136,8 +175,6 @@ Di seguito verrà descritta
 \newpage
 
 \section{View}
-
-Il progetto è stato costruito rispettando il \textbf{pattern MVC}, separando quindi il \textit{Model} dalla \textit{View} con l'ausilio delle due classi che formano il \textit{Controller}.
 
 
 \begin{comment}

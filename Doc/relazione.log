@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.7)  3 SEP 2016 16:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.7)  4 SEP 2016 16:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -466,7 +466,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip57
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 22.
+Package hyperref Info: Option `colorlinks' set `true' on input line 23.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lastpage/lastpage.sty
 Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
@@ -545,22 +545,22 @@ LaTeX Warning: Unused global option(s):
 (./relazione.aux)
 \openout1 = `relazione.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Info: Redefining \it@ocap on input line 75.
-LaTeX Info: Redefining \it@ccap on input line 75.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Info: Redefining \it@ocap on input line 76.
+LaTeX Info: Redefining \it@ccap on input line 76.
 
 
 File italian.ldf warning: 
@@ -568,7 +568,7 @@ italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting 
-italian.ldf    on input line 75.
+italian.ldf    on input line 76.
 
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -605,7 +605,7 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring ON on input line 75.
+Package hyperref Info: Link coloring ON on input line 76.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -615,9 +615,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count131
 )
-LaTeX Info: Redefining \ref on input line 75.
-LaTeX Info: Redefining \pageref on input line 75.
-LaTeX Info: Redefining \nameref on input line 75.
+LaTeX Info: Redefining \ref on input line 76.
+LaTeX Info: Redefining \pageref on input line 76.
+LaTeX Info: Redefining \nameref on input line 76.
 
 (./relazione.out) (./relazione.out)
 \@outlinefile=\write3
@@ -625,7 +625,7 @@ LaTeX Info: Redefining \nameref on input line 75.
 
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 75.
+(lastpage)             ! on input line 76.
 \c@lstlisting=\count132
 
 *geometry* driver: auto-detecting
@@ -662,18 +662,23 @@ Package lastpage Info: Please have a look at the pageslts package at
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<LOGO.png, id=20, 953.5625pt x 230.8625pt>
+<LOGO.png, id=32, 953.5625pt x 230.8625pt>
 File: LOGO.png Graphic file (type png)
  <use LOGO.png>
-Package pdftex.def Info: LOGO.png used on input line 79.
+Package pdftex.def Info: LOGO.png used on input line 80.
 (pdftex.def)             Requested size: 953.56018pt x 230.86192pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 89.
+(Font)              <12> on input line 90.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 89.
+(Font)              <8> on input line 90.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 89.
- (./relazione.toc)
+(Font)              <6> on input line 90.
+ (./relazione.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 5.
+)
 \tf@toc=\write4
 \openout4 = `relazione.toc'.
 
@@ -684,60 +689,90 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 png>]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 114.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 115.
 
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--117
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 112--117
+Underfull \hbox (badness 10000) in paragraph at lines 113--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--126
+Underfull \hbox (badness 10000) in paragraph at lines 113--118
 
  []
 
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.04448pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
-<leftfoot.png, id=38, 953.5625pt x 230.8625pt>
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
+
+ []
+
+<MVC.png, id=53, 304.13625pt x 324.21124pt>
+File: MVC.png Graphic file (type png)
+ <use MVC.png>
+Package pdftex.def Info: MVC.png used on input line 149.
+(pdftex.def)             Requested size: 304.1355pt x 324.21045pt.
+
+<leftfoot.png, id=55, 953.5625pt x 230.8625pt>
 File: leftfoot.png Graphic file (type png)
  <use leftfoot.png>
-Package pdftex.def Info: leftfoot.png used on input line 127.
+Package pdftex.def Info: leftfoot.png used on input line 156.
 (pdftex.def)             Requested size: 57.21127pt x 13.85115pt.
- [2 <./leftfoot.png>]
+ [2 <./MVC.png> <./leftfoot.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
+
+ []
+
+<G.png, id=66, 434.62375pt x 193.72375pt>
+File: G.png Graphic file (type png)
+ <use G.png>
+Package pdftex.def Info: G.png used on input line 164.
+(pdftex.def)             Requested size: 434.62268pt x 193.72327pt.
 File: leftfoot.png Graphic file (type png)
  <use leftfoot.png>
-Package pdftex.def Info: leftfoot.png used on input line 136.
+Package pdftex.def Info: leftfoot.png used on input line 175.
 (pdftex.def)             Requested size: 57.21127pt x 13.85115pt.
- [3] 
+
+[3 <./G.png>] 
 AED: lastpage setting LastPage
 File: leftfoot.png Graphic file (type png)
 <use leftfoot.png>
-Package pdftex.def Info: leftfoot.png used on input line 189.
+Package pdftex.def Info: leftfoot.png used on input line 226.
 (pdftex.def)             Requested size: 57.21127pt x 13.85115pt.
  [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 189.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 189.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 226.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 226.
  (./relazione.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 189.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 189.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 226.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 226.
 Package rerunfilecheck Info: File `relazione.out' has not changed.
-(rerunfilecheck)             Checksum: 1F96A4D452BAE1ABCE82CA117B57E188;190.
+(rerunfilecheck)             Checksum: 6AB4A364473FF231E1EB783089C74A76;361.
  ) 
 Here is how much of TeX's memory you used:
- 9322 strings out of 493089
- 138575 string characters out of 6134842
- 245492 words of memory out of 5000000
- 12683 multiletter control sequences out of 15000+600000
+ 9345 strings out of 493089
+ 138858 string characters out of 6134842
+ 246590 words of memory out of 5000000
+ 12699 multiletter control sequences out of 15000+600000
  9733 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  44i,15n,43p,774b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -747,10 +782,10 @@ Here is how much of TeX's memory you used:
 /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb>
 
-Output written on relazione.pdf (4 pages, 339827 bytes).
+Output written on relazione.pdf (4 pages, 358297 bytes).
 PDF statistics:
- 81 PDF objects out of 1000 (max. 8388607)
- 65 compressed objects within 1 object stream
- 11 named destinations out of 1000 (max. 500000)
- 43 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 103 PDF objects out of 1000 (max. 8388607)
+ 83 compressed objects within 1 object stream
+ 16 named destinations out of 1000 (max. 500000)
+ 77 words of extra memory for PDF output out of 10000 (max. 10000000)
 

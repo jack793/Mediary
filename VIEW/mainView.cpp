@@ -9,12 +9,13 @@ MainView::~MainView() {}
 //-------------------------METODI------------------------
 
 void MainView::centerWidget(){
-    int w=frameGeometry().width();
-    int h=frameGeometry().height()+150;
+    int width = frameGeometry().width();
+    int height = frameGeometry().height();
+    
     QDesktopWidget wid;
-    int sW=wid.screen()->width();
-    int sH=wid.screen()->height();
-    int x=static_cast<int>((sW-w)/2);
-    int y=static_cast<int>((sH-h)/2);
-    move(x,y);
+    
+    int screenWidth = wid.screen()->width();
+    int screenHeight = wid.screen()->height();
+    
+    setGeometry((screenWidth/2)-(width/2),(screenHeight/2)-(height/2),width,height);
 }

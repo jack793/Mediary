@@ -2,7 +2,8 @@
 
 //-------------------------COSTRUTTORI------------------------
 
-loginView::loginView(MainView* parent): MainView(parent){
+loginView::loginView(MainView* parent): MainView(parent)
+{
     loadGraphic();
 }
 
@@ -13,7 +14,9 @@ loginView::~loginView() {}
 void loginView::loadGraphic(){
     setWindowTitle("Login - Mediary");
     
-    setFixedSize(800,600);
+    this->setObjectName("login");
+    this->setStyleSheet("loginView#login { background-image: url('IMGs/Wall.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: top left }");
+    setFixedSize(800,500);
     
     mainLayout = new QVBoxLayout;
     mainGBox= new QGroupBox;
@@ -23,7 +26,7 @@ void loginView::loadGraphic(){
     QLabel* WelcomeMessage= new QLabel("Benvenuto in Mediary");
     WelcomeMessage->setStyleSheet("color: #318bfc");
     WelcomeMessage->setFont(QFont("Aaargh",45,QFont::Bold));
-    
+       
     usernameEdit= new QLineEdit;
     usernameEdit->setPlaceholderText("Inserisci qui il tuo username");
     usernameEdit->setFixedWidth(200);
@@ -42,6 +45,10 @@ void loginView::loadGraphic(){
     QPushButton* loginButton= new QPushButton("Effettua login");
     QPushButton* goToRegistrationButton= new QPushButton("Registra utente");
     
+    QPushButton* quit= new QPushButton("Esci",this);
+    connect(quit,SIGNAL(clicked()),this,SLOT(close()));
+    
+    boxLayout->addWidget(quit,0,Qt::AlignRight);
     boxLayout->addSpacing(200);
     boxLayout->addWidget(WelcomeMessage,0,Qt::AlignCenter);
     boxLayout->addSpacing(150);
@@ -53,7 +60,7 @@ void loginView::loadGraphic(){
         
     boxLayout->addWidget(loginButton,0,Qt::AlignCenter);
         QLabel* op=new QLabel("Oppure");
-                op->setFont(QFont("Verdana",9));
+            op->setFont(QFont("Verdana",9));
         boxLayout->addWidget(op,0,Qt::AlignCenter);    
     boxLayout->addWidget(goToRegistrationButton,0,Qt::AlignCenter);
     
