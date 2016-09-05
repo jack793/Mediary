@@ -22,6 +22,8 @@ void SerietvView::closeEvent(QCloseEvent* ){
 void SerietvView::loadGraphic(){
     setWindowTitle("Gestione info SerieTV - Mediary");
     
+    setFixedWidth(330);
+    
     mainLayout= new QVBoxLayout;
     
     //Common
@@ -32,12 +34,12 @@ void SerietvView::loadGraphic(){
     
     if(serieTv){
         titleEdit= new QLineEdit(serieTv->getTitle());
-        yearEdit= new QDateEdit(serieTv->getYear());
+        yearEdit= new QLineEdit(QString::number(serieTv->getYear()));
         genreEdit= new QLineEdit(serieTv->getGenre());
     }
     else{
         titleEdit= new QLineEdit();
-        yearEdit= new QDateEdit(); //lascio data vuota?
+        yearEdit= new QLineEdit();
         genreEdit= new QLineEdit();
     }
     //SerieTV
@@ -116,6 +118,8 @@ void SerietvView::loadGraphic(){
 void SerietvView::newSerieTV(){
     //stagione,episodi e lunghezza sono delle spinBox e quindi avranno per forza dei valori
     
+    uint year=yearEdit->text().toUInt();
+    
     if(titleEdit->text()==""){
         dialMessage= new DialogMessage("Controllo dati SerieTV","Il campo TITOLO non può rimanere vuoto","Ok");
         dialMessage->show();
@@ -124,8 +128,8 @@ void SerietvView::newSerieTV(){
         dialMessage= new DialogMessage("Controllo dati SerieTV","Il campo ANNO non può rimanere vuoto","Ok");
         dialMessage->show();
     }
-    else if(yearEdit->date().isNull()){
-        dialMessage= new DialogMessage("Controllo dati SerieTV","Il campo ANNO è vuoto o non valido","Ok");
+    else if(year<1895){
+        dialMessage= new DialogMessage("Controllo dati SerieTV","Il campo ANNO non è valido","Ok");
         dialMessage->show();
     }        
     else if(genreEdit->text()==""){
@@ -135,11 +139,13 @@ void SerietvView::newSerieTV(){
     else if(descriptionEdit->toPlainText()=="")
         descriptionEdit->insertPlainText("*Nessuna descrizione dell'episodio*");
     else
-        emit signalSave(titleEdit->text(),yearEdit->date(),genreEdit->text(),descriptionEdit->toPlainText(),seasonEdit->value(),episodeEdit->value(),lenghtEdit->value());
+        emit signalSave(titleEdit->text(),year,genreEdit->text(),descriptionEdit->toPlainText(),seasonEdit->value(),episodeEdit->value(),lenghtEdit->value());
 }
 
 void SerietvView::modifySerieTV(){
     //Controlli modifica identici alla creazione
+    
+    uint year=yearEdit->text().toUInt();
     
     if(titleEdit->text()==""){
         dialMessage= new DialogMessage("Controllo modifica SerieTV","Il campo TITOLO non può rimanere vuoto","Ok");
@@ -149,6 +155,10 @@ void SerietvView::modifySerieTV(){
         dialMessage= new DialogMessage("Controllo modifica SerieTV","Il campo ANNO non può rimanere vuoto","Ok");
         dialMessage->show();
     }
+    else if(year<1895){
+        dialMessage= new DialogMessage("Controllo dati SerieTV","Il campo ANNO non è valido","Ok");
+        dialMessage->show();
+    }
     else if(genreEdit->text()==""){
         dialMessage= new DialogMessage("Controllo modifica SerieTV","Il campo GENERE non può rimanere vuoto","Ok");
         dialMessage->show();
@@ -156,7 +166,7 @@ void SerietvView::modifySerieTV(){
     else if(descriptionEdit->toPlainText()=="")
         descriptionEdit->insertPlainText("*Nessuna descrizione dell'episodio*");
     else
-        emit signalChange(titleEdit->text(),yearEdit->date(),genreEdit->text(),descriptionEdit->toPlainText(),seasonEdit->value(),episodeEdit->value(),lenghtEdit->value(),serieTv->getId());
+        emit signalChange(titleEdit->text(),year,genreEdit->text(),descriptionEdit->toPlainText(),seasonEdit->value(),episodeEdit->value(),lenghtEdit->value(),serieTv->getId());
 }
 
 void SerietvView::cancel(){

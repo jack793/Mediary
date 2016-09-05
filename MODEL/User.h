@@ -48,8 +48,8 @@ public:
     void addMedia(const Media*);
     bool verifyMedia(const QString& ,const QDateTime& ) const;
     
-    void modifySerieTV(const QString& t, const QDate& y, const QString& g, const QString& d, unsigned int s, unsigned int nep, unsigned int l, int id);
-    void modifyFilm(const QString& t, const QDate& y, const QString& g, const QString& p, const QString& distr, const QTime& time, int id);
+    void modifySerieTV(const QString& t, unsigned int y, const QString& g, const QString& d, unsigned int s, unsigned int nep, unsigned int l, int id);
+    void modifyFilm(const QString& t, unsigned int y, const QString& g, const QString& p, const QString& distr, const QTime& time, int id);
     
     void deleteMedia(int );
     const Media* findMedia(int ) const; //ritorna il puntatore al media polimorfo che corrisponde con l'id passato

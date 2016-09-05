@@ -70,12 +70,12 @@ public slots:
     void closeUserDataView();
     
     //Save
-    void saveSerieTv(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l);
-    void saveFilm(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& drt);
+    void saveSerieTv(const QString& t,unsigned int y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l);
+    void saveFilm(const QString& t,unsigned int y,const QString& g,const QString& p,const QString& d,const QTime& drt);
     
     //Modification
-    void modifySerieTv(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id);
-    void modifyFilm(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& drt,int id);
+    void modifySerieTv(const QString& t,unsigned int y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id);
+    void modifyFilm(const QString& t,unsigned int y,const QString& g,const QString& p,const QString& d,const QTime& drt,int id);
     void modifyUserData(const QString& u,const QString& n,const QString& s,bool sx);
     
     //Features
@@ -86,11 +86,11 @@ public slots:
     void Logout();
     
 signals:
-    void signalSaveSerieTv(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l);
-    void signalSaveFilm(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& drt);
+    void signalSaveSerieTv(const QString& t,unsigned int y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l);
+    void signalSaveFilm(const QString& t,unsigned int y,const QString& g,const QString& p,const QString& d,const QTime& drt);
     
-    void signalChangeSerieTv(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id);
-    void signalChangeFilm(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& drt,int id);
+    void signalChangeSerieTv(const QString& t,unsigned int y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id);
+    void signalChangeFilm(const QString& t,unsigned int y,const QString& g,const QString& p,const QString& d,const QTime& drt,int id);
     void signalChangeUserData(const QString& u,const QString& n,const QString& s,bool sx);
     
     void signalDeleteMedia(int id);

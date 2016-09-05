@@ -10,7 +10,6 @@
 #include <QLineEdit>
 #include <QTextEdit>
 #include <QSpinBox>
-#include <QDateEdit>
 #include <QDateTimeEdit>
 
 #include "mainView.h"
@@ -29,7 +28,7 @@ private:
     //Common elements
     QVBoxLayout* mainLayout;
     QLineEdit* titleEdit;
-    QDateEdit* yearEdit;
+    QLineEdit* yearEdit;
     QLineEdit* genreEdit;
     //SerieTv elements
     QTextEdit* descriptionEdit;
@@ -55,8 +54,8 @@ public slots:
     void cancel();
     
 signals:
-    void signalSave(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l);
-    void signalChange(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id);
+    void signalSave(const QString& t,unsigned int y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l);
+    void signalChange(const QString& t,unsigned int y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id);
     void signalCancel();
 };
 

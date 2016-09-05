@@ -23,12 +23,12 @@ public:
     
 public slots:
     //Save
-    void saveSerieTv(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l);
-    void saveFilm(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& drt);
+    void saveSerieTv(const QString& t,unsigned int y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l);
+    void saveFilm(const QString& t,unsigned int y,const QString& g,const QString& p,const QString& d,const QTime& drt);
     
     //Modification
-    void modifySerieTv(const QString& t,const QDate& y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id);
-    void modifyFilm(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& drt,int id);
+    void modifySerieTv(const QString& t,unsigned int y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id);
+    void modifyFilm(const QString& t,unsigned int y,const QString& g,const QString& p,const QString& d,const QTime& drt,int id);
     void modifyUserData(const QString& u,const QString& n,const QString& s,bool sx);
     void deleteMedia(int);
     

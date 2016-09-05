@@ -10,12 +10,12 @@ class SerieTV: public Media
 {
 private:
     QString descriptionEp;  //descrizione episodio
-    unsigned int season;   //stagione attuale
+    unsigned int season;   //stagione dell'episodio
     unsigned int numberEp;  //numero episodio
     unsigned int lenghtEp; //durata ep in minuti
     
 public:
-    SerieTV(const QString& ="Unknown",const QDate& d=QDate(1970,1,1) ,const QString& ="Unknown",const QString& ="Unkwnown",unsigned int =0 ,unsigned int =0,unsigned int =0);
+    SerieTV(const QString& ="Unknown",unsigned int y=2016 ,const QString& ="Unknown",const QString& ="Unkwnown",unsigned int =0 ,unsigned int =0,unsigned int =0);
             // titolo, anno (yyyy,mm,dd), genere,   descrizione, stagioni, numeroEp, durataEp
     
     const QString& getDescr() const;

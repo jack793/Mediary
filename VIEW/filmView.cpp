@@ -20,6 +20,8 @@ void FilmView::closeEvent(QCloseEvent*){
 void FilmView::loadGraphic(){
     setWindowTitle("Gestione info Films - Mediary");
     
+    setFixedWidth(330);
+    
     mainLayout= new QVBoxLayout;
     
     //Common
@@ -29,12 +31,12 @@ void FilmView::loadGraphic(){
     
     if(film){
         titleEdit= new QLineEdit(film->getTitle());
-        yearEdit= new QDateEdit(film->getYear());
+        yearEdit= new QLineEdit(QString::number(film->getYear()));
         genreEdit= new QLineEdit(film->getGenre());
     }
     else{
         titleEdit= new QLineEdit();
-        yearEdit= new QDateEdit; //lascio data vuota?
+        yearEdit= new QLineEdit();
         genreEdit= new QLineEdit();
     }
     //Film
@@ -90,12 +92,19 @@ void FilmView::loadGraphic(){
 //-------------------------PUBLIC SLOTS------------------------
 
 void FilmView::newFilm(){
+    
+    uint year=yearEdit->text().toUInt();
+    
     if(titleEdit->text()==""){
         dialMessage= new DialogMessage("Controllo dati Film","Il campo TITOLO non può rimanere vuoto","Ok");
         dialMessage->show();
     }
     else if(yearEdit->text()==""){
         dialMessage= new DialogMessage("Controllo dati Film","Il campo ANNO non può rimanere vuoto","Ok");
+        dialMessage->show();
+    }
+    else if(year<1895){
+        dialMessage= new DialogMessage("Controllo dati SerieTV","Il campo ANNO non è valido","Ok");
         dialMessage->show();
     }
     else if(genreEdit->text()==""){
@@ -111,11 +120,13 @@ void FilmView::newFilm(){
         dialMessage->show();
     }
     else
-        emit signalSave(titleEdit->text(),yearEdit->date(),genreEdit->text(),plotEdit->toPlainText(),distributionEdit->text(),durationEdit->time());
+        emit signalSave(titleEdit->text(),year,genreEdit->text(),plotEdit->toPlainText(),distributionEdit->text(),durationEdit->time());
 }
 
 void FilmView::modifyFilm(){
     //controlli uguali come per nuovo film
+    
+    uint year=yearEdit->text().toUInt();
     
     if(titleEdit->text()==""){
         dialMessage= new DialogMessage("Controllo dati Film","Il campo TITOLO non può rimanere vuoto","Ok");
@@ -126,6 +137,10 @@ void FilmView::modifyFilm(){
         dialMessage= new DialogMessage("Controllo dati Film","Il campo ANNO non può rimanere vuoto","Ok");
         dialMessage->show();
     }
+    else if(year<1895){
+        dialMessage= new DialogMessage("Controllo dati SerieTV","Il campo ANNO non è valido","Ok");
+        dialMessage->show();
+    }
     else if(genreEdit->text()==""){
         dialMessage= new DialogMessage("Controllo dati Film","Il campo GENERE non può rimanere vuoto","Ok");
         dialMessage->show();
@@ -139,7 +154,7 @@ void FilmView::modifyFilm(){
         dialMessage->show();
     }
     else
-        emit signalChange(titleEdit->text(),yearEdit->date(),genreEdit->text(),plotEdit->toPlainText(),distributionEdit->text(),durationEdit->time(),film->getId());
+        emit signalChange(titleEdit->text(),year,genreEdit->text(),plotEdit->toPlainText(),distributionEdit->text(),durationEdit->time(),film->getId());
     
 }
 

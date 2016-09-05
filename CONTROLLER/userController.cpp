@@ -8,10 +8,10 @@ userController::userController(User* u, QObject* parent): QObject(parent), user(
     userUI= new userView(u);    //Creo la user view passandogli un pt user che contiente tutti i suoi dati nel model
         
     //All view connections
-    connect(userUI,SIGNAL(signalSaveSerieTv(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int )),this,SLOT(saveSerieTv(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int )));
-    connect(userUI,SIGNAL(signalSaveFilm(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& )),this,SLOT(saveFilm(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& )));
-    connect(userUI,SIGNAL(signalChangeSerieTv(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int ,int )),this,SLOT(modifySerieTv(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int ,int )));
-    connect(userUI,SIGNAL(signalChangeFilm(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& ,int )),this,SLOT(modifyFilm(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& ,int )));
+    connect(userUI,SIGNAL(signalSaveSerieTv(const QString& ,unsigned int ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int )),this,SLOT(saveSerieTv(const QString& ,unsigned int ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int )));
+    connect(userUI,SIGNAL(signalSaveFilm(const QString& ,unsigned int ,const QString& ,const QString& ,const QString& ,const QTime& )),this,SLOT(saveFilm(const QString& ,unsigned int ,const QString& ,const QString& ,const QString& ,const QTime& )));
+    connect(userUI,SIGNAL(signalChangeSerieTv(const QString& ,unsigned int ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int ,int )),this,SLOT(modifySerieTv(const QString& ,unsigned int ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int ,int )));
+    connect(userUI,SIGNAL(signalChangeFilm(const QString& ,unsigned int ,const QString& ,const QString& ,const QString& ,const QTime& ,int )),this,SLOT(modifyFilm(const QString& ,unsigned int ,const QString& ,const QString& ,const QString& ,const QTime& ,int )));
     connect(userUI,SIGNAL(signalChangeUserData(const QString& ,const QString& ,const QString& ,bool )),this,SLOT(modifyUserData(const QString& ,const QString& ,const QString& ,bool )));
     connect(userUI,SIGNAL(signalDeleteMedia(int )),this,SLOT(deleteMedia(int )));
     connect(userUI,SIGNAL(signalLogout()),this,SLOT(closeUserView()));
@@ -30,22 +30,22 @@ void userController::openUserView() const{
 //-------------------------PUBLIC SLOTS------------------------
 
 //--------SAVE
-void userController::saveSerieTv(const QString& title, const QDate& year, const QString& genre, const QString& descr, unsigned int season, unsigned int numEp, unsigned int lenght){
+void userController::saveSerieTv(const QString& title, unsigned int year, const QString& genre, const QString& descr, unsigned int season, unsigned int numEp, unsigned int lenght){
     SerieTV* serieTv= new SerieTV(title,year,genre,descr,season,numEp,lenght);
     user->addMedia(serieTv); //ci sono già i controlli nella funzione (che non esista già lo stesso identico media)
 }
 
-void userController::saveFilm(const QString& title, const QDate& year, const QString& genre, const QString& plot, const QString& distribution, const QTime& duration){
+void userController::saveFilm(const QString& title, unsigned int year, const QString& genre, const QString& plot, const QString& distribution, const QTime& duration){
     Film* film= new Film(title,year,genre,plot,distribution,duration);
     user->addMedia(film);
 }
 
 //--------MODIFICATION
-void userController::modifySerieTv(const QString& title, const QDate& year, const QString& genre, const QString& descr, unsigned int season, unsigned int numEp, unsigned int lenght, int id){
+void userController::modifySerieTv(const QString& title, unsigned int year, const QString& genre, const QString& descr, unsigned int season, unsigned int numEp, unsigned int lenght, int id){
     user->modifySerieTV(title,year,genre,descr,season,numEp,lenght,id);
 }
 
-void userController::modifyFilm(const QString& title, const QDate& year, const QString& genre, const QString& plot, const QString& distribution, const QTime& duration, int id){
+void userController::modifyFilm(const QString& title, unsigned int year, const QString& genre, const QString& plot, const QString& distribution, const QTime& duration, int id){
     user->modifyFilm(title,year,genre,plot,distribution,duration,id);
 }
 

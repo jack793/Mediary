@@ -27,7 +27,7 @@ private:
     //Common elements
     QVBoxLayout* mainLayout;
     QLineEdit* titleEdit;
-    QDateEdit* yearEdit;
+    QLineEdit* yearEdit;
     QLineEdit* genreEdit;
     //Films elements
     QTextEdit* plotEdit;
@@ -54,8 +54,8 @@ public slots:
     void cancel();
     
 signals:
-    void signalSave(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& drt);
-    void signalChange(const QString& t,const QDate& y,const QString& g,const QString& p,const QString& d,const QTime& drt,int id);
+    void signalSave(const QString& t,unsigned int y,const QString& g,const QString& p,const QString& d,const QTime& drt);
+    void signalChange(const QString& t,unsigned int y,const QString& g,const QString& p,const QString& d,const QTime& drt,int id);
     void signalCancel();
 };
 

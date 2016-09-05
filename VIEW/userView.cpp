@@ -41,7 +41,7 @@ void userView::loadMediaTable(const Container<const Media*>& userMedia){
             mediaTable->setItem(row,3,creationDate);
             mediaTable->setItem(row,4,lastChange);
             mediaTable->setItem(row,5,erase);
-            erase->setIcon(QIcon("remove_dark2.png"));
+            erase->setIcon(QIcon("/IMGs/remove_dark2.png"));
             
             row++;
             
@@ -53,6 +53,8 @@ void userView::loadMediaTable(const Container<const Media*>& userMedia){
 
 void userView::loadGraphic(){
     setWindowTitle("Diario utente - Mediary");
+    
+    setFixedSize(700,500);
     
     mainLayout = new QVBoxLayout;
     mainGBox = new QGroupBox;
@@ -81,7 +83,7 @@ void userView::loadGraphic(){
     
     //Set info mediaTable
     QStringList info;
-    info<<""<<"Titolo"<<"Tipo"<<"Data di creazione"<<"Data ultima modifica";
+    info<<""<<"Titolo"<<"Tipo"<<"Data di creazione"<<"Data ultima modifica"<<"X";
     
     mediaTable->setColumnCount(6);  //numero colonne 0-5
     mediaTable->setColumnHidden(0,true);
@@ -89,9 +91,10 @@ void userView::loadGraphic(){
     mediaTable->setAutoScroll(false);
     //Set dimensioni mediaTable
     mediaTable->setMinimumWidth(650);
-    mediaTable->setMinimumHeight(300);
+    mediaTable->setMinimumHeight(250);
+    
     mediaTable->setColumnWidth(0,10);   //Id
-    mediaTable->setColumnWidth(1,180);  //Title
+    mediaTable->setColumnWidth(1,177);  //Title
     mediaTable->setColumnWidth(2,100);  //Type
     mediaTable->setColumnWidth(3,160);  //Creation date
     mediaTable->setColumnWidth(4,160);  //Last change
@@ -147,7 +150,7 @@ void userView::openNewSerieTv(){
         serieTvView= new SerietvView;
         serieTvView->show();
         
-        connect(serieTvView,SIGNAL(signalSave(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int )),this,SLOT(saveSerieTv(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int )));
+        connect(serieTvView,SIGNAL(signalSave(const QString& ,unsigned int ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int )),this,SLOT(saveSerieTv(const QString& ,unsigned int ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int )));
         connect(serieTvView,SIGNAL(signalCancel()),this,SLOT(closeSerieTvView()));
     }
 }
@@ -157,7 +160,7 @@ void userView::openNewFilm(){
         filmView= new FilmView;
         filmView->show();
         
-        connect(filmView,SIGNAL(signalSave(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& )),this,SLOT(saveFilm(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& )));
+        connect(filmView,SIGNAL(signalSave(const QString& ,unsigned int ,const QString& ,const QString& ,const QString& ,const QTime& )),this,SLOT(saveFilm(const QString& ,unsigned int ,const QString& ,const QString& ,const QString& ,const QTime& )));
         connect(filmView,SIGNAL(signalCancel()),this,SLOT(closeFilmView()));
     }
 }
@@ -221,7 +224,7 @@ void userView::closeUserDataView(){
 
 //--------SAVE
 
-void userView::saveSerieTv(const QString& title, const QDate& year, const QString& genre, const QString& descr, unsigned int season, unsigned int numEp, unsigned int lenght){
+void userView::saveSerieTv(const QString& title, unsigned int year, const QString& genre, const QString& descr, unsigned int season, unsigned int numEp, unsigned int lenght){
     emit signalSaveSerieTv(title,year,genre,descr,season,numEp,lenght);
     
     loadMediaTable(user->getMedia()); //Update vista
@@ -230,7 +233,7 @@ void userView::saveSerieTv(const QString& title, const QDate& year, const QStrin
     serieTvView=0;
 }
 
-void userView::saveFilm(const QString& title, const QDate& year, const QString& genre, const QString& plot, const QString& distribution, const QTime& duration){
+void userView::saveFilm(const QString& title, unsigned int year, const QString& genre, const QString& plot, const QString& distribution, const QTime& duration){
     emit signalSaveFilm(title,year,genre,plot,distribution,duration);
     
     loadMediaTable(user->getMedia());
@@ -241,7 +244,7 @@ void userView::saveFilm(const QString& title, const QDate& year, const QString& 
 
 //--------MODIFICATION
 
-void userView::modifySerieTv(const QString& title, const QDate& year, const QString& genre, const QString& descr, unsigned int season, unsigned int numEp, unsigned int lenght, int id){
+void userView::modifySerieTv(const QString& title, unsigned int year, const QString& genre, const QString& descr, unsigned int season, unsigned int numEp, unsigned int lenght, int id){
     emit signalChangeSerieTv(title,year,genre,descr,season,numEp,lenght,id);
     
     loadMediaTable(user->getMedia());
@@ -250,7 +253,7 @@ void userView::modifySerieTv(const QString& title, const QDate& year, const QStr
     serieTvView=0;
 }
 
-void userView::modifyFilm(const QString& title, const QDate& year, const QString& genre, const QString& plot, const QString& distribution, const QTime& duration, int id){
+void userView::modifyFilm(const QString& title, unsigned int year, const QString& genre, const QString& plot, const QString& distribution, const QTime& duration, int id){
     emit signalChangeFilm(title,year,genre,plot,distribution,duration,id);
     
     loadMediaTable(user->getMedia());
@@ -290,7 +293,7 @@ void userView::optionMediaTable(int row, int c){
         serieTvView= new SerietvView(dynamic_cast<const SerieTV*>(ptm));
         serieTvView->show();
         
-        connect(serieTvView,SIGNAL(signalChange(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int ,int )),this,SLOT(modifySerieTv(const QString& ,const QDate& ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int ,int )));
+        connect(serieTvView,SIGNAL(signalChange(const QString& ,unsigned int ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int ,int )),this,SLOT(modifySerieTv(const QString& ,unsigned int ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int ,int )));
         connect(serieTvView,SIGNAL(signalCancel()),this,SLOT(closeSerieTvView()));
         
     }
@@ -300,7 +303,7 @@ void userView::optionMediaTable(int row, int c){
         filmView= new FilmView(dynamic_cast<const Film*>(ptm));
         filmView->show();
         
-        connect(filmView,SIGNAL(signalChange(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& ,int )),this,SLOT(modifyFilm(const QString& ,const QDate& ,const QString& ,const QString& ,const QString& ,const QTime& ,int )));
+        connect(filmView,SIGNAL(signalChange(const QString& ,unsigned int ,const QString& ,const QString& ,const QString& ,const QTime& ,int )),this,SLOT(modifyFilm(const QString& ,unsigned int ,const QString& ,const QString& ,const QString& ,const QTime& ,int )));
         connect(filmView,SIGNAL(signalCancel()),this,SLOT(closeFilmView()));
         
     }

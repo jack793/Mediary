@@ -72,7 +72,7 @@ bool User::verifyMedia(const QString& t, const QDateTime& cd) const{
     return false;
 }
 
-void User::modifySerieTV(const QString& t, const QDate& y, const QString& g, const QString& d, unsigned int seas, unsigned int nep, unsigned int l, int id){
+void User::modifySerieTV(const QString& t, unsigned int y, const QString& g, const QString& d, unsigned int seas, unsigned int nep, unsigned int l, int id){
     SerieTV* s=const_cast<SerieTV*>(dynamic_cast<const SerieTV*>(findMedia(id)));
     if(s){
         s->setTitle(t);
@@ -86,7 +86,7 @@ void User::modifySerieTV(const QString& t, const QDate& y, const QString& g, con
     //non trovata
 }
 
-void User::modifyFilm(const QString& t, const QDate& y, const QString& g, const QString& p, const QString& distr, const QTime& time, int id){
+void User::modifyFilm(const QString& t, unsigned int y, const QString& g, const QString& p, const QString& distr, const QTime& time, int id){
     Film* f=const_cast<Film*>(dynamic_cast<const Film*>(findMedia(id)));
     if(f){
         f->setTitle(t);
@@ -118,7 +118,7 @@ void User::loadMedia()
     
     //---media----
     QString title;
-    QDate year;
+    unsigned int year;
     QString genre;
     QDateTime creationDate;
     QDateTime changeDate;
@@ -150,7 +150,7 @@ void User::loadMedia()
             else if(xmlReader.name()=="titolo")
                 title=xmlReader.readElementText();
             else if(xmlReader.name()=="anno")
-                year=QDate::fromString(xmlReader.readElementText());
+                year=(xmlReader.readElementText()).toUInt();
             else if(xmlReader.name()=="genere")
                 genre=xmlReader.readElementText();
             else if(xmlReader.name()=="dataCreazione")

@@ -157,36 +157,158 @@ Vediamo nelle sottosezioni seguenti le tre componenti e le classi che li compong
 
 	\subsection{Model}
 	
-	La \textbf{gerarchia G} che forma il modello dati del progetto è così rappresentata:\\\\\\
+	Di seguito tutte le entità che vanno a formare la parte del \emph{MODEL} del progetto.
 	
-	\begin{figure}[!h]
-	\centering
-	\includegraphics[angle=0,scale=.45]{G.png}\\
-	\caption{Gerarchia}
-	\label{fig:G}
-	%\hspace{1in}
-	\end{figure}
-
+		\subsubsection{Gerarchia polimorfa}
 	
-
-
+		La \textbf{gerarchia G polimorfa} che contribuisce a formare il modello dati del progetto è composta dalle classi:
+	
+		\begin{itemize}
+	
+			\item \textbf{Media}: E' la \underline{classe base astratta} della gerarchia polimorfa contenente i campi dati \texttt{title, year, 
+			creationDate }e \texttt{changeDate} comuni a tutte la classi derivate.
+			All'interno è dichiarato il metodo \textit{virtuale puro} 
+			\begin{CPP}
+			virtual void saveMedia(QXmlStreamWriter& xmlWriter) const=0;
+			\end{CPP}		 
+			per eseguire il \textbf{salvataggio POLIMORFO dei media} nel mediaDatabase.xml .
+			ed il metodo \textit{virtuale puro}
+			\begin{CPP}
+			virtual QString getType() const=0;
+			\end{CPP}
+			che \textbf{ritorna il tipo POLIMORFO del media} quando si carica la tabella per visualizzarli tutti nella view apposita (descrizione più avanti nella View).
+			\item \textbf{SerieTV}: E' una \underline{classe concreta derivata pubblicamente} dalla base perché implementa il metodo virtuale puro della base.\\
+		 	Contiene i campi dati privati aggiuntivi caratteristici di una serieTv \texttt{descriptionEp, season, numberEp, lenghtEp} rappresentanti in ordine 
+			descrizione, numero della stagione dell'ep., numero episodio e lunghezza in minuti.
+		 	\item \textbf{Film}: E' una \underline{classe concreta derivata pubblicamente} dalla base perché implementa il metodo virtuale puro della base.\\
+		 	Contiene i campi dati privati aggiuntivi caratteristici di un film \texttt{plot, distribution, duration} rispettivamente trama, casa di produr./distribuzione e 
+			durata in ore:minuti del film.
+	
+		\end{itemize}
+	
+		\subsubsection{Il contenitore}
+	
+		\textbf{Container.h} è una \underline{classe esterna alla gerarchia G} che contiene la \textbf{definizione completa di un opportuno contenitore C}, con relativi 
+		\textbf{iteratori}, che permettono inserimenti, rimozioni e modifiche.\\\\
+		Il contenitore C è dal punto di vista progettuale un \textbf{template di classe} (perciò definito completamente in un unico file header) con due classi 
+		\textbf{Nodo} e \textbf{Smartp} annidate ed un unico campo dati \texttt{Smartp first} nella sua \underline{parte privata.}\\\\
+		Smartp ha come unico campo dati un \texttt{Nodo* punt} mentre la classe Nodo ha 3 campi dati \texttt{T info; Smartp next; int riferimenti}.\\\\
+		Nella parte pubblica di Container è definita la classe annidata \emph{Iterator} con un campo dati privato \texttt{Smartp punt} per accedere agli elementi nel 
+		contenitore.\\
+		Le classi \emph{Container} ed \emph{Iterator} sono infatti \underline{reciprocamente amiche}.\\\\
+		\emph{Iterator} \textbf{ridefinisce gli operatori} di incremento (post e prefisso), dereferenziazione, uguaglianza e disuguaglianza per modificare gli elementi, 
+		mentre \emph{Container} ha i vari metodi di push e pop per manipolare la lista e begin(), end() e la ridefinizione dell'operatore di indicizzazione che usano 
+		Iterator.
+		
+		\subsubsection{Classe User}
+		
+		E' una \underline{classe concreta esterna a G} che rappresenta l'entità utente per accedere all'applicazione.
+		
+		I suoi campi dati sono: \texttt{username, password, name, surname} ed infine un c.d. \texttt{Container<const Media*> mediaDatabase;} che rappresenta il 
+		contenitore di tutti i media appartenenti allo \emph{User}.
+		
+		\subsubsection{Classe Database}
+		
+		E' una \underline{classe concreta esterna a G} che rappresenta il database degli utenti di Mediary ed ha infatti come suo unico campo dati privato il campo
+		\texttt{Container<const User*> userDatabase;} .
+	
+		\begin{figure}
+			\centering
+			\includegraphics[angle=0,scale=.45]{Model.png}\\
+			\caption{Entità che compongono il Model}
+			\label{fig:Model}
+		\end{figure}\vspace{20pt}
 
 
 \newpage
+	
+	
+	\subsection{View}
+	
+	L'intera \emph{VIEW} è rappresentata da una \textbf{gerarchia polimorfa} che fa capo alla \underline{classe base astratta} \textbf{MainView} .
+	Essa deriva pubblicamente a sua volta dalla cl.astratta di Qt \emph{QWidget} .\\\\
+	In \emph{MainView} è definito il metodo \textit{virtuale puro} 
+	\begin{CPP}
+		virtual void loadGraphic() =0;
+	\end{CPP}
+	che permette di \textbf{caricare la view POLIMORFA} corretta in base al tipo dinamico del puntatore della classe derivata.
+	
+		\subsubsection{Classi e gerarchia }
 
-\section{View}
+	Le classi derivate da \emph{MainView} sono:
+	\begin{itemize}
+		\item \textbf{loginView}: E' la classe che si preoccupa di costruire la view di start all'avvio dell'applicazione.
+		\item \textbf{userView}: E' la classe che costruisce la view per uno User. Ci si accede una volta eseguita correttamente l'autenticazione in loginView.
+		\item \textbf{serietvView}: E' la classe che costruisce la view di una SerieTV. Viene creata a partire dalla \emph{userView} quando si vuole creare o modificare 
+		una SerieTV.
+		\item \textbf{filmView}: E' la classe che costruisce la view di un Film. Viene creata a partire dalla \emph{userView} quando si vuole creare o modificare 
+		un Film.
+		\item \textbf{userDataView}: E' la classe che costruisce la view per vedere/modificare i dati di uno User. Vi si accede sempre dalla \emph{userView} quando
+		si clicca nel bottone dedicato.
+		\item \textbf{registrationView}: E' la classe che costruisce la view per la registrazione di un nuovo User.  In alternativa al login cliccando nel bottone per la 
+		registrazione si accede ad essa.
+		\item \textbf{dialogMessage}: E' una classe per la rappresentazione di una finestra che da una view di dialogo con l'utente, composta da un titolo, un 
+		messaggio ed un bottone che se cliccato è collegato alla chiusura della finestra stessa. \emph{dialogMessage} deriva pubblicamente dalla classe di Qt 
+		\emph{QDialog} .
+	\end{itemize}
+		
+		\newpage
+		
+		
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[angle=0,scale=.45]{View.png}\\
+			\caption{Gerarchia della View}
+			\label{fig:View}
+		\end{figure}
+	
+		\subsubsection{Presentazione}
+		
+		All'avvio di Mediary si apre la view di login; in alto a destra è presente il bottone \textit{esci} per chiudere il programma.\\
+		Nel caso si eseguisse con successo la procedura di l'autenticazione cliccando nel login button si verrebbe mandati alla finestra personale con la possibilità di 
+		aggiungere, modificare oppure eliminare media.
 
+		Nel mezzo della \emph{userView} è presente una tabella che permette di visualizzare, in ordine di inserimento dal più al meno recente, i media divisi per 
+		serieTv, film oppure tutti i tipi (l'opzione è selezionabile tramite una comboBox).
 
-\begin{comment}
-In alto a destra è invece presente il bottone \textit{esci} per chiudere il programma.\\\\
-Nel caso si eseguisse la procedura di l'autenticazione si verrebbe mandati alla finestra personale con la possibilità di aggiungere, modificare oppure eliminare media.
+		E' possibile modificare un elemento cliccando al di sopra \textbf{titolo} del media che si intende manipolare, mentre per cancellarlo è necessario cliccare sopra 
+		l'icona del cestino nell'ultima colonna della tabella corrispondente alla riga del media (si aprirà un avviso per la conferma).
 
-Nel mezzo è presente una tabella che permette di visualizzare, in ordine di inserimento dal più al meno recente, i media divisi per serieTv, film oppure tutti i tipi (l'opzione è selezionalibile tramite una comboBox).
+		La stessa finestra offre inoltre la possibilità di modificare i propri dati personali cliccando nel bottone ''Gestisci dati utente''.
 
-E' possibile modificare un elemento cliccando al di sopra \textbf{titolo} del media che si intende manipolare, mentre per cancellarlo è necessario cliccare sopra l'icona del cestino nell'ultima colonna della tabella corrispondente alla riga del media (si aprirà un avviso per la conferma).
+		Ogni finestra per la manipolazione dei dati del model ha i suoi controlli di consistenza dei dati.\\
+		Infine, nella parte più bassa della view utente c'è un bottone per il logout che riporta alla \emph{loginView} con la possibilità di entrare in quella per la 
+		registrazione.
+		
+		\begin{comment}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[angle=0,scale=.45]{View.png}\\
+			\caption{Gerarchia della View}
+			\label{fig:View}
+		\end{figure}
+		\end{comment}
+	
+	\newpage
+	
+		\subsection{Controller}
+		
+		Il \emph{CONTROLLER} è composto da sole due classi che però riescono a gestire ordinatamente tutte le funzioni e le view del programma:
+		
+			\subsubsection{mediaryController}
+			
+			Nel \emph{main} del programma si crea subito un oggetto \texttt{controller} di tipo \emph{mediaryController} che costruisce subito la 
+			\emph{loginView}.
+			Nel caso in cui l'utente effettui il login viene chiamata la funzione \texttt{verifyLogin(..)} che in caso positivo permette l'apertura della \emph{userView}
+			personale passando la gestione allo \emph{userController}.\\\\
+			In caso differente chiama la funzione \texttt{openRegistrationView()} che costruisce la view di registrazione.
+			
+			\subsubsection{userController}
+			
+			Questa classe connette le restanti funzionalità che sono accessibili una volta entrati nella view personale, ovvero quelle di \textbf{creazione, modifica, 
+			cancellazione dei media, la gestione dei propri dati ed il logout.}
+			
 
-La stessa finestra offre inoltre la possibilità di modificare i propri dati personali cliccando nel bottone 
-\end{comment}
 
 
 

@@ -2,7 +2,6 @@
 #define MEDIA_H
 
 #include<QString>
-#include<QDate>
 #include<QDateTime>
 
 #include<QXmlStreamWriter>
@@ -14,20 +13,20 @@ private:
     int id; //id univoco del media autoincrementante tramite il codMedia quando viene costruito
     
     QString title;
-    QDate year;
+    unsigned int year;
     QString genre;
     
     QDateTime creationDate; //data creazione
     QDateTime changeDate;   //data ultima modifica
     
 public:
-    Media(const QString& ="Unkwnown", const QDate& =QDate(1970,1,1) , const QString& ="Unkwnown");
+    Media(const QString& ="Unkwnown", unsigned int y=2016, const QString& ="Unkwnown");
     //creationDate e changeDate vengono settate correttamente tramite un funzione apposita
     
     virtual ~Media();   //GERARCHIA POLIMORFA
     
     const QString& getTitle() const;
-    const QDate& getYear() const;
+    unsigned int getYear() const;
     const QString& getGenre() const;
     const QDateTime& getCreateDate() const;
     QDateTime getLastChange() const;
@@ -36,7 +35,7 @@ public:
     virtual QString getType() const=0; // PURE VIRTUAL // ritorna il tipo polimorfo di media
     
     void setTitle(const QString& );
-    void setYear(const QDate& );
+    void setYear(unsigned int );
     void setGenre(const QString& );
     void setCreationDate(const QDateTime& );
     void setChangeDate(const QDateTime& );

@@ -19,6 +19,8 @@ void userDataView::closeEvent(QCloseEvent *){
 void userDataView::loadGraphic(){
     setWindowTitle("Gestione dati personali - Mediary");
     
+    setFixedWidth(270);
+    
     QFont usn("Verdana", 15);
     
     mainLayout= new QVBoxLayout;

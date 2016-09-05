@@ -2,7 +2,7 @@
 
 //-------------------------COSTRUTTORI------------------------
 
-SerieTV::SerieTV(const QString &t, const QDate &y, const QString &g, const QString &d, unsigned int s, unsigned int ep, unsigned int l): 
+SerieTV::SerieTV(const QString &t, unsigned int y, const QString &g, const QString &d, unsigned int s, unsigned int ep, unsigned int l): 
         Media(t,y,g), descriptionEp(d), season(s), numberEp(ep), lenghtEp(l) {}
 
 //-------------------------GET------------------------
@@ -24,7 +24,7 @@ void SerieTV::setLeghtEp(unsigned int l) {lenghtEp=l; this->updateChangeDate();}
 void SerieTV::saveMedia(QXmlStreamWriter& xmlWriter) const{
     xmlWriter.writeStartElement("serieTV"); //<SerieTV>
         xmlWriter.writeTextElement("titolo",getTitle());
-        xmlWriter.writeTextElement("anno",getYear().toString());
+        xmlWriter.writeTextElement("anno",QString::number(getYear()));
         xmlWriter.writeTextElement("genere",getGenre());
         xmlWriter.writeTextElement("dataCreazione",getCreateDate().toString());
         xmlWriter.writeTextElement("ultimaModifica",getLastChange().toString());        
