@@ -49,6 +49,7 @@ void registrationView::loadGraphic(){
     sexF=new QRadioButton("Femmina");
     sexButtonsLay->addWidget(sexM);
     sexButtonsLay->addWidget(sexF);
+    
     QPushButton* regButton= new QPushButton("Registrati");
     QPushButton* undoRegButton= new QPushButton("Indietro");
     

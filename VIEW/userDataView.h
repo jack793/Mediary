@@ -13,6 +13,7 @@
 #include "mainView.h"
 #include "dialogMessage.h"
 
+#include "MODEL/Database.h"
 #include "MODEL/User.h"
 
 class userDataView: public MainView
@@ -34,6 +35,8 @@ private:
     //Output messages
     DialogMessage* dialMessage;
     
+    //Dati dal model 
+    Database* userDB;
     const User* user;
     
 public:

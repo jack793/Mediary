@@ -54,6 +54,11 @@ void userDataView::loadGraphic(){
     QPushButton* confirmButton= new QPushButton("Conferma modifiche");
     QPushButton* cancelButton= new QPushButton("Annulla modifiche");
     
+    QLabel* welcomeData=new QLabel("Benvenuto nella sezione dati personali. \nQui è possibile modificare i propri dati \nper l'accesso a Mediary.\n\nRicordati di compilare tutti i campi");
+    
+    mainLayout->addWidget(welcomeData,0,Qt::AlignLeft);
+    mainLayout->addSpacing(30);
+    
     mainLayout->addWidget(usernameLabel);
     mainLayout->addWidget(usernameEdit);
     mainLayout->addWidget(nameLabel);
@@ -78,6 +83,7 @@ void userDataView::loadGraphic(){
 
 void userDataView::confirmChanges(){
    
+    userDB= new Database;
     QString sex="";
     
     if(sexM->isChecked())
@@ -85,7 +91,12 @@ void userDataView::confirmChanges(){
     else if(sexF->isChecked())
         sex="Femmina";
     
-    if(usernameEdit->text()==""){
+    if(userDB->matchUser(usernameEdit->text())){
+        dialMessage= new DialogMessage("Controllo modifiche","USERNAME già registrato da un altro utente","Cambia");
+        dialMessage->show();
+    }
+    
+    else if(usernameEdit->text()==""){
         dialMessage= new DialogMessage("Controllo modifiche","Riempire il campo USERNAME","Ok");
         dialMessage->show();
     }
