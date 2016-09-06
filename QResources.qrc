@@ -12,5 +12,6 @@
         <file>VIEW/IMGs/warning_dark2.png</file>
         <file>VIEW/IMGs/warning_light.png</file>
         <file>VIEW/IMGs/warning_light2.png</file>
+        <file>VIEW/IMGs/Wall.png</file>
     </qresource>
 </RCC>

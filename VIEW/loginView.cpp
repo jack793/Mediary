@@ -21,6 +21,8 @@ QLineEdit* loginView::getPsw() const {return passwordEdit;}
 void loginView::loadGraphic(){
     setWindowTitle("Login - Mediary");
     
+    this->setWindowIcon(QIcon(":VIEW/IMGs/Wall.png"));
+    
     setFixedSize(800,500);
     
     centerWidget();
@@ -33,6 +35,10 @@ void loginView::loadGraphic(){
     QLabel* WelcomeMessage= new QLabel("Benvenuto in Mediary");
     WelcomeMessage->setStyleSheet("color: #318bfc");
     WelcomeMessage->setFont(QFont("Aaargh",45,QFont::Bold));
+    
+    QLabel* WelcomeLabel= new QLabel("Il tuo personale diario multimediale");
+    WelcomeLabel->setStyleSheet("color: #318bfc");
+    WelcomeLabel->setFont(QFont("Aaargh",15,QFont::Bold));
        
     usernameEdit= new QLineEdit;
     usernameEdit->setPlaceholderText("Inserisci qui il tuo username");
@@ -57,9 +63,10 @@ void loginView::loadGraphic(){
     connect(quit,SIGNAL(clicked()),this,SLOT(close()));
     
     boxLayout->addWidget(quit,0,Qt::AlignRight);
-    boxLayout->addSpacing(200);
+   
     boxLayout->addWidget(WelcomeMessage,0,Qt::AlignCenter);
-    boxLayout->addSpacing(150);
+    boxLayout->addWidget(WelcomeLabel,0,Qt::AlignCenter);
+    boxLayout->addSpacing(300);
     boxLayout->addWidget(usernameLabel);
     boxLayout->addWidget(usernameEdit,0,Qt::AlignCenter);
     boxLayout->addWidget(passwordLabel);

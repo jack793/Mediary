@@ -64,7 +64,7 @@ tabsize=2, stepnumber=10, numbersep=5pt, breaklines=true, frame=single, rulecolo
 {\lstset{basicstyle=\scriptstyle \ttfamily, columns=fullflexible,
 keywordstyle=\color{blue}\bfseries, ndkeywords={content,=,charset=, id=, width=, height=},	 ndkeywordstyle=\color{editorGreen}\bfseries , numberstyle=\color{red} commentstyle=\color{red}, showstringspaces=false, stringstyle=\color{editorGreen},
 language=C++, basicstyle=\small,
-numbers=left, numberstyle=\tiny,
+%numbers=left, numberstyle=\tiny,
 tabsize=2, stepnumber=10, numbersep=5pt, breaklines=true, frame=single, rulecolor=\color{black}, #1}}{}
 
 
@@ -104,9 +104,7 @@ tabsize=2, stepnumber=10, numbersep=5pt, breaklines=true, frame=single, rulecolo
 
 \tableofcontents \label{sec:index} %CREA INDICE LINKABILE
 
-
 \newpage
-
 
 \section{Scopo del progetto}
 
@@ -136,7 +134,7 @@ Il progetto è semplice ma allo stesso tempo funzionale, diretto e comprensibile
 
 \section{Schema Logico}	
 
-Il \textit{Design Pattern} utilizzato per la progettazione è il classico pattern \textbf{MVC} separando quindi il \textit{Model} dalla \textit{View} con l'ausilio due classi che formano il \textit{Controller}.
+Il \textit{Design Pattern} utilizzato per la progettazione è il modello \textbf{MVC}, che separa il \textit{Model} dalla \textit{View} con l'ausilio di due classi che formano il \textit{Controller}.
 
 Vediamo nelle sottosezioni seguenti le tre componenti e le classi che li compongono.\\\\\\
 
@@ -149,7 +147,7 @@ Vediamo nelle sottosezioni seguenti le tre componenti e le classi che li compong
 \begin{figure}[!h]
 \centering
 \includegraphics[angle=0,scale=.45]{MVC.png}\\
-\caption{Interazione nel pattern MVC}
+\caption{Modularità del pattern MVC}
 \label{fig:MVC}
 %\hspace{1in}
 \end{figure}
@@ -214,15 +212,17 @@ Vediamo nelle sottosezioni seguenti le tre componenti e le classi che li compong
 		E' una \underline{classe concreta esterna a G} che rappresenta il database degli utenti di Mediary ed ha infatti come suo unico campo dati privato il campo
 		\texttt{Container<const User*> userDatabase;} .
 	
+	
 		\begin{figure}
 			\centering
-			\includegraphics[angle=0,scale=.45]{Model.png}\\
+			\includegraphics[angle=0,scale=.60]{Model.png}\\
 			\caption{Entità che compongono il Model}
 			\label{fig:Model}
-		\end{figure}\vspace{20pt}
-
-
-\newpage
+		\end{figure}
+		
+	\newpage
+	\ \vspace{25pt}
+	
 	
 	
 	\subsection{View}
@@ -259,7 +259,7 @@ Vediamo nelle sottosezioni seguenti le tre componenti e le classi che li compong
 		
 		\begin{figure}[!h]
 			\centering
-			\includegraphics[angle=0,scale=.45]{View.png}\\
+			\includegraphics[angle=0,scale=.50]{View.png}\\
 			\caption{Gerarchia della View}
 			\label{fig:View}
 		\end{figure}
@@ -282,14 +282,14 @@ Vediamo nelle sottosezioni seguenti le tre componenti e le classi che li compong
 		Infine, nella parte più bassa della view utente c'è un bottone per il logout che riporta alla \emph{loginView} con la possibilità di entrare in quella per la 
 		registrazione.
 		
-		\begin{comment}
+
 		\begin{figure}[!h]
 			\centering
-			\includegraphics[angle=0,scale=.45]{View.png}\\
-			\caption{Gerarchia della View}
-			\label{fig:View}
+			\includegraphics[angle=0,scale=.45]{Welcome.png}\\
+			\caption{Start app}
+			\label{fig:Welcome}
 		\end{figure}
-		\end{comment}
+
 	
 	\newpage
 	
@@ -312,16 +312,68 @@ Vediamo nelle sottosezioni seguenti le tre componenti e le classi che li compong
 			
 \section{Database}
 
+
+La parte che compone il database dell'applicazione è stata realizzata in XML con l'utilizzo di due file: \underline{userDatabase.xml} per l'archiviazione degli utenti e 
+\underline{ \textbf{nomeutente}mediaDatabase.xml} per l'archiviazione dei media di ogni utente.\\
+Come fa intuire il secondo file antepone un nome differente per ogni database dei media per uno specifico utente.
+
+	\subsection{Gestione}
+	
+	A livello procedurale le classi che si occupano di gestire il database sono due, \textbf{Database e User}. Di seguito la descrizione del processo:\\\\
+	Si parte dalla classe \textbf{Database} che all'esecuzione dell'applicazione, costruendo un oggetto \emph{Database} (a suo volta nel costruito dal controller iniziale	\emph{mediaryController}) chiama la funzione \texttt{loadUserDb()} che carica tutti gli utenti presenti nel file \emph{userDatabase.xml} .\\
+	Una volta eseguito correttamente il login viene caricato il database dei media di quell'utente con la chiamata dello \emph{userController} della funzione 
+	\texttt{loadMedia()} della classe \textbf{User} leggendo dal file \emph{mediaDatabase.xml}.\\
+	Al contrario, alla chiusura della vista utente tramite logout viene chiamata la funzione di salvataggio dei media personali \texttt{writeMedia() const} che al suo interno 
+	esegue la chiamata \textbf{polimorfa} di \texttt{saveMedia(xmlWriter\& )}, già citata precedentemente, chiamando correttamente quella adatta al tipo dinamico del 
+	puntatore al media nel container e scrivendo in \emph{mediaDatabase.xml} i media aggiornati.\\
+	Infine alla chiusura dell'applicazione, la funzione \texttt{saveUserDb()} della classe \emph{Database} chiama al suo interno la funzione di scrittura 
+	\texttt{writeUser(xmlWriter\& )} della classe \emph{User} per ogni utente, scrivendo cosi i aggiornati in \emph{userDatabase.xml}
+	
+\section{Estensibilità}
+
+Per quanto riguarda l'estensibilità e l'evolvibilità del programma, è disponibile ovviamente sia l'aggiunta orizzontale di altre classi derivate dalla base astratta \emph{Media}  (per esempio classe \emph{Documentari} oppure \emph{Sport}), sia quella verticale ampliando le classe derivate con sottoclassi più specifiche (come per esempio \emph{Avventura o Fantascienza} dalla cl. Film) .
+Sarebbe inoltre possibile e sicuramente più incisivo dal punto di vista di espansione del progetto e delle sue funzionalità, aggiungere altre categorie di utenti (per esempio a pagamento e free ecc) creando una gerarchia polimorfa come per i media e posizionando come base astratta di esse la classe esistente \emph{User}.
+Ciò estenderebbe le funzionalità per tipo di utente ed evolverebbe il codice rendendolo polimorfo in alcune sue parti, come per esempio il salvataggio degli utenti tramite la funzione già descritta \texttt{writeUser(xmlWriter\& )}, come avviene già per i media.
+
+\begin{CPP}
+for(Container<const User*>::Iterator it=userDatabase.begin(); it!=userDatabase.end(); ++it)
+	userDatabase[it]->writeUser(xmlWriter);	//PRONTO PER ESTENSIBILITA' POLIMORFA
+\end{CPP}
+
 \newpage
 
-I dati reali 
+\section{Informazioni utili}\vspace{10pt}
 
+
+	\subsection{Comincia subito}
+	Per provare subito ad accedere tramite login è disponibile il seguente utente già registrato all'app:
+
+	\begin{itemize}
+	\item \textbf{username}: jacky
+	\item \textbf{password}: jack93
+	\end{itemize}\vspace{20pt}
+	
+	
+	\subsection{Ambiente di sviluppo}
+
+	\def\arraystretch{1.7}%
+	\begin{tabular}{|l|c|}
+	\hline
+	\textbf{Versione Qt} & {5.3.2}  \\
+	\hline
+	\textbf{Ambiente di sviluppo} & Qt Creator 3.2.1 (opensource) \\
+	\hline
+	\textbf{Versione compilatore} & Clang 5.0 (Apple), 64 bit \\
+	\hline
+	\textbf{SO della macchina} & OS X El Capitan versione 10.11.6 \\
+	\hline
+	\end{tabular}
+	
 
 
 
 
 %\selectlanguage{italian}	%inserirlo causerebbe errore in compilazione per lettere accentate-->non risolto
-
 
 	
 %per inserire un'immagine:
@@ -336,19 +388,6 @@ I dati reali
 %\caption{schema E-R}
 %\end{figure}
 %\end{landscape}
-
-
-
-%inserire codice c++:
-
-%\begin{CPP}
-%#include <iostream>
-%\end{CPP}
-
-
-
-
-
 
 
 \end{document}

@@ -33,7 +33,7 @@ void userView::loadMediaTable(const Container<const Media*>& userMedia){
             type->setFlags(Qt::NoItemFlags);
             creationDate->setFlags(Qt::NoItemFlags);
             lastChange->setFlags(Qt::NoItemFlags);
-            erase->setFlags(Qt::NoItemFlags);
+            erase->setFlags(Qt::ItemIsEnabled);
             
             mediaTable->setItem(row,0,id);
             mediaTable->setItem(row,1,title);
@@ -41,7 +41,7 @@ void userView::loadMediaTable(const Container<const Media*>& userMedia){
             mediaTable->setItem(row,3,creationDate);
             mediaTable->setItem(row,4,lastChange);
             mediaTable->setItem(row,5,erase);
-            erase->setIcon(QIcon(":VIEW/IMGs/remove_dark2.png"));
+            erase->setIcon(QIcon(":VIEW/IMGs/remove_dark.png"));
             
             row++;
             

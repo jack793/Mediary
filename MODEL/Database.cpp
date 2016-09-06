@@ -101,7 +101,7 @@ void Database::saveUserDb(){
     
     if(!userDatabase.isEmpty())
         for(Container<const User*>::Iterator it=userDatabase.begin(); it!=userDatabase.end(); ++it)
-            userDatabase[it]->writeUser(xmlWriter); //PRONTO PER ESTENSIBILITA'
+            userDatabase[it]->writeUser(xmlWriter);     //PRONTO PER ESTENSIBILITA' POLIMORFA
     xmlWriter.writeEndDocument();
     
     std::cout<<"Users database saved!"<<std::endl;

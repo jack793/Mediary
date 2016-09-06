@@ -5,13 +5,13 @@
         <password>fra95</password>
         <nome>Francesca</nome>
         <cognome>Rossi</cognome>
-        <sesso>1</sesso>
+        <sesso>Femmina</sesso>
     </utente>
     <utente>
         <username>jacky</username>
         <password>jack93</password>
         <nome>Giacomo</nome>
         <cognome>Zecchin</cognome>
-        <sesso>1</sesso>
+        <sesso>Maschio</sesso>
     </utente>
 </database>

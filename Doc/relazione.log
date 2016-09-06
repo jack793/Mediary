@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.7)  5 SEP 2016 15:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.7)  6 SEP 2016 18:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -662,7 +662,7 @@ Package lastpage Info: Please have a look at the pageslts package at
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<LOGO.png, id=72, 953.5625pt x 230.8625pt>
+<LOGO.png, id=92, 953.5625pt x 230.8625pt>
 File: LOGO.png Graphic file (type png)
  <use LOGO.png>
 Package pdftex.def Info: LOGO.png used on input line 80.
@@ -689,54 +689,54 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 png>]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 115.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 113.
 
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--118
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 113--118
+Underfull \hbox (badness 10000) in paragraph at lines 111--116
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
+Underfull \hbox (badness 10000) in paragraph at lines 111--116
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
  []
 
-<MVC.png, id=103, 304.13625pt x 324.21124pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
+
+ []
+
+<MVC.png, id=128, 304.13625pt x 324.21124pt>
 File: MVC.png Graphic file (type png)
  <use MVC.png>
-Package pdftex.def Info: MVC.png used on input line 151.
+Package pdftex.def Info: MVC.png used on input line 149.
 (pdftex.def)             Requested size: 304.1355pt x 324.21045pt.
 
-<leftfoot.png, id=105, 953.5625pt x 230.8625pt>
+<leftfoot.png, id=130, 953.5625pt x 230.8625pt>
 File: leftfoot.png Graphic file (type png)
  <use leftfoot.png>
-Package pdftex.def Info: leftfoot.png used on input line 158.
+Package pdftex.def Info: leftfoot.png used on input line 156.
 (pdftex.def)             Requested size: 57.21127pt x 13.85115pt.
  [2 <./MVC.png> <./leftfoot.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmss on input line 170
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 168
 .
-LaTeX Font Info:    No file OMScmss.fd. on input line 170.
+LaTeX Font Info:    No file OMScmss.fd. on input line 168.
 
 
 LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbullet' on input line 170.
+(Font)              for symbol `textbullet' on input line 168.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2014/09/06 1.5e listings language file
@@ -747,40 +747,40 @@ File: lstlang1.sty 2014/09/06 1.5e listings language file
 (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
 )
-Overfull \hbox (11.44023pt too wide) in paragraph at lines 170--173
+Overfull \hbox (11.44023pt too wide) in paragraph at lines 168--171
 []\OT1/cmss/bx/n/10 Media\OT1/cmss/m/n/10 : E' la $[]$ del-la ge-rar-chia po-li
 -mor-fa con-te-nen-te i cam-pi da-ti \OT1/cmtt/m/n/10 title, year, creationDate
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--204
+Underfull \hbox (badness 10000) in paragraph at lines 191--202
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--204
+Underfull \hbox (badness 10000) in paragraph at lines 191--202
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--204
+Underfull \hbox (badness 10000) in paragraph at lines 191--202
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--204
+Underfull \hbox (badness 10000) in paragraph at lines 191--202
 
  []
 
-<Model.png, id=116, 489.83pt x 280.04625pt>
+<Model.png, id=141, 489.83pt x 280.04625pt>
 File: Model.png Graphic file (type png)
  <use Model.png>
-Package pdftex.def Info: Model.png used on input line 219.
+Package pdftex.def Info: Model.png used on input line 218.
 (pdftex.def)             Requested size: 489.8288pt x 280.04555pt.
 File: leftfoot.png Graphic file (type png)
  <use leftfoot.png>
-Package pdftex.def Info: leftfoot.png used on input line 225.
+Package pdftex.def Info: leftfoot.png used on input line 223.
 (pdftex.def)             Requested size: 57.21127pt x 13.85115pt.
 
 [3]
@@ -793,65 +793,111 @@ File: leftfoot.png Graphic file (type png)
 Package pdftex.def Info: leftfoot.png used on input line 257.
 (pdftex.def)             Requested size: 57.21127pt x 13.85115pt.
  [4 <./Model.png>]
-<View.png, id=141, 597.23125pt x 369.38pt>
+<View.png, id=166, 597.23125pt x 369.38pt>
 File: View.png Graphic file (type png)
  <use View.png>
 Package pdftex.def Info: View.png used on input line 262.
 (pdftex.def)             Requested size: 597.22978pt x 369.37909pt.
+
+<Welcome.png, id=167, 825.0825pt x 545.03625pt>
+File: Welcome.png Graphic file (type png)
+ <use Welcome.png>
+Package pdftex.def Info: Welcome.png used on input line 288.
+(pdftex.def)             Requested size: 825.08049pt x 545.03493pt.
 File: leftfoot.png Graphic file (type png)
- <use leftfoot.png>
+
+<use leftfoot.png>
 Package pdftex.def Info: leftfoot.png used on input line 294.
 (pdftex.def)             Requested size: 57.21127pt x 13.85115pt.
-
-[5 <./View.png>]
+ [5 <./View.png> <./Welcome.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 302--307
 
  []
 
+
+Overfull \hbox (0.59422pt too wide) in paragraph at lines 316--319
+\OT1/cmss/m/n/10 La par-te che com-po-ne il da-ta-ba-se del-l'ap-pli-ca-zio-ne 
+^^Re sta-ta rea-liz-za-ta in XML con l'u-ti-liz-zo di due fi-le: $[]$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 322--331
+
+ []
+
+LaTeX Font Info:    Try loading font information for OML+cmss on input line 339
+.
+LaTeX Font Info:    No file OMLcmss.fd. on input line 339.
+
+LaTeX Font Warning: Font shape `OML/cmss/m/n' undefined
+(Font)              using `OML/cmm/m/it' instead
+(Font)              for symbol `textless' on input line 339.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 340.
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <9> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 340.
+
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.04448pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
 File: leftfoot.png Graphic file (type png)
 <use leftfoot.png>
-Package pdftex.def Info: leftfoot.png used on input line 315.
+Package pdftex.def Info: leftfoot.png used on input line 343.
 (pdftex.def)             Requested size: 57.21127pt x 13.85115pt.
  [6] 
 AED: lastpage setting LastPage
 File: leftfoot.png Graphic file (type png)
 <use leftfoot.png>
-Package pdftex.def Info: leftfoot.png used on input line 354.
+Package pdftex.def Info: leftfoot.png used on input line 393.
 (pdftex.def)             Requested size: 57.21127pt x 13.85115pt.
  [7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 354.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 354.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 393.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 393.
  (./relazione.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 354.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 354.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 393.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 393.
 Package rerunfilecheck Info: File `relazione.out' has not changed.
-(rerunfilecheck)             Checksum: CAEFDB7C1960EBC8C11B9B7D20AD5287;1079.
+(rerunfilecheck)             Checksum: 293881DE8F4C6A37FF6BA78A69EA5889;1378.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 9845 strings out of 493089
- 144289 string characters out of 6134842
- 270113 words of memory out of 5000000
- 13165 multiletter control sequences out of 15000+600000
- 10801 words of font info for 38 fonts, out of 8000000 for 9000
+ 9902 strings out of 493089
+ 144981 string characters out of 6134842
+ 276072 words of memory out of 5000000
+ 13206 multiletter control sequences out of 15000+600000
+ 11770 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,15n,59p,774b,1384s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on relazione.pdf (7 pages, 442687 bytes).
+ 44i,15n,59p,774b,1399s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{page.8} has been referenced but does not exist, r
+eplaced by a fixed one
+
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on relazione.pdf (7 pages, 532032 bytes).
 PDF statistics:
- 202 PDF objects out of 1000 (max. 8388607)
- 172 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
- 162 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 247 PDF objects out of 1000 (max. 8388607)
+ 212 compressed objects within 3 object streams
+ 46 named destinations out of 1000 (max. 500000)
+ 207 words of extra memory for PDF output out of 10000 (max. 10000000)
 
