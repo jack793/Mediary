@@ -36,6 +36,9 @@ public:
     loginView(MainView* =0);
     ~loginView();
     
+    QLineEdit* getUsername() const;
+    QLineEdit* getPsw() const;
+    
     //Implement pv method
     virtual void loadGraphic();
     

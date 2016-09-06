@@ -41,7 +41,7 @@ void userView::loadMediaTable(const Container<const Media*>& userMedia){
             mediaTable->setItem(row,3,creationDate);
             mediaTable->setItem(row,4,lastChange);
             mediaTable->setItem(row,5,erase);
-            erase->setIcon(QIcon("/IMGs/remove_dark2.png"));
+            erase->setIcon(QIcon(":VIEW/IMGs/remove_dark2.png"));
             
             row++;
             
@@ -54,7 +54,9 @@ void userView::loadMediaTable(const Container<const Media*>& userMedia){
 void userView::loadGraphic(){
     setWindowTitle("Diario utente - Mediary");
     
-    setFixedSize(700,500);
+    setFixedSize(700,600);
+    
+    centerWidget();
     
     mainLayout = new QVBoxLayout;
     mainGBox = new QGroupBox;
@@ -93,7 +95,7 @@ void userView::loadGraphic(){
     mediaTable->setMinimumWidth(650);
     mediaTable->setMinimumHeight(250);
     
-    mediaTable->setColumnWidth(0,10);   //Id
+    mediaTable->setColumnWidth(0,11);   //Id
     mediaTable->setColumnWidth(1,177);  //Title
     mediaTable->setColumnWidth(2,100);  //Type
     mediaTable->setColumnWidth(3,160);  //Creation date
@@ -170,7 +172,7 @@ void userView::openUserData(){
         userInfoView= new userDataView(user);
         userInfoView->show();
         
-        connect(userInfoView,SIGNAL(signalConfirm(QString,QString,QString,bool)),this,SLOT(modifyUserData(const QString& ,const QString& ,const QString& ,bool )));
+        connect(userInfoView,SIGNAL(signalConfirm(QString,QString,QString,const QString&)),this,SLOT(modifyUserData(const QString& ,const QString& ,const QString& ,const QString& )));
         connect(userInfoView,SIGNAL(signalCancel()),this,SLOT(closeUserDataView()));
     }
 }
@@ -192,7 +194,6 @@ void userView::closeMediaBox(){
 void userView::closeSerieTvView(){
     QMessageBox::StandardButton warning;
     warning=QMessageBox::question(this, "Attenzione, Salvataggio non effettuato!!" , "Le modifiche non salvate andranno perse! Sei sicuro di uscire?", QMessageBox::Yes|QMessageBox::No);
-    //warning.setIcon(QIcon(":/Icons/warning_light2.png"));
     
     if (warning==QMessageBox::Yes){
         delete serieTvView;
@@ -203,7 +204,6 @@ void userView::closeSerieTvView(){
 void userView::closeFilmView(){
     QMessageBox::StandardButton warning;
     warning=QMessageBox::question(this, "Attenzione, Salvataggio non effettuato!!" , "Le modifiche non salvate andranno perse! Sei sicuro di uscire?", QMessageBox::Yes|QMessageBox::No);
-    //warning.setIcon(QIcon(":/Icons/warning_light2.png"));
     
     if (warning==QMessageBox::Yes){
         delete filmView;
@@ -214,13 +214,14 @@ void userView::closeFilmView(){
 void userView::closeUserDataView(){
     QMessageBox::StandardButton warning;
     warning=QMessageBox::question(this, "Attenzione, Salvataggio non effettuato!!" , "Le modifiche non salvate andranno perse! Sei sicuro di uscire?", QMessageBox::Yes|QMessageBox::No);
-    //warning.setIcon(QIcon(":/Icons/warning_light2.png"));
-        
+    
     if (warning==QMessageBox::Yes){
         delete userInfoView;
         userInfoView=0;
     }
+    this->show();
 }
+
 
 //--------SAVE
 
@@ -262,7 +263,7 @@ void userView::modifyFilm(const QString& title, unsigned int year, const QString
     filmView=0;
 }
 
-void userView::modifyUserData(const QString& username, const QString& name, const QString& surname, bool sex){
+void userView::modifyUserData(const QString& username, const QString& name, const QString& surname, const QString& sex){
     emit signalChangeUserData(username,name,surname,sex);
     
     delete userInfoView;
@@ -275,9 +276,8 @@ void userView::optionMediaTable(int row, int c){
     //prelevo id
     int id= mediaTable->item(row,0)->text().toInt();
     
-    if(c==5){   //cancella media
+    if(c==5){   // cliccato il bottone per cancellazione media (in col. 5)
         QMessageBox::StandardButton warning;
-        //warning.setIcon(QIcon(":/Icons/warning_dark2.png"));
         warning=QMessageBox::question(this,"Elimizazione media","Confermi di voler eliminare questo media dal tuo diario?",QMessageBox::Yes|QMessageBox::No);
         if(warning==QMessageBox::Yes){
             mediaTable->removeRow(row);
@@ -297,7 +297,7 @@ void userView::optionMediaTable(int row, int c){
         connect(serieTvView,SIGNAL(signalCancel()),this,SLOT(closeSerieTvView()));
         
     }
-    else if(c==1 && mediaTable->item(row,2)->text()=="Film"){
+    else if(c==1 && mediaTable->item(row,2)->text()=="Film"){ //open existing film
         const Media* ptm=user->findMedia(id);
        
         filmView= new FilmView(dynamic_cast<const Film*>(ptm));

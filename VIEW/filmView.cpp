@@ -22,6 +22,8 @@ void FilmView::loadGraphic(){
     
     setFixedWidth(330);
     
+    centerWidget();
+    
     mainLayout= new QVBoxLayout;
     
     //Common
@@ -42,7 +44,7 @@ void FilmView::loadGraphic(){
     //Film
     QLabel* plotLabel= new QLabel("Trama:");
     QLabel* distributionLabel= new QLabel("Distribuito da:");
-    QLabel* durationLabel= new QLabel("Durata (hh:mm::ss):");
+    QLabel* durationLabel= new QLabel("Durata (hh:mm):");
     
     if(film){
         plotEdit= new QTextEdit(film->getPlot());
@@ -130,7 +132,6 @@ void FilmView::modifyFilm(){
     
     if(titleEdit->text()==""){
         dialMessage= new DialogMessage("Controllo dati Film","Il campo TITOLO non può rimanere vuoto","Ok");
-        dialMessage->setWindowIcon(QIcon(":/Icons/warning_dark2.png"));
         dialMessage->show();
     }
     else if(yearEdit->text()==""){

@@ -29,7 +29,7 @@ public slots:
     //Modification
     void modifySerieTv(const QString& t,unsigned int y,const QString& g,const QString& d,unsigned int s,unsigned int n,unsigned int l,int id);
     void modifyFilm(const QString& t,unsigned int y,const QString& g,const QString& p,const QString& d,const QTime& drt,int id);
-    void modifyUserData(const QString& u,const QString& n,const QString& s,bool sx);
+    void modifyUserData(const QString& u, const QString& n, const QString& s, const QString &sx);
     void deleteMedia(int);
     
     //Close

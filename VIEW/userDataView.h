@@ -26,6 +26,7 @@ private:
     QLineEdit* usernameEdit;
     QLineEdit* nameEdit;
     QLineEdit* surnameEdit;
+    QLineEdit* sexEdit;
     QVBoxLayout* sexButtonsLay;
     QRadioButton* sexM;
     QRadioButton* sexF;
@@ -51,7 +52,7 @@ public slots:
     void cancelChanges();
     
 signals:
-    void signalConfirm(const QString& ,const QString& ,const QString& ,bool );
+    void signalConfirm(const QString& ,const QString& ,const QString& ,const QString& );
     void signalCancel();
 };
 

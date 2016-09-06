@@ -21,6 +21,8 @@ void userDataView::loadGraphic(){
     
     setFixedWidth(270);
     
+    centerWidget();
+    
     QFont usn("Verdana", 15);
     
     mainLayout= new QVBoxLayout;
@@ -35,18 +37,17 @@ void userDataView::loadGraphic(){
     surnameEdit= new QLineEdit(user->getSurname());
     QLabel* surnameLabel= new QLabel("Cognome:");
     
+    sexEdit= new QLineEdit(user->getSex());
     sexButtonsLay=new QVBoxLayout;
     QLabel* sexLabel=new QLabel("Sesso:");    
     sexM=new QRadioButton("Maschio");
     sexF=new QRadioButton("Femmina");  
-    if(sexM->isChecked()){
+    
+    if(sexEdit->text()=="Maschio")
         sexM->setChecked(true);
-        sexF->setCheckable(true);
-    }
-    else{
+    else
         sexF->setChecked(true);
-        sexM->setCheckable(true);
-    }     
+    
     sexButtonsLay->addWidget(sexM);
     sexButtonsLay->addWidget(sexF);
     
@@ -76,9 +77,13 @@ void userDataView::loadGraphic(){
 //-------------------------PUBLIC SLOTS--------------------------
 
 void userDataView::confirmChanges(){
-    bool sex=true;
+   
+    QString sex="";
+    
     if(sexM->isChecked())
-        sex=false;
+        sex="Maschio";
+    else if(sexF->isChecked())
+        sex="Femmina";
     
     if(usernameEdit->text()==""){
         dialMessage= new DialogMessage("Controllo modifiche","Riempire il campo USERNAME","Ok");

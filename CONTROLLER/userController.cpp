@@ -12,7 +12,7 @@ userController::userController(User* u, QObject* parent): QObject(parent), user(
     connect(userUI,SIGNAL(signalSaveFilm(const QString& ,unsigned int ,const QString& ,const QString& ,const QString& ,const QTime& )),this,SLOT(saveFilm(const QString& ,unsigned int ,const QString& ,const QString& ,const QString& ,const QTime& )));
     connect(userUI,SIGNAL(signalChangeSerieTv(const QString& ,unsigned int ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int ,int )),this,SLOT(modifySerieTv(const QString& ,unsigned int ,const QString& ,const QString& ,unsigned int ,unsigned int ,unsigned int ,int )));
     connect(userUI,SIGNAL(signalChangeFilm(const QString& ,unsigned int ,const QString& ,const QString& ,const QString& ,const QTime& ,int )),this,SLOT(modifyFilm(const QString& ,unsigned int ,const QString& ,const QString& ,const QString& ,const QTime& ,int )));
-    connect(userUI,SIGNAL(signalChangeUserData(const QString& ,const QString& ,const QString& ,bool )),this,SLOT(modifyUserData(const QString& ,const QString& ,const QString& ,bool )));
+    connect(userUI,SIGNAL(signalChangeUserData(const QString& ,const QString& ,const QString& ,const QString& )),this,SLOT(modifyUserData(const QString& ,const QString& ,const QString& ,const QString& )));
     connect(userUI,SIGNAL(signalDeleteMedia(int )),this,SLOT(deleteMedia(int )));
     connect(userUI,SIGNAL(signalLogout()),this,SLOT(closeUserView()));
 }
@@ -49,15 +49,15 @@ void userController::modifyFilm(const QString& title, unsigned int year, const Q
     user->modifyFilm(title,year,genre,plot,distribution,duration,id);
 }
 
-void userController::modifyUserData(const QString& username, const QString& name, const QString& surname, bool sex){
+void userController::modifyUserData(const QString& username, const QString& name, const QString& surname, const QString& sex){
     user->setUsername(username);
     user->setName(name);
     user->setSurname(surname);
     user->setSex(sex);
     
     dialMessage= new DialogMessage("Info","Modifiche effettuate con successo","Ok");
-    dialMessage->setWindowIcon(QIcon(":/Icons/info_light.png"));
     dialMessage->show();
+
 }
 
 void userController::deleteMedia(int id){
@@ -67,7 +67,7 @@ void userController::deleteMedia(int id){
 //--------CLOSE
 
 void userController::closeUserView(){
-    user->writeMedia(); //scrive tutti i dati attuali dello user nel database 
+    user->writeMedia(); //scrive tutti i media attuali dello user nel database 
     user->emptyMediaDatabase(); //prima di svuotare
     emit signalHome();
 }

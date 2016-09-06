@@ -50,5 +50,9 @@ HEADERS  += \
 FORMS    +=
 
 OTHER_FILES += \
-    Database/mediaDatabase.xml \
-    Database/userDatabase.xml
+    Database/userDatabase.xml \
+    Database/fraframediaDatabase.xml \
+    Database/jackymediaDatabase.xml
+
+RESOURCES += \
+    QResources.qrc

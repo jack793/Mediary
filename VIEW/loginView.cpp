@@ -1,3 +1,5 @@
+#include <QMessageBox>
+
 #include "loginView.h"
 
 //-------------------------COSTRUTTORI------------------------
@@ -9,14 +11,19 @@ loginView::loginView(MainView* parent): MainView(parent)
 
 loginView::~loginView() {}
 
+//-------------------------GET------------------------
+
+QLineEdit* loginView::getUsername() const {return usernameEdit;}
+QLineEdit* loginView::getPsw() const {return passwordEdit;}
+
 //-------------------------PV METHOD-----------------------
 
 void loginView::loadGraphic(){
     setWindowTitle("Login - Mediary");
     
-    this->setObjectName("login");
-    this->setStyleSheet("loginView#login { background-image: url('IMGs/Wall.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: top left }");
     setFixedSize(800,500);
+    
+    centerWidget();
     
     mainLayout = new QVBoxLayout;
     mainGBox= new QGroupBox;
@@ -46,6 +53,7 @@ void loginView::loadGraphic(){
     QPushButton* goToRegistrationButton= new QPushButton("Registra utente");
     
     QPushButton* quit= new QPushButton("Esci",this);
+    
     connect(quit,SIGNAL(clicked()),this,SLOT(close()));
     
     boxLayout->addWidget(quit,0,Qt::AlignRight);

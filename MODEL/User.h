@@ -20,16 +20,16 @@ private:
     QString password;
     QString name;
     QString surname;
-    bool sex;
+    QString sex;
     Container<const Media*> mediaDatabase;
 public:
-    User(const QString& ,const QString& ,const QString& ,const QString& ,bool s);
+    User(const QString& ,const QString& ,const QString& ,const QString& ,const QString& s);
     
     const QString& getUsername() const;
     const QString& getPsw() const;
     const QString& getName() const;
     const QString& getSurname() const;
-    bool getSex() const;
+    const QString &getSex() const;
     Container<const Media*> getMedia() const;
     Container<const Media*> getSerieTV() const;
     Container<const Media*> getFilms() const;
@@ -38,7 +38,7 @@ public:
     void setPsw(const QString& );
     void setName(const QString& );
     void setSurname(const QString& );
-    void setSex(bool );
+    void setSex(const QString& );
     
     //-----------altri metodi----------
     

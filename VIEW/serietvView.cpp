@@ -24,6 +24,8 @@ void SerietvView::loadGraphic(){
     
     setFixedWidth(330);
     
+    centerWidget();
+    
     mainLayout= new QVBoxLayout;
     
     //Common

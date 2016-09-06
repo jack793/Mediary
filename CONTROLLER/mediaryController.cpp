@@ -15,6 +15,9 @@ mediaryController::mediaryController(Database* db, loginView* l, userController*
 
 //--------OPEN
 void mediaryController::openLoginView(){
+    //pulisco la password edit
+    startUI->getPsw()->clear();
+    
     delete uController;
     uController=0;
     
@@ -27,27 +30,27 @@ void mediaryController::openRegistrationView(){
     startUI->hide(); //nascondo login
     registrationUI->show(); //apro reg
     
-    connect(registrationUI,SIGNAL(signalRegister(const QString& ,const QString& ,const QString& ,const QString& ,bool )),this,SLOT(userRegistration(const QString& ,const QString& ,const QString& ,const QString& ,bool)));
+    connect(registrationUI,SIGNAL(signalRegister(const QString& ,const QString& ,const QString& ,const QString& ,const QString& )),this,SLOT(userRegistration(const QString& ,const QString& ,const QString& ,const QString& ,const QString&)));
     connect(registrationUI,SIGNAL(signalClose()),this,SLOT(closeRegistrationView()));
 }
 
 //--------REGISTRATION
 
-void mediaryController::userRegistration(const QString& username, const QString& psw, const QString& name, const QString& surname, bool sex){
+void mediaryController::userRegistration(const QString& username, const QString& psw, const QString& name, const QString& surname, const QString& sex){
+    startUI->hide(); //nascondo login
+    
     if(!usersDB->matchUser(username)){
         User* newUser= new User(username,psw,name,surname,sex);
         usersDB->addUser(newUser);
         usersDB->saveUserDb();
         
         dialMessage= new DialogMessage("Info","Registrazione nuovo utente avvenuta con successo!","Ok");
-        dialMessage->setWindowIcon(QIcon(":/Icons/info_light.png"));
         dialMessage->show();
         
         closeRegistrationView();
     }
     else{
         dialMessage= new DialogMessage("Attenzione","USERNAME già utilizzato","Modifica");
-        dialMessage->setWindowIcon(QIcon(":/Icons/warning_dark.png"));
         dialMessage->show();
     }
 }
@@ -70,8 +73,7 @@ void mediaryController::verifyLogin(const QString& usn, const QString& psw){
         }
     }
     else{ //se login non valida
-        dialMessage= new DialogMessage("Controllo login","USERNAME o PASSWORD inseriti vuoti o non corretti!","Ok");
-        dialMessage->setWindowIcon(QIcon(":/Icons/warning_dark2.png"));
+        dialMessage= new DialogMessage("Controllo login","USERNAME o PASSWORD inseriti vuoti o non corretti!","Inserisci");
         dialMessage->show();
     }
 }

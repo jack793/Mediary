@@ -48,7 +48,7 @@ void Database::loadUserDb(){
     QString password;
     QString name;
     QString surname;
-    bool sex;
+    QString sex;
     
     QFile userFile("userDatabase.xml");
     userFile.open(QFile::ReadWrite);
@@ -71,14 +71,8 @@ void Database::loadUserDb(){
                 name=xmlReader.readElementText();
             else if(xmlReader.name()=="cognome")
                 surname=xmlReader.readElementText();
-            else if(xmlReader.name()=="sesso"){
-                QString s=xmlReader.readElementText();
-                if(s=="0")
-                    sex=false;
-                sex=true;
-            }
-            
-            
+            else if(xmlReader.name()=="sesso")
+                sex=xmlReader.readElementText();
         }
         else if(xmlReader.isEndElement() && xmlReader.name()=="utente"){    // legge </utente>
             User* u=new User(username,password,name,surname,sex);

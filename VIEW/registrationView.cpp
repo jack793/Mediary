@@ -21,6 +21,10 @@ void registrationView::closeEvent(QCloseEvent* ){
 void registrationView::loadGraphic(){
     setWindowTitle("Registrazione - Mediary");
     
+    setFixedWidth(300);
+    
+    centerWidget();
+    
     mainLayout = new QVBoxLayout;
     mainGBox = new QGroupBox;
     
@@ -45,10 +49,13 @@ void registrationView::loadGraphic(){
     sexF=new QRadioButton("Femmina");
     sexButtonsLay->addWidget(sexM);
     sexButtonsLay->addWidget(sexF);
-    
     QPushButton* regButton= new QPushButton("Registrati");
     QPushButton* undoRegButton= new QPushButton("Indietro");
     
+    QLabel* welcomeReg=new QLabel("Benvenuto nella registrazione. \nCompila tutti i campi della form per \naggiungere un nuovo utente.");
+    
+    boxLayout->addWidget(welcomeReg,0,Qt::AlignLeft);
+    boxLayout->addSpacing(30);
     boxLayout->addWidget(usernameLabel);
     boxLayout->addWidget(usernameEdit);
     boxLayout->addWidget(passwordLabel);
@@ -78,11 +85,13 @@ void registrationView::loadGraphic(){
 void registrationView::checkRegistration(){
     
     QString password=passwordEdit->text();
+    QString sex="";
     ptdb= new Database();
     
-    bool sex=false;
     if(sexM->isChecked())
-        sex=true;
+        sex="Maschio";
+    else if(sexF->isChecked())
+        sex="Femmina";
         
     if(usernameEdit->text()==""){
         dialMessage=new DialogMessage("Controllo dati","Non hai compilato il campo USERNAME","Indietro");

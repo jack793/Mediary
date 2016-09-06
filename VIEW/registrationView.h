@@ -51,7 +51,7 @@ public slots:
     void cancelRegistration();
    
 signals:
-    void signalRegister(const QString& ,const QString& ,const QString& ,const QString& ,bool );
+    void signalRegister(const QString& ,const QString& ,const QString& ,const QString& ,const QString& );
     void signalClose();
 };
 

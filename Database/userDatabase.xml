@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <utente>
-        <username></username>
-        <password></password>
-        <nome></nome>
-        <cognome></cognome>
-        <sesso></sesso>
+        <username>frafra</username>
+        <password>fra95</password>
+        <nome>Francesca</nome>
+        <cognome>Rossi</cognome>
+        <sesso>1</sesso>
     </utente>
     <utente>
-        <username></username>
-        <password></password>
-        <nome></nome>
-        <cognome></cognome>
-        <sesso></sesso>
+        <username>jacky</username>
+        <password>jack93</password>
+        <nome>Giacomo</nome>
+        <cognome>Zecchin</cognome>
+        <sesso>1</sesso>
     </utente>
 </database>

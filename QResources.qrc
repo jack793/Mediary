@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>VIEW/IMGs/info_dark.png</file>
+        <file>VIEW/IMGs/info_dark2.png</file>
+        <file>VIEW/IMGs/info_light.png</file>
+        <file>VIEW/IMGs/info_light2.png</file>
+        <file>VIEW/IMGs/remove_dark.png</file>
+        <file>VIEW/IMGs/remove_dark2.png</file>
+        <file>VIEW/IMGs/remove_light.png</file>
+        <file>VIEW/IMGs/remove_light2.png</file>
+        <file>VIEW/IMGs/warning_dark.png</file>
+        <file>VIEW/IMGs/warning_dark2.png</file>
+        <file>VIEW/IMGs/warning_light.png</file>
+        <file>VIEW/IMGs/warning_light2.png</file>
+    </qresource>
+</RCC>

@@ -2,7 +2,7 @@
 
 //-------------------------COSTRUTTORI------------------------
 
-User::User(const QString& usn, const QString& psw, const QString& nm, const QString& sur, bool sx):
+User::User(const QString& usn, const QString& psw, const QString& nm, const QString& sur, const QString &sx):
         username(usn), password(psw), name(nm), surname(sur), sex(sx) {}
 
 //-------------------------GET------------------------
@@ -11,7 +11,7 @@ const QString& User::getUsername() const {return username;}
 const QString& User::getPsw() const {return password;}
 const QString& User::getName() const {return name;}
 const QString& User::getSurname() const {return surname;}
-bool User::getSex() const {return sex;}
+const QString& User::getSex() const {return sex;}
 Container<const Media*> User::getMedia() const {return mediaDatabase;}
 
 Container<const Media*> User::getSerieTV() const{
@@ -40,7 +40,7 @@ void User::setUsername(const QString& usn) {username=usn;}
 void User::setPsw(const QString& psw) {password=psw;}
 void User::setName(const QString& n) {name=n;}
 void User::setSurname(const QString& sn) {surname=sn;}
-void User::setSex(bool s) {sex=s;}
+void User::setSex(const QString &s) {sex=s;}
 
 //-------------------------ALTRI METODI------------------------
 
@@ -50,7 +50,7 @@ void User::writeUser(QXmlStreamWriter& xmlWriter) const{
         xmlWriter.writeTextElement("password",getPsw());
         xmlWriter.writeTextElement("nome",getName());
         xmlWriter.writeTextElement("cognome",getSurname());
-        xmlWriter.writeTextElement("sesso",QString::number(getSex()));
+        xmlWriter.writeTextElement("sesso",getSex());
     xmlWriter.writeEndElement();
 }
 
@@ -107,10 +107,14 @@ const Media* User::findMedia(int i) const{
     if(!mediaDatabase.isEmpty()){
         for(Container<const Media*>::Iterator it=mediaDatabase.begin(); it!=mediaDatabase.end(); ++it)
             if(mediaDatabase[it]->getId()==i)
-                return dynamic_cast<const Media*>(mediaDatabase[it]);
+                return mediaDatabase[it];
     }
     return 0;
 }
+
+//-------------------------LOAD E WRITE USERMEDIA------------------------
+
+//---------LOAD---------
 
 void User::loadMedia()
 {   
@@ -118,16 +122,16 @@ void User::loadMedia()
     
     //---media----
     QString title;
-    unsigned int year;
+    unsigned int year=0;
     QString genre;
     QDateTime creationDate;
     QDateTime changeDate;
     
     //---serietv-----
     QString descriptionEp;
-    unsigned int season;
-    unsigned int numberEp;
-    unsigned int lenghtEp;
+    unsigned int season=0;
+    unsigned int numberEp=0;
+    unsigned int lenghtEp=0;
     
     //----film-----
     QString plot;
@@ -200,6 +204,8 @@ void User::loadMedia()
     mediaFile.close();
 }
 
+//---------WRITE---------
+
 void User::writeMedia() const{
     QFile mediaFile(""+getUsername()+"mediaDatabase.xml");
     if(!mediaFile.open(QIODevice::WriteOnly))
@@ -219,6 +225,8 @@ void User::writeMedia() const{
     
     mediaFile.close();
 }
+
+//-------------------------EMPTY MEDIADB------------------------
 
 void User::emptyMediaDatabase(){
     while(!mediaDatabase.isEmpty())

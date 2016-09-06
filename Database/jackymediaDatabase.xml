@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<media>
+    <serieTV>
+        <titolo>Big Bang Theory - Pilota</titolo>
+        <anno>2007</anno>
+        <genere>Sitcom</genere>
+        <dataCreazione>ven set 2 12:17:07 2016</dataCreazione>
+        <ultimaModifica>lun set 5 12:55:07 2016</ultimaModifica>
+        <stagione>1</stagione>
+        <no.episodio>1</no.episodio>
+        <descrizione>Dopo una visita senza successo alla banca del seme per geni, Leonard e Sheldon tornano a casa e fanno la conoscenza di Penny, la loro nuova vicina, che si è trasferita dall'altra parte del pianerottolo. Leonard diventa immediatamente interessato a lei, mentre Sheldon pensa che il suo amico stia inseguendo un sogno che non potrà mai realizzare. Più tardi Leonard invita Penny nel suo appartamento (condiviso con Sheldon), dove incontra i loro amici Howard, un aspirante playboy che vive ancora con la madre, e Raj, così timido che non riesce a parlare alle donne. Leonard è così infatuato di Penny che, dopo averle lasciato usare la doccia, accetta di andare a recuperare la sua TV dal suo ex fidanzato Kurt. Tuttavia, la superiorità fisica di Kurt sovrasta il QI 360 combinato di Leonard e Sheldon, che ritornano a mani vuote e senza pantaloni. Sentendosi male per loro, Penny si offre di portare i ragazzi a cena, in quello che è l'inizio di una nuova amicizia. </descrizione>
+        <lunghezza>20</lunghezza>
+    </serieTV>
+    <film>
+        <titolo>Transformer</titolo>
+        <anno>2007</anno>
+        <genere>Fanstascienza</genere>
+        <dataCreazione>ven set 2 11:55:09 2016</dataCreazione>
+        <ultimaModifica>lun set 5 12:55:23 2016</ultimaModifica>
+        <trama>Sul pianeta Cybertron vivevano due razze aliene robotiche: gli Autobot, che combattono per giustizia e libertà, e i malvagi Decepticon, che invece combattono per tirannia. Tra le due fazioni scoppiò una guerra per il possesso dell'AllSpark, una potentissima fonte di energia in grado di creare mondi e vita su di essi. A causa della guerra, Cybertron venne devastato e l'AllSpark venne perduto nello spazio. Autobot e Decepticon partirono alla sua ricerca e, dopo un lunghissimo viaggio, l'AllSpark venne localizzato sulla Terra: la guerra è destinata a riprendere. </trama>
+        <distribuzione>Paramount Pictures</distribuzione>
+        <durata>02:20:00</durata>
+    </film>
+</media>

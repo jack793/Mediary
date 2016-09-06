@@ -6,12 +6,11 @@
 
 class MainView : public QWidget {
     Q_OBJECT
-private:
-    void centerWidget();
-   
+
 public:
     MainView(QWidget* parent=0);
     virtual ~MainView();
+    void centerWidget();
     virtual void loadGraphic() =0;
 };
 
