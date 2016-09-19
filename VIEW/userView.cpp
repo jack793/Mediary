@@ -219,7 +219,6 @@ void userView::closeUserDataView(){
         delete userInfoView;
         userInfoView=0;
     }
-    this->show();
 }
 
 

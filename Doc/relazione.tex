@@ -121,15 +121,16 @@ Il progetto è semplice ma allo stesso tempo funzionale, diretto e comprensibile
 
 	Avviata, l'applicazione presenta subito una finestra centrale per l'inserimento diretto dei dati necessari ad effettuare il \textbf{login} ed 
 	accedere  immediatamente all'area personale.\\
-	In alternativa, se non si possiedono già delle credenziali, è presente un bottone per la \textbf{registrazione} poco più in basso, che farà entrare nella 
-	finestra dedicata alla creazione di un nuovo utente.
-	In entrambi questi due casi sono presenti dei controlli di consistenza dei dati descritti più approfonditamente nella sezione *sez.* .\\
+	In alternativa, se non si possiedono già delle credenziali, è presente un bottone per la \textbf{registrazione} poco più in basso, che farà 
+	entrare nella finestra dedicata alla creazione di un nuovo utente.
+	In ogni caso sono presenti dei controlli di consistenza dei dati in tutte le viste, che sono descritte più approfonditamente nella 
+	sezione dedicata \hyperref[sec:view]{\bf [View$\rightarrow$]} .\\
 	E' comunque data la possibilità di \textbf{modificare i propri dati} in un secondo momento.
 		
 	\subsection{Media}
 	
 	Le funzionalità offerte per i media sono invece quelle di \textbf{creazione, modifica, visualizzazione per tipo ed eliminazione}. (In 
-	dettaglio qui *sez*)\vspace{20pt}
+	dettaglio  nella sezione \hyperref[sec:model]{\bf [Model$\rightarrow$]})\vspace{20pt}
 	
 
 \section{Schema Logico}	
@@ -156,6 +157,7 @@ Vediamo nelle sottosezioni seguenti le tre componenti e le classi che li compong
 \newpage
 
 	\subsection{Model}
+	\label{sec:model}
 	
 	Di seguito tutte le entità che vanno a formare la parte del \emph{MODEL} del progetto.
 	
@@ -226,6 +228,7 @@ Vediamo nelle sottosezioni seguenti le tre componenti e le classi che li compong
 	
 	
 	\subsection{View}
+	\label{sec:view}
 	
 	L'intera \emph{VIEW} è rappresentata da una \textbf{gerarchia polimorfa} che fa capo alla \underline{classe base astratta} \textbf{MainView} .
 	Essa deriva pubblicamente a sua volta dalla cl.astratta di Qt \emph{QWidget} .\\\\
@@ -339,6 +342,7 @@ Ciò estenderebbe le funzionalità per tipo di utente ed evolverebbe il codice r
 for(Container<const User*>::Iterator it=userDatabase.begin(); it!=userDatabase.end(); ++it)
 	userDatabase[it]->writeUser(xmlWriter);	//PRONTO PER ESTENSIBILITA' POLIMORFA
 \end{CPP}
+
 
 \newpage
 

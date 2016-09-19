@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <utente>
-        <username>frafra</username>
-        <password>fra95</password>
-        <nome>Francesca</nome>
-        <cognome>Rossi</cognome>
-        <sesso>Femmina</sesso>
-    </utente>
-    <utente>
         <username>jacky</username>
         <password>jack93</password>
         <nome>Giacomo</nome>
